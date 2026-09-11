@@ -1,0 +1,332 @@
+/* ============================================================
+   Verantia — Páginas de servicio (estilos adicionales)
+   Se carga después de style.css
+   ============================================================ */
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.breadcrumb a:hover { color: var(--blue-dark); }
+.breadcrumb svg { width: 14px; height: 14px; }
+.breadcrumb .current { color: var(--black); }
+
+/* ---------- Service hero ---------- */
+.service-hero {
+  padding-block: 56px 88px;
+  background:
+    radial-gradient(600px 300px at 85% -10%, rgba(59,130,246,0.10), transparent 70%),
+    var(--bg);
+}
+.service-hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 56px;
+}
+.service-hero h1 {
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 800;
+  text-wrap: balance;
+}
+.service-hero .lead {
+  font-size: 17.5px;
+  max-width: 540px;
+  color: var(--text);
+}
+.service-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.service-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-visual .blob {
+  position: absolute;
+  inset: 0;
+  border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%;
+  background: linear-gradient(135deg, rgba(59,130,246,0.16), rgba(29,78,216,0.06));
+  animation: vrwBlob 12s ease-in-out infinite;
+}
+@keyframes vrwBlob {
+  0%, 100% { border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%; }
+  50% { border-radius: 60% 40% 40% 60% / 55% 60% 40% 45%; }
+}
+.service-visual .ring {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(59,130,246,0.35);
+}
+.service-visual .icon-wrap {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 20px 40px -12px rgba(29,78,216,0.45);
+}
+.service-visual .icon-wrap svg { width: 58px; height: 58px; }
+.service-visual .dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.7;
+}
+.service-visual .dot.d1 { top: 8%; right: 18%; }
+.service-visual .dot.d2 { bottom: 14%; left: 10%; width: 22px; height: 22px; background: var(--blue-dark); }
+.service-visual .dot.d3 { top: 40%; right: 2%; width: 10px; height: 10px; }
+
+/* ---------- Problem / pain points ---------- */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.problem-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+.problem-card .problem-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fef2f2;
+  color: #dc4c4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.problem-card .problem-icon svg { width: 22px; height: 22px; }
+.problem-card h3 { font-size: 17px; margin-bottom: 8px; }
+.problem-card p { font-size: 14.5px; color: var(--muted); margin: 0; }
+
+/* ---------- Feature list ---------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 32px;
+}
+.feature-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.feature-item .feature-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.10);
+  color: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-item .feature-icon svg { width: 20px; height: 20px; }
+.feature-item h3 { font-size: 16px; margin-bottom: 4px; }
+.feature-item p { font-size: 14px; color: var(--muted); margin: 0; }
+
+/* ---------- Stat band ---------- */
+.stat-band {
+  background: linear-gradient(135deg, var(--black) 0%, var(--black-soft) 100%);
+  padding-block: 64px;
+}
+.stat-band .section-head h2,
+.stat-band .section-head p { color: rgba(255,255,255,0.92); }
+.stat-band .section-head p { color: rgba(255,255,255,0.6); }
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.stat-card {
+  text-align: center;
+  padding: 8px 12px;
+}
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800;
+  background: linear-gradient(135deg, #93c5fd, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  margin-bottom: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.stat-card p {
+  color: rgba(255,255,255,0.75);
+  font-size: 14.5px;
+  margin: 0 0 8px;
+}
+.stat-source {
+  display: block;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ---------- Audience chips ---------- */
+.audience-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.audience-chips li {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black-soft);
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- FAQ (native accordion) ---------- */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 4px 22px;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 0;
+  font-weight: 700;
+  font-size: 15.5px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary .faq-plus {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  color: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+.faq-item[open] summary .faq-plus { transform: rotate(45deg); }
+.faq-item p {
+  padding-bottom: 20px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+  max-width: 65ch;
+}
+
+/* ---------- Cross-links (otros servicios) ---------- */
+.cross-links {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.cross-link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cross-link:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.cross-link .cross-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(59,130,246,0.10);
+  color: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cross-link .cross-icon svg { width: 17px; height: 17px; }
+.cross-link span { font-size: 13.5px; font-weight: 700; color: var(--black); }
+
+/* ---------- Hub de servicios (servicios/index.html) ---------- */
+.service-hub-grid { grid-template-columns: repeat(3, 1fr); }
+.service-hub-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.service-hub-card .card-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  padding-top: 4px;
+}
+.service-hub-card .card-link svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.2s ease;
+}
+.service-hub-card:hover .card-link svg { transform: translateX(3px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .cross-links { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .service-hero-inner { grid-template-columns: 1fr; }
+  .service-visual { order: -1; max-width: 260px; }
+  .problem-grid { grid-template-columns: 1fr 1fr; }
+  .stat-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 700px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .cross-links { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .cross-links { grid-template-columns: 1fr; }
+  .audience-chips li { font-size: 13px; padding: 8px 14px; }
+}
