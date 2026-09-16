@@ -3,6 +3,38 @@
    Se carga después de style.css
    ============================================================ */
 
+/* ---------- Paleta de acento por servicio ----------
+   Aplica una de estas clases al contenedor de la página de servicio
+   (o a una tarjeta suelta) y todo lo que hay dentro adopta ese color:
+   botones, insignias, iconos, pasos, estadísticas, etc.           */
+.accent-blue   { --accent: #3b82f6; --accent-dark: #1d4ed8; --accent-light: #93c5fd; --accent-rgb: 59, 130, 246; }
+.accent-amber  { --accent: #f59e0b; --accent-dark: #b45309; --accent-light: #fcd34d; --accent-rgb: 245, 158, 11; }
+.accent-purple { --accent: #8b5cf6; --accent-dark: #6d28d9; --accent-light: #c4b5fd; --accent-rgb: 139, 92, 246; }
+.accent-cyan   { --accent: #06b6d4; --accent-dark: #0e7490; --accent-light: #67e8f9; --accent-rgb: 6, 182, 212; }
+.accent-green  { --accent: #22c55e; --accent-dark: #15803d; --accent-light: #86efac; --accent-rgb: 34, 197, 94; }
+.accent-teal   { --accent: #14b8a6; --accent-dark: #0f766e; --accent-light: #5eead4; --accent-rgb: 20, 184, 166; }
+.accent-pink   { --accent: #ec4899; --accent-dark: #be185d; --accent-light: #f9a8d4; --accent-rgb: 236, 72, 153; }
+
+/* El acento manda también sobre los componentes de style.css que
+   estén dentro (heredan --blue/--blue-dark redefinidos). */
+.accent-blue, .accent-amber, .accent-purple,
+.accent-cyan, .accent-green, .accent-teal, .accent-pink {
+  --blue: var(--accent);
+  --blue-dark: var(--accent-dark);
+}
+
+/* Degradados de los pasos, en la tonalidad del servicio */
+.service-page .step-icon.g1 { background: linear-gradient(135deg, var(--accent-light), var(--accent)); }
+.service-page .step-icon.g2 { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); }
+.service-page .step-icon.g3 { background: linear-gradient(135deg, var(--accent-dark), var(--black)); }
+
+/* Fondo del hero teñido con el acento del servicio */
+.service-page .service-hero {
+  background:
+    radial-gradient(600px 300px at 85% -10%, rgba(var(--accent-rgb), 0.12), transparent 70%),
+    var(--bg);
+}
+
 /* ---------- Breadcrumb ---------- */
 .breadcrumb {
   display: flex;
@@ -13,7 +45,7 @@
   color: var(--muted);
   margin-bottom: 22px;
 }
-.breadcrumb a:hover { color: var(--blue-dark); }
+.breadcrumb a:hover { color: var(--accent-dark); }
 .breadcrumb svg { width: 14px; height: 14px; }
 .breadcrumb .current { color: var(--black); }
 
@@ -21,7 +53,7 @@
 .service-hero {
   padding-block: 56px 88px;
   background:
-    radial-gradient(600px 300px at 85% -10%, rgba(59,130,246,0.10), transparent 70%),
+    radial-gradient(600px 300px at 85% -10%, rgba(var(--accent-rgb),0.10), transparent 70%),
     var(--bg);
 }
 .service-hero-inner {
@@ -60,7 +92,7 @@
   position: absolute;
   inset: 0;
   border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%;
-  background: linear-gradient(135deg, rgba(59,130,246,0.16), rgba(29,78,216,0.06));
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.16), rgba(var(--accent-rgb),0.05));
   animation: vrwBlob 12s ease-in-out infinite;
 }
 @keyframes vrwBlob {
@@ -71,19 +103,19 @@
   position: absolute;
   inset: 12%;
   border-radius: 50%;
-  border: 1.5px dashed rgba(59,130,246,0.35);
+  border: 1.5px dashed rgba(var(--accent-rgb),0.35);
 }
 .service-visual .icon-wrap {
   position: relative;
   width: 132px;
   height: 132px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 20px 40px -12px rgba(29,78,216,0.45);
+  box-shadow: 0 20px 40px -12px rgba(var(--accent-rgb),0.45);
 }
 .service-visual .icon-wrap svg { width: 58px; height: 58px; }
 .service-visual .dot {
@@ -91,11 +123,11 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--blue);
+  background: var(--accent);
   opacity: 0.7;
 }
 .service-visual .dot.d1 { top: 8%; right: 18%; }
-.service-visual .dot.d2 { bottom: 14%; left: 10%; width: 22px; height: 22px; background: var(--blue-dark); }
+.service-visual .dot.d2 { bottom: 14%; left: 10%; width: 22px; height: 22px; background: var(--accent-dark); }
 .service-visual .dot.d3 { top: 40%; right: 2%; width: 10px; height: 10px; }
 
 /* ---------- Problem / pain points ---------- */
@@ -141,8 +173,8 @@
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: rgba(59, 130, 246, 0.10);
-  color: var(--blue-dark);
+  background: rgba(var(--accent-rgb), 0.10);
+  color: var(--accent-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,7 +204,7 @@
   font-family: var(--font-heading);
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 800;
-  background: linear-gradient(135deg, #93c5fd, #fff);
+  background: linear-gradient(135deg, var(--accent-light), #fff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -242,7 +274,7 @@
   height: 24px;
   border-radius: 50%;
   background: var(--bg-alt);
-  color: var(--blue-dark);
+  color: var(--accent-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,8 +310,8 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(59,130,246,0.10);
-  color: var(--blue-dark);
+  background: rgba(var(--accent-rgb),0.10);
+  color: var(--accent-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,7 +333,7 @@
   gap: 6px;
   font-size: 13.5px;
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--accent-dark);
   padding-top: 4px;
 }
 .service-hub-card .card-link svg {
