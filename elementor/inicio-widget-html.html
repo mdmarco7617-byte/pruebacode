@@ -1,0 +1,733 @@
+<!-- ==========================================================
+     VERANTIA - Pagina de inicio completa
+     Pegar TAL CUAL en un unico widget HTML de Elementor.
+     Todo el CSS esta acotado bajo .vr-home: no afecta al tema
+     ni a las paginas de servicio. No contiene etiquetas de
+     cabecera de documento ni depende de ningun script externo.
+     ========================================================== -->
+
+<style>
+/* ---------- Tokens de marca (solo dentro de .vr-home) ---------- */
+.vr-home{
+  --vr-ink:#1a1a1a; --vr-ink-2:#101623;
+  --vr-blue:#3b82f6; --vr-blue-dark:#1d4ed8; --vr-blue-light:#93c5fd;
+  --vr-text:#333333; --vr-muted:#6b7280;
+  --vr-soft:#f5f8fc; --vr-border:#e6ebf2;
+  --vr-r:16px; --vr-r-lg:24px;
+  --vr-sh-s:0 1px 2px rgba(16,24,40,.06);
+  --vr-sh-m:0 14px 32px -14px rgba(16,24,40,.20);
+  --vr-sh-l:0 28px 56px -24px rgba(16,24,40,.28);
+  --vr-max:1200px;
+  --vr-ease:cubic-bezier(.16,1,.3,1);
+  font-family:'DM Sans',system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--vr-text); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.vr-home *,.vr-home *::before,.vr-home *::after{box-sizing:border-box}
+.vr-home :where(h1,h2,h3,h4){
+  font-family:'Manrope','DM Sans',sans-serif;color:var(--vr-ink);
+  line-height:1.16;letter-spacing:-.022em;font-weight:700;margin:0}
+/* :where() no aporta especificidad: asi cualquier .vr-clase de abajo
+   puede fijar sus propios margenes sin necesidad de !important */
+.vr-home :where(p,ul,ol){margin:0;padding:0}
+.vr-home :where(li){list-style:none}
+.vr-home :where(a){text-decoration:none;color:inherit}
+.vr-home :where(img){max-width:100%;height:auto;display:block}
+.vr-home svg{display:block}
+.vr-sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- Rejilla de secciones ---------- */
+.vr-sec{padding:100px 24px;position:relative}
+.vr-sec--soft{background:var(--vr-soft)}
+.vr-sec--tight{padding-top:0}
+.vr-wrap{max-width:var(--vr-max);margin:0 auto}
+.vr-head{max-width:720px;margin:0 auto 60px;text-align:center}
+.vr-head h2{font-size:clamp(30px,4vw,44px);margin:0 0 16px;text-wrap:balance}
+.vr-head p{font-size:18px;color:var(--vr-muted)}
+.vr-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--vr-blue-dark);
+  margin:0 0 16px}
+.vr-eyebrow::before{content:'';width:22px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--vr-blue-light),var(--vr-blue))}
+.vr-bar{width:130px;height:6px;border-radius:4px;margin:0 auto 22px;
+  background:linear-gradient(90deg,#bfdbfe,#60a5fa,#3b82f6,#2563eb,#1e3a8a,#2563eb,#3b82f6,#60a5fa,#bfdbfe);
+  background-size:300% 100%;animation:vrBar 14s linear infinite}
+@keyframes vrBar{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+/* ---------- Botones ---------- */
+.vr-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Manrope',sans-serif;font-size:15.5px;font-weight:700;
+  padding:15px 30px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:transform .25s var(--vr-ease),box-shadow .25s var(--vr-ease),background .2s ease,color .2s ease,border-color .2s ease}
+.vr-btn svg{width:17px;height:17px;flex:0 0 auto;transition:transform .25s var(--vr-ease)}
+.vr-btn--primary{background:linear-gradient(135deg,var(--vr-blue),var(--vr-blue-dark));
+  color:#fff;box-shadow:0 10px 24px -10px rgba(59,130,246,.65)}
+.vr-btn--primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px -12px rgba(59,130,246,.75)}
+.vr-btn--ghost{background:#fff;color:var(--vr-ink);border-color:var(--vr-border);box-shadow:var(--vr-sh-s)}
+.vr-btn--ghost:hover{transform:translateY(-3px);box-shadow:var(--vr-sh-m);border-color:var(--vr-blue-light)}
+.vr-btn--light{background:#fff;color:var(--vr-ink-2)}
+.vr-btn--light:hover{transform:translateY(-3px);box-shadow:0 18px 34px -14px rgba(0,0,0,.5)}
+.vr-btn--outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.vr-btn--outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55);transform:translateY(-3px)}
+.vr-btn:hover svg{transform:translateX(3px)}
+.vr-btn:focus-visible,.vr-home a:focus-visible,.vr-home summary:focus-visible{
+  outline:3px solid var(--vr-blue);outline-offset:3px;border-radius:12px}
+.vr-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+/* ---------- HERO ---------- */
+.vr-hero{padding:76px 24px 92px;position:relative;isolation:isolate;overflow:hidden}
+.vr-hero::before{content:'';position:absolute;inset:-10% -5%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(520px 300px at 10% 12%,rgba(59,130,246,.10),transparent 70%),
+    radial-gradient(460px 300px at 88% 78%,rgba(29,78,216,.08),transparent 70%);
+  animation:vrAurora 18s ease-in-out infinite alternate}
+@keyframes vrAurora{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-2.5%,1.5%,0) scale(1.06)}}
+.vr-hero-grid{max-width:var(--vr-max);margin:0 auto;display:grid;
+  grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
+.vr-hero h1{font-size:clamp(34px,5.1vw,58px);margin:0 0 20px;text-wrap:balance}
+.vr-hero h1 .vr-grad{background:linear-gradient(120deg,var(--vr-blue),var(--vr-blue-dark));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vr-lead{font-size:19px;color:var(--vr-text);max-width:580px}
+.vr-lead strong{color:var(--vr-ink);font-weight:700}
+.vr-trust{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:32px}
+.vr-trust li{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--vr-muted)}
+.vr-trust svg{width:17px;height:17px;flex:0 0 auto;color:#16a34a}
+.vr-hero-media{position:relative}
+.vr-hero-media img{border-radius:var(--vr-r-lg);box-shadow:var(--vr-sh-l)}
+.vr-hero-media::after{content:'';position:absolute;inset:auto -18px -18px auto;width:62%;height:62%;
+  z-index:-1;border-radius:var(--vr-r-lg);
+  background:linear-gradient(135deg,rgba(59,130,246,.16),rgba(29,78,216,.08))}
+.vr-hero-copy{animation:vrUp .8s var(--vr-ease) both}
+.vr-hero-media{animation:vrUp .9s .12s var(--vr-ease) both}
+@keyframes vrUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- Tarjetas genericas ---------- */
+.vr-card{background:#fff;border:1px solid var(--vr-border);border-radius:var(--vr-r);
+  padding:30px 26px;box-shadow:var(--vr-sh-s);height:100%;
+  transition:transform .28s var(--vr-ease),box-shadow .28s var(--vr-ease),border-color .28s ease}
+.vr-card:hover{transform:translateY(-5px);box-shadow:var(--vr-sh-m);border-color:var(--vr-blue-light)}
+.vr-card h3{font-size:18.5px;margin:0 0 9px}
+.vr-card p{font-size:15px;color:var(--vr-muted)}
+.vr-ico{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;color:#fff;background:linear-gradient(135deg,var(--vr-blue),var(--vr-blue-dark));
+  box-shadow:0 8px 18px -8px rgba(59,130,246,.7);transition:transform .28s var(--vr-ease)}
+.vr-ico svg{width:24px;height:24px}
+.vr-card:hover .vr-ico{transform:scale(1.08) rotate(-5deg)}
+
+/* ---------- Senales (problema) ---------- */
+.vr-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vr-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.vr-signal{display:flex;gap:14px;align-items:flex-start;background:#fff;
+  border:1px solid var(--vr-border);border-left:3px solid var(--vr-blue);
+  border-radius:12px;padding:20px 22px;box-shadow:var(--vr-sh-s);
+  transition:transform .25s var(--vr-ease),box-shadow .25s var(--vr-ease)}
+.vr-signal:hover{transform:translateY(-4px);box-shadow:var(--vr-sh-m)}
+.vr-signal svg{width:20px;height:20px;flex:0 0 auto;margin-top:2px;color:var(--vr-blue-dark)}
+.vr-signal p{font-size:15.5px;color:var(--vr-text)}
+
+/* ---------- Pasos ---------- */
+.vr-steps{display:flex;align-items:flex-start;justify-content:center;gap:8px}
+.vr-step{flex:1 1 0;min-width:0;text-align:center;padding:0 8px}
+.vr-step-n{width:88px;height:88px;border-radius:50%;margin:0 auto 24px;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:0 10px 22px -8px rgba(16,24,40,.32);transition:transform .3s var(--vr-ease)}
+.vr-step:hover .vr-step-n{transform:translateY(-5px) scale(1.05)}
+.vr-step-n svg{width:38px;height:38px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.vr-step-n.g1{background:linear-gradient(135deg,#93c5fd,#3b82f6)}
+.vr-step-n.g2{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.vr-step-n.g3{background:linear-gradient(135deg,#1d4ed8,#1e3a8a)}
+.vr-step-k{font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--vr-blue-dark);display:block;margin-bottom:10px}
+.vr-step h3{font-size:19px;margin:0 0 12px}
+.vr-step p{font-size:15.5px;color:var(--vr-muted);max-width:340px;margin:0 auto}
+.vr-arrow{flex:0 0 auto;margin-top:26px}
+.vr-arrow svg{width:42px;height:42px;stroke:#cfd8e3;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Servicios ---------- */
+.vr-svc{display:flex;flex-direction:column}
+.vr-svc-more{display:inline-flex;align-items:center;gap:7px;margin-top:auto;padding-top:18px;
+  font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:700;color:var(--vr-blue-dark)}
+.vr-svc-more svg{width:15px;height:15px;transition:transform .25s var(--vr-ease)}
+.vr-card:hover .vr-svc-more svg{transform:translateX(4px)}
+
+/* ---------- Franja de metricas ---------- */
+.vr-metrics{background:var(--vr-ink);color:#fff;padding:92px 24px;position:relative;isolation:isolate;overflow:hidden}
+.vr-metrics::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(620px 340px at 18% 0%,rgba(59,130,246,.22),transparent 68%),
+             radial-gradient(520px 320px at 88% 100%,rgba(29,78,216,.18),transparent 68%)}
+.vr-metrics h2,.vr-metrics .vr-head h2{color:#fff}
+.vr-metrics .vr-head p{color:rgba(255,255,255,.66)}
+.vr-metrics .vr-eyebrow{color:var(--vr-blue-light)}
+.vr-metrics .vr-eyebrow::before{background:linear-gradient(90deg,transparent,var(--vr-blue-light))}
+.vr-metric{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--vr-r);padding:30px 24px;text-align:center;
+  transition:transform .28s var(--vr-ease),background .28s ease,border-color .28s ease}
+.vr-metric:hover{transform:translateY(-5px);background:rgba(255,255,255,.075);border-color:rgba(147,197,253,.4)}
+.vr-metric-n{font-family:'Manrope',sans-serif;font-size:clamp(38px,4.6vw,50px);font-weight:800;
+  line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,#fff,var(--vr-blue-light));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vr-metric-u{font-size:.6em;margin-left:2px}
+.vr-metric-l{font-size:14.5px;color:rgba(255,255,255,.80);margin-top:14px}
+.vr-metric-s{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-top:12px;font-weight:600}
+.vr-sources{max-width:840px;margin:44px auto 0;text-align:center;font-size:13px;color:rgba(255,255,255,.50)}
+.vr-sources a{color:rgba(255,255,255,.72);text-decoration:underline;text-underline-offset:3px}
+.vr-sources a:hover{color:#fff}
+
+/* ---------- Marquesina de integraciones ---------- */
+.vr-mq-zone{padding:96px 0 100px;background:var(--vr-soft);overflow:hidden}
+.vr-mq-zone .vr-head{padding:0 24px}
+.vr-mq{position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent)}
+.vr-mq-row{overflow:hidden;padding:7px 0}
+.vr-mq-track{display:flex;width:max-content;animation:vrMq 46s linear infinite;will-change:transform}
+.vr-mq-row--b .vr-mq-track{animation-duration:58s;animation-direction:reverse}
+@keyframes vrMq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.vr-mq:hover .vr-mq-track,.vr-mq:focus-within .vr-mq-track{animation-play-state:paused}
+.vr-mq-item{flex:0 0 auto;width:152px;height:78px;margin-right:16px;
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid var(--vr-border);border-radius:14px;box-shadow:var(--vr-sh-s);
+  color:#9aa7b8;transition:color .25s ease,transform .25s var(--vr-ease),box-shadow .25s var(--vr-ease),border-color .25s ease}
+.vr-mq-item:hover{color:var(--vr-brand,var(--vr-blue));transform:translateY(-4px);
+  box-shadow:var(--vr-sh-m);border-color:var(--vr-blue-light)}
+.vr-mq-item svg{width:34px;height:34px;fill:currentColor;transition:transform .25s var(--vr-ease)}
+.vr-mq-item:hover svg{transform:scale(1.1)}
+.vr-mq-item span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.vr-mq-note{text-align:center;font-size:14px;color:var(--vr-muted);margin-top:38px;padding:0 24px}
+.vr-mq-note a{color:var(--vr-blue-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- FAQ ---------- */
+.vr-faq{max-width:860px;margin:0 auto}
+.vr-faq-item{background:#fff;border:1px solid var(--vr-border);border-radius:14px;
+  margin-bottom:14px;box-shadow:var(--vr-sh-s);overflow:hidden;
+  transition:box-shadow .25s var(--vr-ease),border-color .25s ease}
+.vr-faq-item:hover{box-shadow:var(--vr-sh-m);border-color:var(--vr-blue-light)}
+.vr-faq-item[open]{border-color:var(--vr-blue-light);box-shadow:var(--vr-sh-m)}
+.vr-faq-item summary{display:flex;align-items:center;gap:16px;cursor:pointer;
+  padding:22px 26px;list-style:none;font-family:'Manrope',sans-serif}
+.vr-faq-item summary::-webkit-details-marker{display:none}
+.vr-faq-item summary h3{font-size:17px;font-weight:700;flex:1 1 auto;line-height:1.4}
+.vr-faq-sign{flex:0 0 auto;width:28px;height:28px;border-radius:50%;
+  background:var(--vr-soft);color:var(--vr-blue-dark);
+  display:flex;align-items:center;justify-content:center;transition:transform .3s var(--vr-ease),background .25s ease}
+.vr-faq-sign svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round}
+.vr-faq-item[open] .vr-faq-sign{transform:rotate(45deg);background:var(--vr-blue);color:#fff}
+.vr-faq-a{padding:0 26px 24px;font-size:15.5px;color:var(--vr-text)}
+.vr-faq-a p+p{margin-top:12px}
+.vr-faq-a strong{color:var(--vr-ink)}
+.vr-faq-a a{color:var(--vr-blue-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- CTA final ---------- */
+.vr-final{background:var(--vr-ink);color:#fff;border-radius:var(--vr-r-lg);
+  padding:70px 48px;text-align:center;position:relative;isolation:isolate;overflow:hidden}
+.vr-final::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(560px 300px at 50% -10%,rgba(59,130,246,.28),transparent 70%)}
+.vr-final h2{color:#fff;font-size:clamp(28px,3.8vw,42px);margin:0 0 16px;text-wrap:balance}
+.vr-final p{color:rgba(255,255,255,.72);max-width:620px;margin:0 auto;font-size:17.5px}
+.vr-final .vr-cta-row{justify-content:center}
+.vr-final-meta{margin-top:30px;font-size:14px;color:rgba(255,255,255,.55)}
+.vr-final-meta a{color:#fff;font-weight:600}
+
+/* ---------- Aparicion al hacer scroll ---------- */
+.vr-home.vr-js .vr-rv{opacity:0;transform:translateY(20px);
+  transition:opacity .7s var(--vr-ease),transform .7s var(--vr-ease)}
+.vr-home.vr-js .vr-rv.vr-in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media (min-width:1025px){
+  /* con 7 tarjetas, la ultima queda sola en su fila: la centramos */
+  .vr-grid-svc>:last-child:nth-child(3n+1){grid-column:2}
+}
+@media (max-width:1024px){
+  .vr-hero-grid{grid-template-columns:1fr;gap:40px}
+  .vr-hero-media{max-width:560px;margin:0 auto;width:100%}
+  .vr-grid-4{grid-template-columns:repeat(2,1fr)}
+  .vr-steps{flex-direction:column;gap:38px}
+  .vr-arrow{display:none}
+  .vr-step p{max-width:520px}
+}
+@media (max-width:820px){
+  .vr-grid-3{grid-template-columns:1fr}
+  .vr-sec,.vr-mq-zone{padding-top:72px;padding-bottom:72px}
+  .vr-metrics{padding:72px 24px}
+  .vr-final{padding:56px 26px}
+}
+@media (max-width:560px){
+  .vr-home{font-size:16px}
+  .vr-sec,.vr-hero{padding-left:18px;padding-right:18px}
+  .vr-grid-4{grid-template-columns:1fr}
+  .vr-cta-row .vr-btn{width:100%}
+  .vr-mq-item{width:128px;height:70px;margin-right:12px}
+  .vr-faq-item summary{padding:18px 18px}
+  .vr-faq-a{padding:0 18px 20px}
+}
+
+/* ---------- Respeto por prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .vr-home *,.vr-home *::before,.vr-home *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .vr-mq-track{animation:none!important;transform:none!important}
+  .vr-home .vr-rv{opacity:1!important;transform:none!important}
+  .vr-hero-copy,.vr-hero-media{animation:none!important}
+}
+</style>
+
+<!-- ==================== CONTENIDO DE LA HOME ==================== -->
+<div class="vr-home">
+
+  <svg class="vr-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="vr-lg0" viewBox="0 0 488 512"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></symbol>
+      <symbol id="vr-lg1" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></symbol>
+      <symbol id="vr-lg2" viewBox="0 0 512 512"><path d="M267.4 211.6c-25.1 23.7-40.8 57.3-40.8 94.6 0 29.3 9.7 56.3 26 78L203.1 434c-4.4-1.6-9.1-2.5-14-2.5-10.8 0-20.9 4.2-28.5 11.8-7.6 7.6-11.8 17.8-11.8 28.6s4.2 20.9 11.8 28.5c7.6 7.6 17.8 11.6 28.5 11.6 10.8 0 20.9-3.9 28.6-11.6 7.6-7.6 11.8-17.8 11.8-28.5 0-4.2-.6-8.2-1.9-12.1l50-50.2c22 16.9 49.4 26.9 79.3 26.9 71.9 0 130-58.3 130-130.2 0-65.2-47.7-119.2-110.2-128.7V116c17.5-7.4 28.2-23.8 28.2-42.9 0-26.1-20.9-47.9-47-47.9S311.2 47 311.2 73.1c0 19.1 10.7 35.5 28.2 42.9v61.2c-15.2 2.1-29.6 6.7-42.7 13.6-27.6-20.9-117.5-85.7-168.9-124.8 1.2-4.4 2-9 2-13.8C129.8 23.4 106.3 0 77.4 0 48.6 0 25.2 23.4 25.2 52.2c0 28.9 23.4 52.3 52.2 52.3 9.8 0 18.9-2.9 26.8-7.6l163.2 114.7zm89.5 163.6c-38.1 0-69-30.9-69-69s30.9-69 69-69 69 30.9 69 69-30.9 69-69 69z"></path></symbol>
+      <symbol id="vr-lg3" viewBox="0 0 24 24"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"></path></symbol>
+      <symbol id="vr-lg4" viewBox="0 0 640 512"><path d="M248.89 245.64h-26.35c.69-5.16 3.32-14.12 13.64-14.12 6.75 0 11.97 3.82 12.71 14.12zm136.66-13.88c-.47 0-14.11-1.77-14.11 20s13.63 20 14.11 20c13 0 14.11-13.54 14.11-20 0-21.76-13.66-20-14.11-20zm-243.22 23.76a8.63 8.63 0 0 0-3.29 7.29c0 4.78 2.08 6.05 3.29 7.05 4.7 3.7 15.07 2.12 20.93.95v-16.94c-5.32-1.07-16.73-1.96-20.93 1.65zM640 232c0 87.58-80 154.39-165.36 136.43-18.37 33-70.73 70.75-132.2 41.63-41.16 96.05-177.89 92.18-213.81-5.17C8.91 428.78-50.19 266.52 53.36 205.61 18.61 126.18 76 32 167.67 32a124.24 124.24 0 0 1 98.56 48.7c20.7-21.4 49.4-34.81 81.15-34.81 42.34 0 79 23.52 98.8 58.57C539 63.78 640 132.69 640 232zm-519.55 31.8c0-11.76-11.69-15.17-17.87-17.17-5.27-2.11-13.41-3.51-13.41-8.94 0-9.46 17-6.66 25.17-2.12 0 0 1.17.71 1.64-.47.24-.7 2.36-6.58 2.59-7.29a1.13 1.13 0 0 0-.7-1.41c-12.33-7.63-40.7-8.51-40.7 12.7 0 12.46 11.49 15.44 17.88 17.17 4.72 1.58 13.17 3 13.17 8.7 0 4-3.53 7.06-9.17 7.06a31.76 31.76 0 0 1-19-6.35c-.47-.23-1.42-.71-1.65.71l-2.4 7.47c-.47.94.23 1.18.23 1.41 1.75 1.4 10.3 6.59 22.82 6.59 13.17 0 21.4-7.06 21.4-18.11zm32-42.58c-10.13 0-18.66 3.17-21.4 5.18a1 1 0 0 0-.24 1.41l2.59 7.06a1 1 0 0 0 1.18.7c.65 0 6.8-4 16.93-4 4 0 7.06.71 9.18 2.36 3.6 2.8 3.06 8.29 3.06 10.58-4.79-.3-19.11-3.44-29.41 3.76a16.92 16.92 0 0 0-7.34 14.54c0 5.9 1.51 10.4 6.59 14.35 12.24 8.16 36.28 2 38.1 1.41 1.58-.32 3.53-.66 3.53-1.88v-33.88c.04-4.61.32-21.64-22.78-21.64zM199 200.24a1.11 1.11 0 0 0-1.18-1.18H188a1.11 1.11 0 0 0-1.17 1.18v79a1.11 1.11 0 0 0 1.17 1.18h9.88a1.11 1.11 0 0 0 1.18-1.18zm55.75 28.93c-2.1-2.31-6.79-7.53-17.65-7.53-3.51 0-14.16.23-20.7 8.94-6.35 7.63-6.58 18.11-6.58 21.41 0 3.12.15 14.26 7.06 21.17 2.64 2.91 9.06 8.23 22.81 8.23 10.82 0 16.47-2.35 18.58-3.76.47-.24.71-.71.24-1.88l-2.35-6.83a1.26 1.26 0 0 0-1.41-.7c-2.59.94-6.35 2.82-15.29 2.82-17.42 0-16.85-14.74-16.94-16.7h37.17a1.23 1.23 0 0 0 1.17-.94c-.29 0 2.07-14.7-6.09-24.23zm36.69 52.69c13.17 0 21.41-7.06 21.41-18.11 0-11.76-11.7-15.17-17.88-17.17-4.14-1.66-13.41-3.38-13.41-8.94 0-3.76 3.29-6.35 8.47-6.35a38.11 38.11 0 0 1 16.7 4.23s1.18.71 1.65-.47c.23-.7 2.35-6.58 2.58-7.29a1.13 1.13 0 0 0-.7-1.41c-7.91-4.9-16.74-4.94-20.23-4.94-12 0-20.46 7.29-20.46 17.64 0 12.46 11.48 15.44 17.87 17.17 6.11 2 13.17 3.26 13.17 8.7 0 4-3.52 7.06-9.17 7.06a31.8 31.8 0 0 1-19-6.35 1 1 0 0 0-1.65.71l-2.35 7.52c-.47.94.23 1.18.23 1.41 1.72 1.4 10.33 6.59 22.79 6.59zM357.09 224c0-.71-.24-1.18-1.18-1.18h-11.76c0-.14.94-8.94 4.47-12.47 4.16-4.15 11.76-1.64 12-1.64 1.17.47 1.41 0 1.64-.47l2.83-7.77c.7-.94 0-1.17-.24-1.41-5.09-2-17.35-2.87-24.46 4.24-5.48 5.48-7 13.92-8 19.52h-8.47a1.28 1.28 0 0 0-1.17 1.18l-1.42 7.76c0 .7.24 1.17 1.18 1.17h8.23c-8.51 47.9-8.75 50.21-10.35 55.52-1.08 3.62-3.29 6.9-5.88 7.76-.09 0-3.88 1.68-9.64-.24 0 0-.94-.47-1.41.71-.24.71-2.59 6.82-2.83 7.53s0 1.41.47 1.41c5.11 2 13 1.77 17.88 0 6.28-2.28 9.72-7.89 11.53-12.94 2.75-7.71 2.81-9.79 11.76-59.74h12.23a1.29 1.29 0 0 0 1.18-1.18zm53.39 16c-.56-1.68-5.1-18.11-25.17-18.11-15.25 0-23 10-25.16 18.11-1 3-3.18 14 0 23.52.09.3 4.41 18.12 25.16 18.12 14.95 0 22.9-9.61 25.17-18.12 3.21-9.61 1.01-20.52 0-23.52zm45.4-16.7c-5-1.65-16.62-1.9-22.11 5.41v-4.47a1.11 1.11 0 0 0-1.18-1.17h-9.4a1.11 1.11 0 0 0-1.18 1.17v55.28a1.12 1.12 0 0 0 1.18 1.18h9.64a1.12 1.12 0 0 0 1.18-1.18v-27.77c0-2.91.05-11.37 4.46-15.05 4.9-4.9 12-3.36 13.41-3.06a1.57 1.57 0 0 0 1.41-.94 74 74 0 0 0 3.06-8 1.16 1.16 0 0 0-.47-1.41zm46.81 54.1l-2.12-7.29c-.47-1.18-1.41-.71-1.41-.71-4.23 1.82-10.15 1.89-11.29 1.89-4.64 0-17.17-1.13-17.17-19.76 0-6.23 1.85-19.76 16.47-19.76a34.85 34.85 0 0 1 11.52 1.65s.94.47 1.18-.71c.94-2.59 1.64-4.47 2.59-7.53.23-.94-.47-1.17-.71-1.17-11.59-3.87-22.34-2.53-27.76 0-1.59.74-16.23 6.49-16.23 27.52 0 2.9-.58 30.11 28.94 30.11a44.45 44.45 0 0 0 15.52-2.83 1.3 1.3 0 0 0 .47-1.42zm53.87-39.52c-.8-3-5.37-16.23-22.35-16.23-16 0-23.52 10.11-25.64 18.59a38.58 38.58 0 0 0-1.65 11.76c0 25.87 18.84 29.4 29.88 29.4 10.82 0 16.46-2.35 18.58-3.76.47-.24.71-.71.24-1.88l-2.36-6.83a1.26 1.26 0 0 0-1.41-.7c-2.59.94-6.35 2.82-15.29 2.82-17.42 0-16.85-14.74-16.93-16.7h37.16a1.25 1.25 0 0 0 1.18-.94c-.24-.01.94-7.07-1.41-15.54zm-23.29-6.35c-10.33 0-13 9-13.64 14.12H546c-.88-11.92-7.62-14.13-12.73-14.13z"></path></symbol>
+      <symbol id="vr-lg5" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></symbol>
+      <symbol id="vr-lg6" viewBox="0 0 512 512"><path d="M61.7 169.4l101.5 278C92.2 413 43.3 340.2 43.3 256c0-30.9 6.6-60.1 18.4-86.6zm337.9 75.9c0-26.3-9.4-44.5-17.5-58.7-10.8-17.5-20.9-32.4-20.9-49.9 0-19.6 14.8-37.8 35.7-37.8.9 0 1.8.1 2.8.2-37.9-34.7-88.3-55.9-143.7-55.9-74.3 0-139.7 38.1-177.8 95.9 5 .2 9.7.3 13.7.3 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l77.5 230.4L249.8 247l-33.1-90.8c-11.5-.7-22.3-2-22.3-2-11.5-.7-10.1-18.2 1.3-17.5 0 0 35.1 2.7 56 2.7 22.2 0 56.7-2.7 56.7-2.7 11.5-.7 12.8 16.2 1.4 17.5 0 0-11.5 1.3-24.3 2l76.9 228.7 21.2-70.9c9-29.4 16-50.5 16-68.7zm-139.9 29.3l-63.8 185.5c19.1 5.6 39.2 8.7 60.1 8.7 24.8 0 48.5-4.3 70.6-12.1-.6-.9-1.1-1.9-1.5-2.9l-65.4-179.2zm183-120.7c.9 6.8 1.4 14 1.4 21.9 0 21.6-4 45.8-16.2 76.2l-65 187.9C426.2 403 468.7 334.5 468.7 256c0-37-9.4-71.8-26-102.1zM504 256c0 136.8-111.3 248-248 248C119.2 504 8 392.7 8 256 8 119.2 119.2 8 256 8c136.7 0 248 111.2 248 248zm-11.4 0c0-130.5-106.2-236.6-236.6-236.6C125.5 19.4 19.4 125.5 19.4 256S125.6 492.6 256 492.6c130.5 0 236.6-106.1 236.6-236.6z"></path></symbol>
+      <symbol id="vr-lg7" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></symbol>
+      <symbol id="vr-lg8" viewBox="0 0 24 24"><path d="M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z"></path></symbol>
+      <symbol id="vr-lg9" viewBox="0 0 24 24"><path d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"></path></symbol>
+      <symbol id="vr-lg10" viewBox="0 0 24 24"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"></path></symbol>
+      <symbol id="vr-lg11" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12c0 6.626 5.372 12 12 12s12-5.372 12-12c0-6.626-5.372-12-12-12ZM9 17H7V7H9Zm8 0H11V15h6Zm0-4H11V11h6Zm0-4H11V7h6Z"></path></symbol>
+      <symbol id="vr-lg12" viewBox="0 0 24 24"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"></path></symbol>
+      <symbol id="vr-lg13" viewBox="0 0 24 24"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"></path></symbol>
+      <symbol id="vr-lg14" viewBox="0 0 24 24"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></symbol>
+      <symbol id="vr-lg15" viewBox="0 0 24 24"><path d="M19.655 14.262c.281 0 .557.023.828.064 0 .005-.005.01-.005.014-.105.267-.234.534-.381.786l-1.219 2.106c-1.112 1.936-3.177 3.127-5.411 3.127h-2.432c-2.23 0-4.294-1.191-5.412-3.127l-1.218-2.106a6.251 6.251 0 0 1 0-6.252l1.218-2.106C6.736 4.832 8.8 3.641 11.035 3.641h2.432c2.23 0 4.294 1.191 5.411 3.127l1.219 2.106c.147.252.271.519.381.786 0 .004.005.009.005.014-.267.041-.543.064-.828.064-1.816 0-2.501-.607-3.291-1.306-.764-.676-1.711-1.517-3.44-1.517h-1.029c-1.251 0-2.387.455-3.2 1.278-.796.805-1.233 1.904-1.233 3.099v1.411c0 1.196.437 2.295 1.233 3.099.813.823 1.949 1.278 3.2 1.278h1.034c1.729 0 2.676-.841 3.439-1.517.791-.703 1.471-1.306 3.287-1.301Zm.005-3.237c.399 0 .794-.036 1.179-.11-.002-.004-.002-.01-.002-.014-.073-.414-.193-.823-.349-1.218.731-.12 1.407-.396 1.986-.819 0-.004-.005-.013-.005-.018-.331-1.085-.832-2.101-1.489-3.03-.649-.915-1.435-1.719-2.331-2.395-1.867-1.398-4.088-2.138-6.428-2.138-1.448 0-2.855.28-4.175.841-1.273.543-2.423 1.315-3.407 2.299S2.878 6.552 2.341 7.83c-.557 1.324-.842 2.726-.842 4.175 0 1.448.281 2.855.842 4.174.542 1.274 1.314 2.423 2.298 3.407s2.129 1.761 3.407 2.299c1.324.556 2.727.841 4.175.841 2.34 0 4.561-.74 6.428-2.137a10.815 10.815 0 0 0 2.331-2.396c.652-.929 1.158-1.949 1.489-3.03 0-.004.005-.014.005-.018-.579-.423-1.255-.699-1.986-.819.161-.395.276-.804.349-1.218.005-.009.005-.014.005-.023.869.166 1.692.506 2.404 1.035.685.505.552 1.075.446 1.416C22.184 20.437 17.619 24 12.221 24c-6.625 0-12-5.375-12-12s5.37-12 12-12c5.398 0 9.963 3.563 11.471 8.464.106.341.239.915-.446 1.421-.717.529-1.535.873-2.404 1.034.128.716.128 1.45 0 2.166-.387-.074-.782-.11-1.182-.11-4.184 0-3.968 2.823-6.736 2.823h-1.029c-1.899 0-3.15-1.357-3.15-3.095v-1.411c0-1.738 1.251-3.094 3.15-3.094h1.034c2.768 0 2.552 2.823 6.731 2.827Z"></path></symbol>
+      <symbol id="vr-lg16" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></symbol>
+      <symbol id="vr-lg17" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"></path></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="vr-hero" aria-labelledby="vr-h1">
+    <div class="vr-hero-grid">
+      <div class="vr-hero-copy">
+        <p class="vr-eyebrow">Agencia de IA y automatización · Valladolid</p>
+        <h1 id="vr-h1">Automatización e inteligencia artificial para <span class="vr-grad">pymes y negocios locales</span></h1>
+        <p class="vr-lead">Somos una agencia de Valladolid que implanta <strong>inteligencia artificial y automatizaciones</strong> en los procesos de tu negocio para que ahorres tiempo y dinero. Sin jerga técnica, con presupuestos de pyme y diciéndote la verdad cuando algo no te hace falta.</p>
+        <div class="vr-cta-row">
+          <a class="vr-btn vr-btn--primary" href="https://verantiapro.es/contacto/">Cuéntanos tu caso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/">Ver todos los servicios</a>
+        </div>
+        <ul class="vr-trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Presupuestos de pyme, no de gran cuenta</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Primera conversación sin compromiso</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Presencia local en Valladolid</span></li>
+        </ul>
+      </div>
+      <div class="vr-hero-media">
+        <img src="https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA-.png"
+             srcset="https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA--768x512.png 768w,
+                     https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA--1024x683.png 1024w,
+                     https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA-.png 1536w"
+             sizes="(max-width:1024px) 92vw, 46vw" width="1536" height="1024"
+             fetchpriority="high" decoding="async" alt="Técnico de Verantia trabajando con chatbots, sistemas de agendamiento y automatizaciones para pymes">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. SEÑALES / PROBLEMA ============ -->
+  <section class="vr-sec vr-sec--soft" aria-labelledby="vr-senales">
+    <div class="vr-wrap">
+      <div class="vr-head vr-rv">
+      <p class="vr-eyebrow">El punto de partida</p>
+      <h2 id="vr-senales">¿Te suena alguna de estas?</h2>
+      <p>Casi todos los proyectos que nos llegan empiezan por una de estas tres frases.</p>
+      </div>
+      <div class="vr-grid-3">
+        <div class="vr-signal vr-rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p>Copias los mismos datos de un sitio a otro: del correo a la hoja de cálculo, y de ahí al programa de facturación.</p></div>
+        <div class="vr-signal vr-rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v4"/><path d="M12 14h.01"/></svg><p>Entran mensajes, llamadas y peticiones de presupuesto fuera de horario, y se quedan sin respuesta hasta el día siguiente.</p></div>
+        <div class="vr-signal vr-rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg><p>Sabes que la inteligencia artificial puede ayudarte, pero no tienes claro por dónde empezar ni cuánto te costaría.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CÓMO FUNCIONA (copy original conservado) ============ -->
+  <section class="vr-sec" aria-labelledby="vr-como">
+    <div class="vr-wrap">
+      <div class="vr-head vr-rv">
+      <div class="vr-bar" aria-hidden="true"></div>
+      <h2 id="vr-como">¿Cómo funciona?</h2>
+      <p>De la idea a tu negocio automatizado</p>
+      </div>
+      <div class="vr-steps">
+        <div class="vr-step vr-rv">
+          <div class="vr-step-n g1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg></div>
+          <span class="vr-step-k">PASO 1</span>
+          <h3>Diagnóstico de los procesos del negocio</h3>
+          <p>Analizamos cómo es cada proceso, creamos un roadmap de cada paso y detectamos ineficiencias, pérdidas de tiempo o dinero, y fases potencialmente automatizables.</p>
+        </div>
+        <div class="vr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="vr-step vr-rv">
+          <div class="vr-step-n g2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="M2 12h3"/><path d="M19 12h3"/><path d="m4.9 4.9 2.2 2.2"/><path d="m16.9 16.9 2.2 2.2"/><path d="m19.1 4.9-2.2 2.2"/><path d="m7.1 16.9-2.2 2.2"/></svg></div>
+          <span class="vr-step-k">PASO 2</span>
+          <h3>Desarrollamos tu asistente o automatización</h3>
+          <p>Siguiendo los resultados del diagnóstico y vuestras necesidades, creamos un asistente a medida para mejorar la eficiencia y optimizar costes y horas perdidas.</p>
+        </div>
+        <div class="vr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="vr-step vr-rv">
+          <div class="vr-step-n g3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+          <span class="vr-step-k">PASO 3</span>
+          <h3>Implementamos y activamos el sistema</h3>
+          <p>Ponemos en marcha la automatización realizando seguimiento y dando el soporte necesario para asegurar la mejor experiencia con nosotros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. SERVICIOS (7 enlaces internos) ============ -->
+  <section class="vr-sec vr-sec--soft" aria-labelledby="vr-svc">
+    <div class="vr-wrap">
+      <div class="vr-head vr-rv">
+      <p class="vr-eyebrow">Qué hacemos</p>
+      <h2 id="vr-svc">Siete formas de quitarte trabajo de encima</h2>
+      <p>Cada servicio tiene su propia página con ejemplos, datos y todo el detalle.</p>
+      </div>
+      <div class="vr-grid-3 vr-grid-svc">
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></div>
+          <h3>Chatbots y asistentes virtuales</h3>
+          <p>Atienden a tus clientes en la web y en WhatsApp a cualquier hora, resuelven las dudas de siempre y te pasan solo lo importante.</p>
+          <span class="vr-svc-more">Ver chatbots y asistentes virtuales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/automatizacion-de-procesos/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
+          <h3>Automatización de procesos</h3>
+          <p>Conectamos las herramientas que ya usas para que los datos viajen solos y nadie vuelva a copiarlos a mano.</p>
+          <span class="vr-svc-more">Ver automatización de procesos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/aplicaciones-personalizadas/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="16" x="3" y="4" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01"/><path d="M10 6.5h.01"/></svg></div>
+          <h3>Aplicaciones personalizadas</h3>
+          <p>Cuando ningún programa del mercado encaja con tu forma de trabajar, construimos el que sí encaja.</p>
+          <span class="vr-svc-more">Ver aplicaciones personalizadas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M5 12H3"/><path d="M21 12h-2"/><path d="m7 7 1.4 1.4"/><path d="m15.6 15.6 1.4 1.4"/><path d="m17 7-1.4 1.4"/><path d="m8.4 15.6-1.4 1.4"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+          <h3>IA generativa y contenido visual</h3>
+          <p>Textos, imágenes y fichas de producto generadas con inteligencia artificial, con tu tono y tu estilo de marca.</p>
+          <span class="vr-svc-more">Ver IA generativa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/clasificador-de-leads/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg></div>
+          <h3>Clasificador de leads</h3>
+          <p>Ordena y prioriza los contactos que entran para que dediques tu tiempo a los que de verdad van a comprar.</p>
+          <span class="vr-svc-more">Ver el clasificador de leads <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/resenas-automaticas-google/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.9z"/></svg></div>
+          <h3>Reseñas automáticas en Google</h3>
+          <p>Pedimos la reseña en el momento justo y de forma respetuosa con las normas de Google, para reforzar tu ficha local.</p>
+          <span class="vr-svc-more">Ver reseñas automáticas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/auditoria-de-procesos/">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1"/><path d="m9 13 2 2 4-4"/></svg></div>
+          <h3>Auditoría de procesos</h3>
+          <p>Ponemos números a lo que te cuesta cada tarea manual y te decimos qué merece la pena automatizar y qué no.</p>
+          <span class="vr-svc-more">Ver la auditoría de procesos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+      </div>
+      <div class="vr-cta-row vr-rv" style="justify-content:center;margin-top:44px">
+        <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/">Comparar todos los servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. ¿POR QUÉ VERANTIA? ============ -->
+  <section class="vr-sec" aria-labelledby="vr-why">
+    <div class="vr-wrap">
+      <div class="vr-head vr-rv">
+      <p class="vr-eyebrow">Por qué Verantia</p>
+      <h2 id="vr-why">Por qué trabajar con nosotros</h2>
+      <p>Cuatro cosas que nos diferencian y que puedes comprobar desde la primera reunión.</p>
+      </div>
+      <div class="vr-grid-4">
+        <div class="vr-card vr-rv">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></div>
+          <h3>Personalización total</h3>
+          <p>No vendemos plantillas. Cada automatización se diseña sobre tus procesos reales, no sobre un caso genérico.</p>
+        </div>
+        <div class="vr-card vr-rv">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 7a7.5 7.5 0 1 0 0 10"/><path d="M3 10h9"/><path d="M3 14h9"/></svg></div>
+          <h3>Presupuesto de pyme</h3>
+          <p>Precios pensados para negocios locales y pequeñas empresas, no tarifas de gran consultora.</p>
+        </div>
+        <div class="vr-card vr-rv">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Transparencia total</h3>
+          <p>Si algo no te hace falta o no te va a dar retorno, te lo decimos y no te lo vendemos. Así de simple.</p>
+        </div>
+        <div class="vr-card vr-rv">
+          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Cerca de ti, en Valladolid</h3>
+          <p>Somos una agencia local: nos sentamos contigo y ponemos cara al proyecto, no te atendemos desde 600 km.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. MÉTRICAS (contador animado, datos con fuente) ============ -->
+  <section class="vr-metrics" aria-labelledby="vr-datos">
+    <div class="vr-wrap">
+      <div class="vr-head vr-rv">
+      <p class="vr-eyebrow">El contexto</p>
+      <h2 id="vr-datos">La IA no es el futuro: es la ventaja que ya tienen otros</h2>
+      <p>Estos son datos públicos, no estimaciones nuestras. Explican bastante bien por qué existimos.</p>
+      </div>
+      <div class="vr-grid-4">
+        <div class="vr-metric vr-rv">
+          <p class="vr-metric-n"><span data-vr-count="21.1" data-vr-dec="1">21,1</span><span class="vr-metric-u">%</span></p>
+          <p class="vr-metric-l">de las empresas españolas de 10 o más empleados ya usa inteligencia artificial.</p>
+          <p class="vr-metric-s">INE · 1.<sup>er</sup> trimestre de 2025</p>
+        </div>
+        <div class="vr-metric vr-rv">
+          <p class="vr-metric-n"><span data-vr-count="13.4" data-vr-dec="1">13,4</span><span class="vr-metric-u">%</span></p>
+          <p class="vr-metric-l">es la cifra entre las microempresas: la mayoría del tejido local todavía se queda fuera.</p>
+          <p class="vr-metric-s">INE · ETICCE 2024</p>
+        </div>
+        <div class="vr-metric vr-rv">
+          <p class="vr-metric-n"><span data-vr-count="44.9" data-vr-dec="1">44,9</span><span class="vr-metric-u">pts</span></p>
+          <p class="vr-metric-l">de brecha entre las grandes empresas (58,2 %) y las microempresas (13,4 %) en uso de IA.</p>
+          <p class="vr-metric-s">INE · ETICCE 2024</p>
+        </div>
+        <div class="vr-metric vr-rv">
+          <p class="vr-metric-n"><span data-vr-count="16" data-vr-dec="0">16</span><span class="vr-metric-u">h</span></p>
+          <p class="vr-metric-l">a la semana dedica de media un empleado en España a cinco tareas administrativas.</p>
+          <p class="vr-metric-s">Ricoh Europe · 2026</p>
+        </div>
+      </div>
+      <p class="vr-sources vr-rv">Fuentes: <a href="https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm" target="_blank" rel="noopener nofollow">INE, Encuesta sobre el uso de TIC y comercio electrónico en las empresas</a> (datos definitivos, octubre de 2025) · <a href="https://cotec.es/proyectos-cpt/uso-de-la-ia-en-las-empresas/" target="_blank" rel="noopener nofollow">Fundación Cotec</a>, explotación de los datos del INE por tamaño de empresa · estudio de Ricoh Europe sobre carga administrativa en España.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. INTEGRACIONES — MARQUESINA INFINITA ============ -->
+  <section class="vr-mq-zone" aria-labelledby="vr-int">
+      <div class="vr-head vr-rv">
+      <p class="vr-eyebrow">Integración total de negocio</p>
+      <h2 id="vr-int">Conectamos las herramientas que ya usas</h2>
+      <p>Enlazamos cientos de sistemas y aplicaciones para que trabajen juntos y dejes de mover datos a mano.</p>
+      </div>
+    <div class="vr-mq" role="img" aria-label="Herramientas con las que integramos: Google, GitHub, HubSpot, Stripe, Salesforce, WhatsApp, WordPress, Instagram, Airtable, n8n, Anthropic, Elementor, Supabase, Google Sheets, Notion, Calendly, Telegram y Gmail.">
+      <div class="vr-mq-row vr-mq-row--a">
+        <div class="vr-mq-track"><div class="vr-mq-item" style="--vr-brand:#4285F4"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg0"/></svg><span>Google</span></div><div class="vr-mq-item" style="--vr-brand:#FF7A59"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg2"/></svg><span>HubSpot</span></div><div class="vr-mq-item" style="--vr-brand:#00A1E0"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg4"/></svg><span>Salesforce</span></div><div class="vr-mq-item" style="--vr-brand:#21759B"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg6"/></svg><span>WordPress</span></div><div class="vr-mq-item" style="--vr-brand:#18BFFF"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg8"/></svg><span>Airtable</span></div><div class="vr-mq-item" style="--vr-brand:#191919"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg10"/></svg><span>Anthropic</span></div><div class="vr-mq-item" style="--vr-brand:#3FCF8E"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg12"/></svg><span>Supabase</span></div><div class="vr-mq-item" style="--vr-brand:#000000"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg14"/></svg><span>Notion</span></div><div class="vr-mq-item" style="--vr-brand:#26A5E4"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg16"/></svg><span>Telegram</span></div><div class="vr-mq-item" style="--vr-brand:#4285F4"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg0"/></svg><span>Google</span></div><div class="vr-mq-item" style="--vr-brand:#FF7A59"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg2"/></svg><span>HubSpot</span></div><div class="vr-mq-item" style="--vr-brand:#00A1E0"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg4"/></svg><span>Salesforce</span></div><div class="vr-mq-item" style="--vr-brand:#21759B"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg6"/></svg><span>WordPress</span></div><div class="vr-mq-item" style="--vr-brand:#18BFFF"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg8"/></svg><span>Airtable</span></div><div class="vr-mq-item" style="--vr-brand:#191919"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg10"/></svg><span>Anthropic</span></div><div class="vr-mq-item" style="--vr-brand:#3FCF8E"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg12"/></svg><span>Supabase</span></div><div class="vr-mq-item" style="--vr-brand:#000000"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg14"/></svg><span>Notion</span></div><div class="vr-mq-item" style="--vr-brand:#26A5E4"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg16"/></svg><span>Telegram</span></div></div>
+      </div>
+      <div class="vr-mq-row vr-mq-row--b">
+        <div class="vr-mq-track"><div class="vr-mq-item" style="--vr-brand:#181717"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg1"/></svg><span>GitHub</span></div><div class="vr-mq-item" style="--vr-brand:#635BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg3"/></svg><span>Stripe</span></div><div class="vr-mq-item" style="--vr-brand:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg5"/></svg><span>WhatsApp</span></div><div class="vr-mq-item" style="--vr-brand:#E4405F"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg7"/></svg><span>Instagram</span></div><div class="vr-mq-item" style="--vr-brand:#EA4B71"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg9"/></svg><span>n8n</span></div><div class="vr-mq-item" style="--vr-brand:#92003B"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg11"/></svg><span>Elementor</span></div><div class="vr-mq-item" style="--vr-brand:#0F9D58"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg13"/></svg><span>Google Sheets</span></div><div class="vr-mq-item" style="--vr-brand:#006BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg15"/></svg><span>Calendly</span></div><div class="vr-mq-item" style="--vr-brand:#EA4335"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg17"/></svg><span>Gmail</span></div><div class="vr-mq-item" style="--vr-brand:#181717"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg1"/></svg><span>GitHub</span></div><div class="vr-mq-item" style="--vr-brand:#635BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg3"/></svg><span>Stripe</span></div><div class="vr-mq-item" style="--vr-brand:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg5"/></svg><span>WhatsApp</span></div><div class="vr-mq-item" style="--vr-brand:#E4405F"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg7"/></svg><span>Instagram</span></div><div class="vr-mq-item" style="--vr-brand:#EA4B71"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg9"/></svg><span>n8n</span></div><div class="vr-mq-item" style="--vr-brand:#92003B"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg11"/></svg><span>Elementor</span></div><div class="vr-mq-item" style="--vr-brand:#0F9D58"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg13"/></svg><span>Google Sheets</span></div><div class="vr-mq-item" style="--vr-brand:#006BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg15"/></svg><span>Calendly</span></div><div class="vr-mq-item" style="--vr-brand:#EA4335"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#vr-lg17"/></svg><span>Gmail</span></div></div>
+      </div>
+    </div>
+    <p class="vr-mq-note">¿No ves la tuya? Casi siempre hay forma de conectarla. <a href="https://verantiapro.es/contacto/">Pregúntanos</a>.</p>
+  </section>
+
+  <!-- ============ 8. PREGUNTAS FRECUENTES ============ -->
+  <section class="vr-sec" aria-labelledby="vr-faq-t">
+    <div class="vr-wrap">
+      <div class="vr-head vr-rv">
+      <p class="vr-eyebrow">Preguntas frecuentes</p>
+      <h2 id="vr-faq-t">Lo que nos preguntan antes de empezar</h2>
+      <p>Respuestas claras y sin tecnicismos. Si te falta alguna, escríbenos y la añadimos.</p>
+      </div>
+      <div class="vr-faq">
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿Cuánto cuesta implementar inteligencia artificial en un negocio pequeño?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel.</p><p>Lo que sí te garantizamos: en la primera conversación sales con una <strong>horquilla de precio realista</strong> y con el ahorro estimado al lado, para que puedas decidir con números. Y trabajamos con presupuestos pensados para pymes y negocios locales, no con tarifas de gran consultora.</p></div>
+        </details>
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿Necesito conocimientos técnicos para usar lo que me montáis?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>No. Lo montamos para que funcione en segundo plano y tú sigas trabajando como siempre: los avisos te llegan al correo o a WhatsApp, y los paneles son del estilo de una hoja de cálculo.</p><p>Al entregarlo te enseñamos cómo funciona con tus propios datos y te dejamos una guía corta. Si algo se rompe, lo arreglamos nosotros; no te dejamos con un manual de 40 páginas.</p></div>
+        </details>
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿En cuánto tiempo se ven resultados?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Una automatización sencilla suele estar funcionando en <strong>una o dos semanas</strong> desde que tenemos los accesos, y el ahorro de tiempo se nota desde el primer día porque esa tarea deja de hacerse a mano.</p><p>Los proyectos más grandes —un asistente virtual completo, una aplicación a medida— van por fases: la primera fase útil suele entrar en producción en pocas semanas y a partir de ahí se amplía.</p></div>
+        </details>
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿Y si no sé exactamente qué necesito?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Es el punto de partida más habitual y no es un problema. Empezamos por una <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría de procesos</a>: revisamos cómo trabajas hoy, cronometramos las tareas que se repiten y ponemos números a lo que cuestan.</p><p>Con eso encima de la mesa te decimos qué merece la pena automatizar, en qué orden y qué es mejor dejar como está. Muchas veces la respuesta corta es una sola automatización, no un proyecto grande.</p></div>
+        </details>
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿Trabajáis solo en Valladolid?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Somos una agencia de <strong>Valladolid</strong> y ahí está nuestro foco: nos gusta poder sentarnos con el cliente, ver el negocio y conocer a la gente que va a usar lo que construimos.</p><p>Dicho eso, todo lo que hacemos funciona igual de bien en remoto, así que también trabajamos con pymes de Castilla y León y del resto de España. Si estás fuera, las reuniones son por videollamada y el resultado es el mismo.</p></div>
+        </details>
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿Qué diferencia hay entre vosotros y una agencia grande?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Tres cosas concretas. La primera: hablas siempre con la persona que construye tu proyecto, no con un comercial que luego lo pasa a un equipo que no conoces.</p><p>La segunda: el presupuesto está dimensionado para una pyme, porque nuestra estructura también lo está. La tercera, y la que más nos importa: si algo no te va a dar retorno, <strong>te lo decimos y no te lo cobramos</strong>. Una agencia que factura por volumen tiene el incentivo contrario.</p></div>
+        </details>
+        <details class="vr-faq-item vr-rv">
+          <summary><h3>¿Qué pasa con mis datos y los de mis clientes?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Trabajamos sobre tus propias cuentas y herramientas siempre que se puede, así que los datos siguen siendo tuyos y puedes revocarnos el acceso cuando quieras. Firmamos el acuerdo de encargado de tratamiento que exige el RGPD y usamos servicios con los datos alojados en la Unión Europea cuando el proyecto lo requiere.</p><p>Si en algún paso hace falta enviar información a un proveedor de inteligencia artificial, te lo decimos antes, te explicamos qué se envía exactamente y decides tú.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. CTA FINAL ============ -->
+  <section class="vr-sec vr-sec--tight">
+    <div class="vr-wrap">
+      <div class="vr-final vr-rv">
+        <h2>Cuéntanos qué tarea te está comiendo la semana</h2>
+        <p>Una conversación corta, sin compromiso y sin presupuesto sorpresa. Si vemos que la inteligencia artificial no es tu prioridad ahora mismo, te lo diremos.</p>
+        <div class="vr-cta-row">
+          <a class="vr-btn vr-btn--light" href="https://verantiapro.es/contacto/">Cuéntanos tu caso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="vr-btn vr-btn--outline" href="tel:+34601855347">Llamar al 601 85 53 47</a>
+        </div>
+        <p class="vr-final-meta">También por correo: <a href="mailto:info@verantiapro.es">info@verantiapro.es</a> · Valladolid, Castilla y León</p>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta implementar inteligencia artificial en un negocio pequeño?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito conocimientos técnicos para usar lo que me montáis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Lo montamos para que funcione en segundo plano y tú sigas trabajando como siempre: los avisos te llegan al correo o a WhatsApp, y los paneles son del estilo de una hoja de cálculo. Al entregarlo te enseñamos cómo funciona con tus propios datos y te dejamos una guía corta. Si algo se rompe, lo arreglamos nosotros."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En cuánto tiempo se ven resultados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una automatización sencilla suele estar funcionando en una o dos semanas desde que tenemos los accesos, y el ahorro de tiempo se nota desde el primer día porque esa tarea deja de hacerse a mano. Los proyectos más grandes van por fases: la primera fase útil suele entrar en producción en pocas semanas y a partir de ahí se amplía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si no sé exactamente qué necesito?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el punto de partida más habitual y no es un problema. Empezamos por una auditoría de procesos: revisamos cómo trabajas hoy, cronometramos las tareas que se repiten y ponemos números a lo que cuestan. Con eso encima de la mesa te decimos qué merece la pena automatizar, en qué orden y qué es mejor dejar como está."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajáis solo en Valladolid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Somos una agencia de Valladolid y ahí está nuestro foco: nos gusta poder sentarnos con el cliente, ver el negocio y conocer a la gente que va a usar lo que construimos. Dicho eso, todo lo que hacemos funciona igual de bien en remoto, así que también trabajamos con pymes de Castilla y León y del resto de España."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre vosotros y una agencia grande?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tres cosas concretas. La primera: hablas siempre con la persona que construye tu proyecto, no con un comercial que luego lo pasa a un equipo que no conoces. La segunda: el presupuesto está dimensionado para una pyme, porque nuestra estructura también lo está. La tercera: si algo no te va a dar retorno, te lo decimos y no te lo cobramos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con mis datos y los de mis clientes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajamos sobre tus propias cuentas y herramientas siempre que se puede, así que los datos siguen siendo tuyos y puedes revocarnos el acceso cuando quieras. Firmamos el acuerdo de encargado de tratamiento que exige el RGPD. Si en algún paso hace falta enviar información a un proveedor de inteligencia artificial, te lo decimos antes y decides tú."
+      }
+    }
+  ]
+}
+  </script>
+
+</div>
+<!-- ==================== FIN DEL CONTENIDO ==================== -->
+
+<script>
+/* Verantia — home: aparicion al hacer scroll + contador de metricas.
+   Va en linea a proposito: un widget HTML de Elementor no carga scripts
+   externos del tema, asi que si el JS viviera fuera nunca se ejecutaria.
+   Regla de seguridad: el contenido parte de VISIBLE. La clase que lo
+   oculta (.vr-js) solo se anade si este script se esta ejecutando, de
+   modo que si falla o esta bloqueado la pagina se ve completa igual. */
+(function () {
+  var root = document.querySelector('.vr-home');
+  if (!root) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canObserve = 'IntersectionObserver' in window;
+
+  /* ---------- 1. Aparicion progresiva de secciones ---------- */
+  if (canObserve && !reduce) {
+    root.classList.add('vr-js');
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.classList.add('vr-in');
+          io.unobserve(entries[i].target);
+        }
+      }
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+
+    /* Lo que ya esta en pantalla se marca visible en este mismo ciclo,
+       sin pasar por opacity:0. Asi no hay parpadeo aunque el plugin de
+       cache aplace la ejecucion de este script. */
+    var items = root.querySelectorAll('.vr-rv');
+    var vh = window.innerHeight || 800;
+    for (var n = 0; n < items.length; n++) {
+      if (items[n].getBoundingClientRect().top < vh * 0.95) {
+        items[n].classList.add('vr-in');
+      } else {
+        items[n].style.transitionDelay = (Math.min(n % 5, 4) * 80) + 'ms';
+        io.observe(items[n]);
+      }
+    }
+  }
+
+  /* ---------- 2. Contador de metricas ---------- */
+  var nums = root.querySelectorAll('[data-vr-count]');
+  if (!nums.length) return;
+
+  function fmt(v, d) {
+    return v.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+
+  function run(el) {
+    var target = parseFloat(el.getAttribute('data-vr-count'));
+    var dec = parseInt(el.getAttribute('data-vr-dec') || '0', 10);
+    if (isNaN(target)) return;
+    if (reduce || !window.requestAnimationFrame) { el.textContent = fmt(target, dec); return; }
+
+    var start = null, dur = 1300;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased, dec);
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = fmt(target, dec);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (!canObserve || reduce) {
+    for (var k = 0; k < nums.length; k++) run(nums[k]);
+    return;
+  }
+
+  var io2 = new IntersectionObserver(function (entries) {
+    for (var j = 0; j < entries.length; j++) {
+      if (entries[j].isIntersecting) {
+        run(entries[j].target);
+        io2.unobserve(entries[j].target);
+      }
+    }
+  }, { threshold: 0.45 });
+
+  for (var m = 0; m < nums.length; m++) io2.observe(nums[m]);
+})();
+</script>
