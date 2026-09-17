@@ -1,0 +1,128 @@
+/* ============================================================
+   Verantia — Home (secciones adicionales)
+   Se carga después de style.css y services.css.
+   Reutiliza .stat-band/.stat-grid/.stat-card y .faq-list/.faq-item
+   ya definidos en services.css.
+
+   Nota sobre animaciones: a propósito NO se usa la clase .reveal
+   (que depende de IntersectionObserver en script.js). Esta página
+   se pega también en un widget HTML de Elementor sin script.js
+   cargado, así que todo el movimiento es CSS puro, disparado al
+   cargar la página o en :hover — funciona igual en ambos sitios.
+   ============================================================ */
+
+/* ---------- Entrada del hero (CSS puro, sin JS) ---------- */
+@keyframes vrHeroUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-copy {
+  animation: vrHeroUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-media {
+  animation: vrHeroUp 0.85s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero h1 { text-wrap: balance; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy, .hero-media { animation: none; }
+}
+
+/* ---------- Franja de confianza bajo los CTA del hero ---------- */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 22px 0 0;
+  padding: 0;
+}
+.trust-row li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.trust-row svg {
+  width: 16px;
+  height: 16px;
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+/* ---------- Fondo "aurora" ambiental en el hero ---------- */
+.hero { position: relative; isolation: isolate; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(480px 260px at 8% 15%, rgba(59,130,246,0.07), transparent 70%),
+    radial-gradient(420px 260px at 92% 80%, rgba(29,78,216,0.06), transparent 70%);
+  animation: vrAurora 16s ease-in-out infinite alternate;
+}
+@keyframes vrAurora {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to   { transform: translate3d(-2%, 1%, 0) scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+}
+
+/* ---------- Por qué Verantia ---------- */
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.reason-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.reason-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+.reason-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: transform 0.25s ease;
+}
+.reason-card:hover .reason-icon { transform: scale(1.08) rotate(-4deg); }
+.reason-icon svg { width: 24px; height: 24px; }
+.reason-card h3 { font-size: 17.5px; margin-bottom: 8px; }
+.reason-card p { font-size: 14px; color: var(--muted); margin: 0; }
+
+.about-statement {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  text-align: center;
+  font-size: 17px;
+  color: var(--text);
+}
+.about-statement strong { color: var(--black); }
+
+/* ---------- Franja de estadísticas de la home ---------- */
+.home-stats .stat-number { font-variant-numeric: tabular-nums; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .reasons-grid { grid-template-columns: 1fr; }
+  .trust-row { gap: 12px 18px; }
+}
