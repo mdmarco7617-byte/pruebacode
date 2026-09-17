@@ -1,492 +1,668 @@
 <!-- ============================================================
-     VERANTIA — Página de Inicio
+     VERANTIA — Página de Inicio (v2)
      Pegar tal cual en: Elementor → widget HTML
      Solo contenido: sin etiquetas de documento ni de cabecera.
-     Todas las clases y variables van prefijadas con "verantia-"
-     y todos los selectores están anidados bajo .verantia-home,
-     para no afectar al resto de WordPress.
-     Sin JavaScript. Sin imágenes. Animaciones CSS (transform/opacity).
+     Clases y variables prefijadas con "verantia-" y todos los
+     selectores anidados bajo .verantia-home (no afecta al resto
+     de WordPress).
+     JS: solo la calculadora (inline, sin librerías). Si no se
+     ejecutase, la calculadora muestra igualmente un ejemplo válido.
      ============================================================ -->
 
 <style>
-/* ---------- Tokens (scopeados: NO tocan :root ni el resto del sitio) ---------- */
+/* ---------- Tokens (scopeados) ---------- */
 .verantia-home{
-  --verantia-black:#0a0d14;
-  --verantia-black-soft:#111825;
-  --verantia-blue:#3b82f6;
-  --verantia-blue-bright:#60a5fa;
-  --verantia-blue-deep:#1d4ed8;
-  --verantia-white:#ffffff;
-  --verantia-ink:#111827;
-  --verantia-text:#374151;
-  --verantia-muted:#6b7280;
-  --verantia-text-dark:#e8edf7;
-  --verantia-muted-dark:#98a4b8;
-  --verantia-line:rgba(9,13,20,.10);
-  --verantia-line-dark:rgba(255,255,255,.10);
-  --verantia-surface:#ffffff;
-  --verantia-surface-alt:#f5f7fb;
-  --verantia-radius:18px;
-  --verantia-shadow:0 18px 44px -24px rgba(9,13,20,.28);
-  --verantia-head:'Manrope','DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --verantia-body:'DM Sans','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --v-ink:#0b1220;
+  --v-text:#454f61;
+  --v-muted:#79839a;
+  --v-blue:#2563eb;
+  --v-blue-bright:#3b82f6;
+  --v-blue-soft:#eaf1fe;
+  --v-blue-deep:#1a3fa8;
+  --v-dark:#0a0e17;
+  --v-dark-2:#121a29;
+  --v-bg:#ffffff;
+  --v-soft:#f6f8fc;
+  --v-line:#e5eaf3;
+  --v-line-dark:rgba(255,255,255,.11);
+  --v-ok:#0d9f6e;
+  --v-r:22px;
+  --v-r-sm:14px;
+  --v-sh:0 1px 2px rgba(11,18,32,.04),0 12px 32px -14px rgba(11,18,32,.14);
+  --v-sh-lg:0 2px 4px rgba(11,18,32,.05),0 28px 60px -24px rgba(11,18,32,.22);
+  --v-head:'Manrope','DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --v-body:'DM Sans','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
 
-  font-family:var(--verantia-body);
-  color:var(--verantia-text);
-  line-height:1.65;
+  font-family:var(--v-body);
+  color:var(--v-text);
+  line-height:1.68;
+  font-size:16px;
   -webkit-font-smoothing:antialiased;
+  display:block;width:100%;overflow-x:clip;
 }
 .verantia-home *,
 .verantia-home *::before,
 .verantia-home *::after{box-sizing:border-box}
 
-.verantia-home h1,.verantia-home h2,.verantia-home h3{
-  font-family:var(--verantia-head);
-  color:var(--verantia-ink);
-  line-height:1.18;
-  margin:0 0 14px;
-  text-wrap:balance;
-  letter-spacing:-.015em;
+.verantia-home h1,.verantia-home h2,.verantia-home h3,.verantia-home h4{
+  font-family:var(--v-head);color:var(--v-ink);
+  line-height:1.2;margin:0 0 14px;letter-spacing:-.02em;text-wrap:balance;
 }
 .verantia-home p{margin:0 0 16px}
 .verantia-home p:last-child{margin-bottom:0}
 .verantia-home ul,.verantia-home ol{margin:0;padding:0;list-style:none}
 .verantia-home a{color:inherit;text-decoration:none}
 .verantia-home a:focus-visible,
+.verantia-home button:focus-visible,
+.verantia-home input:focus-visible,
 .verantia-home summary:focus-visible{
-  outline:2px solid var(--verantia-blue-bright);
-  outline-offset:3px;
-  border-radius:6px;
+  outline:2px solid var(--v-blue);outline-offset:3px;border-radius:8px;
 }
 
 /* ---------- Layout ---------- */
-.verantia-home{display:block;width:100%;overflow-x:clip}
-.verantia-wrap{width:100%;max-width:1180px;margin:0 auto;padding-inline:24px}
-.verantia-section{padding-block:clamp(64px,7vw,104px);position:relative}
-.verantia-section--alt{background:var(--verantia-surface-alt)}
-.verantia-section--dark{
+.verantia-wrap{width:100%;max-width:1160px;margin:0 auto;padding-inline:24px}
+.verantia-sec{padding-block:clamp(60px,6.5vw,104px);position:relative}
+.verantia-sec--soft{background:var(--v-soft)}
+.verantia-sec--dark{
   background:
-    radial-gradient(760px 420px at 12% 0%,rgba(59,130,246,.16),transparent 62%),
-    radial-gradient(620px 420px at 92% 100%,rgba(29,78,216,.18),transparent 60%),
-    linear-gradient(170deg,var(--verantia-black) 0%,var(--verantia-black-soft) 100%);
+    radial-gradient(700px 420px at 88% 4%,rgba(59,130,246,.2),transparent 62%),
+    linear-gradient(168deg,var(--v-dark) 0%,var(--v-dark-2) 100%);
   overflow:hidden;
-  isolation:isolate;
 }
-.verantia-section--dark::after{
-  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(70% 60% at 50% 40%,#000 25%,transparent 100%);
-}
-.verantia-section--dark h2,
-.verantia-section--dark h3{color:var(--verantia-white)}
-.verantia-section--dark p{color:var(--verantia-muted-dark)}
+.verantia-sec--dark h2,.verantia-sec--dark h3{color:#fff}
+.verantia-sec--dark p{color:#9aa6bd}
 
-/* ---------- Cabeceras de sección ---------- */
-.verantia-head{max-width:720px;margin:0 0 clamp(36px,4vw,56px)}
-.verantia-head--center{margin-inline:auto;text-align:center}
-.verantia-eyebrow{
-  display:inline-block;
-  font-family:var(--verantia-head);
-  font-size:12.5px;font-weight:800;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:var(--verantia-blue-deep);
-  margin:0 0 14px;
+/* ---------- Cabeceras ---------- */
+.verantia-head{max-width:700px;margin:0 0 clamp(34px,3.6vw,52px)}
+.verantia-head--c{margin-inline:auto;text-align:center}
+.verantia-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--v-head);font-size:12px;font-weight:800;
+  letter-spacing:.13em;text-transform:uppercase;
+  color:var(--v-blue-deep);background:var(--v-blue-soft);
+  padding:7px 14px;border-radius:999px;margin:0 0 18px;
 }
-.verantia-section--dark .verantia-eyebrow{color:var(--verantia-blue-bright)}
-.verantia-h2{font-size:clamp(26px,3.1vw,40px);font-weight:800}
-.verantia-lead{font-size:clamp(15.5px,1.15vw,17.5px);color:var(--verantia-muted)}
-.verantia-section--dark .verantia-lead{color:var(--verantia-muted-dark)}
+.verantia-sec--dark .verantia-tag{color:#a9c8ff;background:rgba(59,130,246,.14)}
+.verantia-h2{font-size:clamp(25px,2.9vw,38px);font-weight:800}
+.verantia-h3{font-size:clamp(19px,1.6vw,23px);font-weight:800}
+.verantia-lead{font-size:clamp(15.5px,1.1vw,17.5px);color:var(--v-muted)}
+.verantia-sec--dark .verantia-lead{color:#9aa6bd}
 
 /* ---------- Botones ---------- */
 .verantia-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  font-family:var(--verantia-head);
-  font-size:15px;font-weight:700;
-  padding:15px 28px;border-radius:999px;
-  transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease,border-color .25s ease;
-  will-change:transform;
+  font-family:var(--v-head);font-size:15px;font-weight:700;
+  padding:15px 27px;border-radius:999px;border:0;cursor:pointer;
+  transition:transform .24s ease,box-shadow .24s ease,background-color .24s ease,border-color .24s ease;
 }
 .verantia-btn svg{width:17px;height:17px;flex:none}
-.verantia-btn--primary{
-  color:#fff;
-  background:linear-gradient(135deg,var(--verantia-blue) 0%,var(--verantia-blue-deep) 100%);
-  box-shadow:0 14px 30px -12px rgba(59,130,246,.65);
+.verantia-btn--main{
+  color:#fff;background:linear-gradient(135deg,var(--v-blue-bright),var(--v-blue-deep));
+  box-shadow:0 12px 26px -12px rgba(37,99,235,.7);
 }
-.verantia-btn--primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -12px rgba(59,130,246,.75)}
-.verantia-btn--ghost{
-  color:var(--verantia-white);
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(10px);
+.verantia-btn--main:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(37,99,235,.8)}
+.verantia-btn--line{
+  color:var(--v-ink);background:#fff;border:1.5px solid var(--v-line);
 }
-.verantia-btn--ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);border-color:rgba(96,165,250,.5)}
-.verantia-btn--light{
-  color:var(--verantia-ink);background:var(--verantia-white);
-  box-shadow:0 14px 30px -14px rgba(0,0,0,.45);
-}
+.verantia-btn--line:hover{transform:translateY(-2px);border-color:var(--v-blue);color:var(--v-blue-deep)}
+.verantia-btn--light{color:var(--v-ink);background:#fff;box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
 .verantia-btn--light:hover{transform:translateY(-2px)}
 
 /* ---------- HERO ---------- */
 .verantia-hero{
-  padding-block:clamp(72px,8vw,120px);
-  text-align:center;
+  padding-block:clamp(56px,6vw,92px);
+  background:
+    radial-gradient(620px 380px at 84% -8%,rgba(59,130,246,.13),transparent 64%),
+    radial-gradient(520px 340px at 6% 18%,rgba(37,99,235,.07),transparent 66%),
+    var(--v-bg);
+  overflow:hidden;
 }
-.verantia-hero__inner{max-width:880px;margin:0 auto}
-.verantia-hero__glow{
-  position:absolute;z-index:-1;pointer-events:none;
-  width:min(720px,90vw);aspect-ratio:1;border-radius:50%;
-  top:-22%;left:50%;translate:-50% 0;
-  background:radial-gradient(circle,rgba(59,130,246,.22) 0%,transparent 68%);
-  animation:verantia-drift 18s ease-in-out infinite alternate;
+.verantia-hero__grid{
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(34px,4vw,60px);align-items:center;
 }
-@keyframes verantia-drift{
-  from{transform:translate3d(-2%,0,0) scale(1)}
-  to{transform:translate3d(3%,2%,0) scale(1.08)}
-}
-.verantia-hero__badge{
+.verantia-pill{
   display:inline-flex;align-items:center;gap:9px;
-  padding:8px 16px;margin:0 0 26px;border-radius:999px;
-  font-size:13px;font-weight:700;color:var(--verantia-text-dark);
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(10px);
+  padding:8px 15px 8px 11px;border-radius:999px;margin:0 0 22px;
+  font-size:13px;font-weight:700;color:var(--v-blue-deep);
+  background:#fff;border:1px solid #d9e5fd;
+  box-shadow:0 6px 18px -10px rgba(37,99,235,.4);
 }
-.verantia-hero__badge span{
-  width:7px;height:7px;border-radius:50%;
-  background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.18);
+.verantia-pill b{
+  display:inline-flex;align-items:center;
+  background:var(--v-ok);color:#fff;font-size:10.5px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;
 }
-.verantia-h1{
-  font-size:clamp(32px,5.2vw,60px);
-  font-weight:800;
-  color:var(--verantia-white);
-  margin:0 0 22px;
+.verantia-h1{font-size:clamp(31px,4.2vw,51px);font-weight:800;margin:0 0 20px}
+.verantia-h1 em{font-style:normal;color:var(--v-blue)}
+.verantia-hero__lead{font-size:clamp(16px,1.25vw,19px);color:var(--v-text);margin:0 0 28px;max-width:56ch}
+.verantia-hero__ctas{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:26px}
+.verantia-hero__micro{
+  display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;font-weight:600;color:var(--v-muted);
 }
-.verantia-h1 em{
-  font-style:normal;
-  color:var(--verantia-blue-bright);
+.verantia-hero__micro li{display:inline-flex;align-items:center;gap:7px}
+.verantia-hero__micro svg{width:15px;height:15px;color:var(--v-ok);flex:none}
+
+/* Panel lateral del hero: qué te llevas */
+.verantia-deliver{
+  background:#fff;border:1px solid var(--v-line);border-radius:var(--v-r);
+  padding:30px 28px;box-shadow:var(--v-sh-lg);position:relative;
 }
-@supports (-webkit-background-clip:text) or (background-clip:text){
-  .verantia-h1 em{
-    background:linear-gradient(105deg,var(--verantia-blue-bright) 10%,#a5c8ff 55%,var(--verantia-blue-bright) 90%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
+.verantia-deliver::before{
+  content:'';position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(145deg,rgba(59,130,246,.34),transparent 42%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;padding:1px;
 }
-.verantia-hero__lead{
-  font-size:clamp(16px,1.35vw,19.5px);
-  color:var(--verantia-text-dark);
-  max-width:700px;margin:0 auto 34px;
+.verantia-deliver h2{font-size:17px;font-weight:800;margin-bottom:6px}
+.verantia-deliver__sub{font-size:13.5px;color:var(--v-muted);margin-bottom:20px}
+.verantia-deliver ul{display:grid;gap:14px}
+.verantia-deliver li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--v-text)}
+.verantia-deliver li svg{width:19px;height:19px;color:var(--v-blue);flex:none;margin-top:2px}
+.verantia-deliver__price{
+  margin-top:22px;padding-top:20px;border-top:1px dashed var(--v-line);
+  display:flex;align-items:baseline;gap:10px;
 }
-.verantia-hero__ctas{
-  display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:38px;
+.verantia-deliver__price strong{
+  font-family:var(--v-head);font-size:34px;font-weight:800;color:var(--v-ink);line-height:1;
 }
-.verantia-trust{
-  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
-}
-.verantia-trust li{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:11px 18px;border-radius:14px;
-  font-size:13.5px;font-weight:600;color:var(--verantia-text-dark);
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.09);
-  backdrop-filter:blur(10px);
-}
-.verantia-trust svg{width:16px;height:16px;color:var(--verantia-blue-bright);flex:none}
+.verantia-deliver__price span{font-size:13.5px;color:var(--v-muted)}
 
 /* ---------- Rejillas ---------- */
-.verantia-grid{display:grid;gap:22px}
-.verantia-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.verantia-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.verantia-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.verantia-grid{display:grid;gap:20px}
+.verantia-g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.verantia-g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.verantia-g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 
-/* ---------- Tarjetas (claro) ---------- */
+/* ---------- Señales (checklist de dolor) ---------- */
+.verantia-signal{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#fff;border:1px solid var(--v-line);border-radius:var(--v-r-sm);
+  padding:20px 22px;transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
+}
+.verantia-signal:hover{transform:translateY(-3px);box-shadow:var(--v-sh);border-color:#cfdcf7}
+.verantia-signal__dot{
+  width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;
+  background:#fff1f1;color:#d6455a;
+}
+.verantia-signal__dot svg{width:15px;height:15px}
+.verantia-signal p{font-size:14.8px;color:var(--v-text);margin:0}
+
+/* ---------- Calculadora ---------- */
+.verantia-calc{
+  background:linear-gradient(165deg,var(--v-dark),var(--v-dark-2));
+  border-radius:clamp(20px,2.4vw,30px);
+  padding:clamp(28px,3.4vw,48px);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);
+  gap:clamp(28px,3.4vw,48px);align-items:center;
+  box-shadow:0 40px 80px -40px rgba(11,18,32,.6);
+  position:relative;overflow:hidden;
+}
+.verantia-calc::after{
+  content:'';position:absolute;width:420px;aspect-ratio:1;border-radius:50%;
+  top:-45%;right:-12%;pointer-events:none;
+  background:radial-gradient(circle,rgba(59,130,246,.3),transparent 66%);
+}
+.verantia-calc h3{color:#fff;font-size:clamp(20px,1.9vw,26px);font-weight:800;margin-bottom:10px}
+.verantia-calc__intro{color:#9aa6bd;font-size:14.8px;margin-bottom:26px}
+.verantia-field{margin-bottom:20px}
+.verantia-field:last-of-type{margin-bottom:0}
+.verantia-field label{
+  display:block;font-size:13.5px;font-weight:700;color:#d9e2f2;margin-bottom:9px;
+}
+.verantia-stepper{
+  display:flex;align-items:center;gap:0;width:100%;max-width:230px;
+  background:rgba(255,255,255,.06);border:1px solid var(--v-line-dark);
+  border-radius:12px;overflow:hidden;
+}
+.verantia-stepper button{
+  width:42px;height:44px;flex:none;
+  background:transparent;color:#cfe0ff;font-size:19px;font-weight:700;line-height:1;
+  cursor:pointer;transition:background-color .18s ease;
+  font-family:var(--v-head);
+}
+.verantia-stepper button:hover{background:rgba(59,130,246,.22)}
+.verantia-stepper input{
+  flex:1;min-width:0;height:44px;
+  background:transparent;border:0;border-inline:1px solid var(--v-line-dark);
+  color:#fff;font-family:var(--v-head);font-size:17px;font-weight:800;text-align:center;
+  -moz-appearance:textfield;appearance:textfield;
+}
+.verantia-stepper input::-webkit-outer-spin-button,
+.verantia-stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.verantia-calc__out{
+  background:rgba(255,255,255,.05);border:1px solid var(--v-line-dark);
+  border-radius:var(--v-r);padding:clamp(24px,2.6vw,32px);
+  backdrop-filter:blur(12px);text-align:center;
+}
+.verantia-calc__big{
+  font-family:var(--v-head);font-size:clamp(34px,4.4vw,52px);font-weight:800;
+  line-height:1.02;color:#fff;font-variant-numeric:tabular-nums;margin-bottom:6px;
+}
+.verantia-calc__biglab{font-size:13.5px;color:#9aa6bd;margin-bottom:22px}
+.verantia-calc__row{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;
+  padding-top:20px;border-top:1px solid var(--v-line-dark);
+}
+.verantia-calc__num{
+  font-family:var(--v-head);font-size:clamp(18px,1.8vw,23px);font-weight:800;
+  color:var(--v-blue-bright);font-variant-numeric:tabular-nums;line-height:1.1;
+}
+.verantia-calc__lab{font-size:12.5px;color:#8c98af;margin-top:3px}
+.verantia-calc__note{
+  grid-column:1/-1;margin:22px 0 0;font-size:12.5px;color:#7d889e;line-height:1.55;
+}
+.verantia-calc__cta{margin-top:22px}
+
+/* ---------- Metodología numerada ---------- */
+.verantia-step{
+  background:#fff;border:1px solid var(--v-line);border-radius:var(--v-r);
+  padding:30px 26px;position:relative;
+  transition:transform .26s ease,box-shadow .26s ease,border-color .26s ease;
+}
+.verantia-step:hover{transform:translateY(-5px);box-shadow:var(--v-sh-lg);border-color:#cfdcf7}
+.verantia-step__n{
+  font-family:var(--v-head);font-size:13px;font-weight:800;letter-spacing:.1em;
+  color:var(--v-blue);display:block;margin-bottom:16px;
+}
+.verantia-step h3{font-size:18px;font-weight:800;margin-bottom:9px}
+.verantia-step p{font-size:14.5px;color:var(--v-muted)}
+
+/* ---------- Áreas analizadas / tarjetas ---------- */
 .verantia-card{
-  background:var(--verantia-surface);
-  border:1px solid var(--verantia-line);
-  border-radius:var(--verantia-radius);
-  padding:30px 26px;
-  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
-  will-change:transform;
+  background:#fff;border:1px solid var(--v-line);border-radius:var(--v-r);
+  padding:28px 25px;display:flex;flex-direction:column;height:100%;
+  transition:transform .26s ease,box-shadow .26s ease,border-color .26s ease;
 }
-.verantia-card:hover{transform:translateY(-5px);box-shadow:var(--verantia-shadow);border-color:rgba(59,130,246,.28)}
-.verantia-card h3{font-size:18px;font-weight:800;margin-bottom:9px}
-.verantia-card p{font-size:14.5px;color:var(--verantia-muted)}
+.verantia-card:hover{transform:translateY(-5px);box-shadow:var(--v-sh-lg);border-color:#cfdcf7}
+.verantia-card h3{font-size:17.5px;font-weight:800;margin-bottom:9px}
+.verantia-card p{font-size:14.5px;color:var(--v-muted)}
 .verantia-ico{
-  width:48px;height:48px;border-radius:14px;
-  display:grid;place-items:center;margin-bottom:18px;
-  color:var(--verantia-blue-deep);
-  background:linear-gradient(140deg,rgba(59,130,246,.14),rgba(29,78,216,.07));
-  border:1px solid rgba(59,130,246,.16);
-  transition:transform .28s ease;
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  margin-bottom:18px;color:var(--v-blue-deep);
+  background:linear-gradient(140deg,var(--v-blue-soft),#f4f8ff);
+  border:1px solid #dbe7fd;transition:transform .26s ease;
 }
-.verantia-card:hover .verantia-ico{transform:scale(1.07) rotate(-4deg)}
-.verantia-ico svg{width:23px;height:23px}
-
-/* ---------- Tarjetas de servicio (con enlace) ---------- */
-.verantia-svc{display:flex;flex-direction:column;height:100%}
-.verantia-svc__link{
-  margin-top:auto;padding-top:16px;
-  display:inline-flex;align-items:center;gap:7px;
-  font-family:var(--verantia-head);
-  font-size:13.5px;font-weight:800;color:var(--verantia-blue-deep);
+.verantia-card:hover .verantia-ico,
+.verantia-step:hover .verantia-ico{transform:scale(1.07) rotate(-4deg)}
+.verantia-ico svg{width:22px;height:22px}
+.verantia-card__link{
+  margin-top:auto;padding-top:16px;display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--v-head);font-size:13.5px;font-weight:800;color:var(--v-blue-deep);
 }
-.verantia-svc__link svg{width:15px;height:15px;transition:transform .25s ease}
-.verantia-svc:hover .verantia-svc__link svg{transform:translateX(4px)}
-
-/* ---------- Tarjetas glass (oscuro) ---------- */
-.verantia-glass{
-  background:rgba(255,255,255,.045);
-  border:1px solid var(--verantia-line-dark);
-  border-radius:var(--verantia-radius);
-  padding:30px 26px;
-  backdrop-filter:blur(14px);
-  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
-  will-change:transform;
-}
-.verantia-glass:hover{
-  transform:translateY(-5px);
-  border-color:rgba(96,165,250,.36);
-  box-shadow:0 0 0 1px rgba(96,165,250,.12),0 26px 52px -28px rgba(59,130,246,.5);
-}
-.verantia-glass h3{font-size:17.5px;font-weight:800;margin-bottom:9px}
-.verantia-glass p{font-size:14.5px}
-
-/* ---------- Pasos ---------- */
-.verantia-step__num{
-  font-family:var(--verantia-head);
-  font-size:13px;font-weight:800;letter-spacing:.1em;
-  color:var(--verantia-blue-bright);
-  display:block;margin-bottom:14px;
-}
-.verantia-step{position:relative}
-.verantia-step::before{
-  content:'';position:absolute;top:-1px;left:26px;right:26px;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(96,165,250,.7),transparent);
-  opacity:0;transition:opacity .3s ease;
-}
-.verantia-step:hover::before{opacity:1}
-
-/* ---------- Beneficios ---------- */
-.verantia-benefit{display:flex;gap:15px;align-items:flex-start}
-.verantia-benefit__check{
-  width:30px;height:30px;border-radius:9px;flex:none;
-  display:grid;place-items:center;color:#fff;
-  background:linear-gradient(140deg,var(--verantia-blue),var(--verantia-blue-deep));
-  box-shadow:0 8px 18px -10px rgba(59,130,246,.8);
-}
-.verantia-benefit__check svg{width:16px;height:16px}
-.verantia-benefit h3{font-size:16.5px;font-weight:800;margin-bottom:5px}
-.verantia-benefit p{font-size:14px;color:var(--verantia-muted)}
+.verantia-card__link svg{width:15px;height:15px;transition:transform .24s ease}
+.verantia-card:hover .verantia-card__link svg{transform:translateX(4px)}
 
 /* ---------- Métricas ---------- */
-.verantia-metrics{
-  margin-top:clamp(40px,4vw,56px);
-  display:grid;gap:18px;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
-.verantia-metric{
-  padding:26px 22px;border-radius:var(--verantia-radius);
-  background:var(--verantia-surface);
-  border:1px solid var(--verantia-line);
-  text-align:center;
-}
+.verantia-metric{text-align:center;padding:10px 14px}
 .verantia-metric__fig{
-  font-family:var(--verantia-head);
-  font-size:clamp(30px,3.4vw,42px);font-weight:800;
-  line-height:1;color:var(--verantia-blue-deep);
-  font-variant-numeric:tabular-nums;
-  margin-bottom:10px;
+  font-family:var(--v-head);font-size:clamp(36px,4.6vw,56px);font-weight:800;
+  line-height:1;color:#fff;font-variant-numeric:tabular-nums;margin-bottom:12px;
 }
-.verantia-metric p{font-size:14px;color:var(--verantia-muted);margin-bottom:8px}
-.verantia-metric cite{
-  display:block;font-style:normal;
-  font-size:11.5px;color:#9aa3b2;
-}
+.verantia-metric__fig span{color:var(--v-blue-bright)}
+.verantia-metric p{font-size:14.5px;margin-bottom:8px}
+.verantia-metric cite{display:block;font-style:normal;font-size:11.5px;color:#6f7b92}
 
-/* ---------- Casos de uso ---------- */
-.verantia-case{
-  padding:26px 24px;border-radius:var(--verantia-radius);
-  background:var(--verantia-surface);
-  border:1px solid var(--verantia-line);
-  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+/* ---------- Compromiso (sustituye a testimonios inventados) ---------- */
+.verantia-promise{
+  display:flex;gap:16px;align-items:flex-start;
+  background:#fff;border:1px solid var(--v-line);border-radius:var(--v-r-sm);padding:22px 24px;
 }
-.verantia-case:hover{transform:translateY(-4px);box-shadow:var(--verantia-shadow);border-color:rgba(59,130,246,.28)}
-.verantia-case h3{font-size:16.5px;font-weight:800;margin-bottom:12px}
-.verantia-case dl{margin:0;font-size:14px}
-.verantia-case dt{
-  font-family:var(--verantia-head);
-  font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
-  color:#9aa3b2;margin-bottom:3px;
+.verantia-promise__n{
+  width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:var(--v-blue-soft);color:var(--v-blue-deep);
+  font-family:var(--v-head);font-size:13px;font-weight:800;
 }
-.verantia-case dd{margin:0 0 12px;color:var(--verantia-muted)}
-.verantia-case dd:last-child{margin-bottom:0;color:var(--verantia-text)}
-.verantia-case dt+dd strong{color:var(--verantia-ink);font-weight:700}
+.verantia-promise h3{font-size:16px;font-weight:800;margin-bottom:5px}
+.verantia-promise p{font-size:14.2px;color:var(--v-muted);margin:0}
 
 /* ---------- FAQ ---------- */
-.verantia-faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.verantia-faq{max-width:830px;margin:0 auto;display:grid;gap:11px}
 .verantia-faq details{
-  background:var(--verantia-surface);
-  border:1px solid var(--verantia-line);
-  border-radius:14px;
-  padding:0 24px;
-  transition:border-color .25s ease,box-shadow .25s ease;
+  background:#fff;border:1px solid var(--v-line);border-radius:var(--v-r-sm);padding:0 24px;
+  transition:border-color .22s ease,box-shadow .22s ease;
 }
-.verantia-faq details[open]{border-color:rgba(59,130,246,.3);box-shadow:var(--verantia-shadow)}
+.verantia-faq details[open]{border-color:#cfdcf7;box-shadow:var(--v-sh)}
 .verantia-faq summary{
   display:flex;align-items:center;justify-content:space-between;gap:16px;
   padding:19px 0;cursor:pointer;list-style:none;
 }
 .verantia-faq summary::-webkit-details-marker{display:none}
-.verantia-faq summary h3{
-  font-size:16px;font-weight:700;margin:0;line-height:1.4;
+.verantia-faq summary h3{font-size:16px;font-weight:700;margin:0;line-height:1.42}
+.verantia-faq__s{
+  position:relative;width:22px;height:22px;flex:none;border-radius:50%;
+  background:var(--v-soft);transition:transform .28s ease;
 }
-.verantia-faq__sign{
-  position:relative;width:22px;height:22px;flex:none;
-  border-radius:50%;background:var(--verantia-surface-alt);
-  transition:transform .3s ease,background-color .25s ease;
-}
-.verantia-faq__sign::before,
-.verantia-faq__sign::after{
+.verantia-faq__s::before,.verantia-faq__s::after{
   content:'';position:absolute;inset:50% 5px auto;height:2px;border-radius:2px;
-  background:var(--verantia-blue-deep);translate:0 -50%;
+  background:var(--v-blue-deep);translate:0 -50%;
 }
-.verantia-faq__sign::after{rotate:90deg}
-.verantia-faq details[open] .verantia-faq__sign{transform:rotate(45deg)}
-.verantia-faq details>p{
-  padding-bottom:21px;margin:0;
-  font-size:14.5px;color:var(--verantia-muted);max-width:68ch;
-}
+.verantia-faq__s::after{rotate:90deg}
+.verantia-faq details[open] .verantia-faq__s{transform:rotate(45deg)}
+.verantia-faq details>p{padding-bottom:21px;margin:0;font-size:14.6px;color:var(--v-muted);max-width:70ch}
 
 /* ---------- CTA final ---------- */
 .verantia-cta{text-align:center}
-.verantia-cta__inner{max-width:700px;margin:0 auto}
-.verantia-cta h2{font-size:clamp(26px,3.3vw,42px)}
-.verantia-cta__lead{font-size:clamp(15.5px,1.2vw,18px);color:var(--verantia-text-dark);margin-bottom:32px}
+.verantia-cta__in{max-width:700px;margin:0 auto}
+.verantia-cta h2{font-size:clamp(26px,3.2vw,42px)}
+.verantia-cta__lead{font-size:clamp(15.5px,1.2vw,18px);color:#c3cede;margin-bottom:30px}
 .verantia-cta__direct{
-  margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;
-  font-size:14.5px;
+  margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;font-size:14.5px;
 }
 .verantia-cta__direct a{
-  display:inline-flex;align-items:center;gap:8px;
-  color:var(--verantia-text-dark);font-weight:600;
-  border-bottom:1px solid rgba(255,255,255,.22);
-  padding-bottom:2px;transition:color .2s ease,border-color .2s ease;
+  display:inline-flex;align-items:center;gap:8px;color:#d9e2f2;font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:2px;
+  transition:color .2s ease,border-color .2s ease;
 }
-.verantia-cta__direct a:hover{color:#fff;border-color:var(--verantia-blue-bright)}
-.verantia-cta__direct svg{width:16px;height:16px;color:var(--verantia-blue-bright);flex:none}
+.verantia-cta__direct a:hover{color:#fff;border-color:var(--v-blue-bright)}
+.verantia-cta__direct svg{width:16px;height:16px;color:var(--v-blue-bright);flex:none}
 
-/* ---------- Entrada (CSS puro, sin JS) ---------- */
-@keyframes verantia-rise{
-  from{opacity:0;transform:translate3d(0,22px,0)}
+/* ---------- Entrada (CSS puro) ---------- */
+@keyframes verantia-up{
+  from{opacity:0;transform:translate3d(0,20px,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
-.verantia-hero__badge,
-.verantia-h1,
-.verantia-hero__lead,
-.verantia-hero__ctas,
-.verantia-trust{
-  animation:verantia-rise .72s cubic-bezier(.16,1,.3,1) both;
+.verantia-pill,.verantia-h1,.verantia-hero__lead,.verantia-hero__ctas,.verantia-hero__micro{
+  animation:verantia-up .7s cubic-bezier(.16,1,.3,1) both;
 }
-.verantia-h1{animation-delay:.06s}
-.verantia-hero__lead{animation-delay:.12s}
-.verantia-hero__ctas{animation-delay:.18s}
-.verantia-trust{animation-delay:.24s}
+.verantia-h1{animation-delay:.05s}
+.verantia-hero__lead{animation-delay:.1s}
+.verantia-hero__ctas{animation-delay:.16s}
+.verantia-hero__micro{animation-delay:.22s}
+.verantia-deliver{animation:verantia-up .8s .18s cubic-bezier(.16,1,.3,1) both}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1024px){
-  .verantia-grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .verantia-grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .verantia-hero__grid{grid-template-columns:minmax(0,1fr);gap:38px}
+  .verantia-calc{grid-template-columns:minmax(0,1fr)}
+  .verantia-g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .verantia-g3{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:720px){
   .verantia-wrap{padding-inline:18px}
-  .verantia-grid--2,
-  .verantia-grid--3,
-  .verantia-grid--4{grid-template-columns:minmax(0,1fr)}
-  .verantia-metrics{grid-template-columns:minmax(0,1fr)}
-  .verantia-card,.verantia-glass{padding:26px 22px}
+  .verantia-g2,.verantia-g3,.verantia-g4{grid-template-columns:minmax(0,1fr)}
   .verantia-hero__ctas .verantia-btn{width:100%}
-  .verantia-cta__direct{flex-direction:column;align-items:center;gap:14px}
+  .verantia-stepper{max-width:100%}
+  .verantia-calc__row{grid-template-columns:minmax(0,1fr);gap:18px}
+  .verantia-cta__direct{flex-direction:column;align-items:center}
 }
 
-/* ---------- Accesibilidad: menos movimiento ---------- */
 @media (prefers-reduced-motion:reduce){
   .verantia-home *{animation:none!important;transition:none!important}
-  .verantia-hero__glow{animation:none}
 }
 </style>
 
 <div class="verantia-home">
 
-  <!-- ======================= HERO ======================= -->
-  <section class="verantia-section verantia-section--dark verantia-hero" aria-labelledby="verantia-h1">
-    <span class="verantia-hero__glow" aria-hidden="true"></span>
+  <!-- ===================== HERO ===================== -->
+  <section class="verantia-sec verantia-hero" aria-labelledby="verantia-h1">
     <div class="verantia-wrap">
-      <div class="verantia-hero__inner">
+      <div class="verantia-hero__grid">
 
-        <p class="verantia-hero__badge"><span aria-hidden="true"></span>Verantia · Valladolid</p>
+        <div>
+          <p class="verantia-pill"><b>Gratis</b> Primera auditoría sin compromiso</p>
 
-        <h1 class="verantia-h1" id="verantia-h1">
-          Automatización e <em>inteligencia artificial</em> para empresas de Valladolid
-        </h1>
+          <h1 class="verantia-h1" id="verantia-h1">
+            Auditoría tecnológica gratuita para pymes de Valladolid: qué <em>automatizar</em> y dónde aplicar IA
+          </h1>
 
-        <p class="verantia-hero__lead">
-          Ayudamos a pymes y negocios de Valladolid a automatizar procesos, atender mejor a sus
-          clientes y recuperar las horas que hoy se van en trabajo manual. Primero analizamos cómo
-          trabajas y después montamos solo lo que de verdad te ahorra tiempo o te hace vender más.
-        </p>
+          <p class="verantia-hero__lead">
+            No empezamos vendiéndote software. Analizamos cómo trabaja tu negocio, medimos dónde se
+            te va el tiempo y el dinero, y te entregamos un informe con qué tareas conviene
+            automatizar y en qué procesos la inteligencia artificial te aporta de verdad. Después
+            decides tú.
+          </p>
 
-        <div class="verantia-hero__ctas">
-          <a class="verantia-btn verantia-btn--primary" href="/contacto/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
-            Solicitar diagnóstico gratuito
-          </a>
-          <a class="verantia-btn verantia-btn--ghost" href="/servicios/">
-            Ver todos los servicios
-          </a>
+          <div class="verantia-hero__ctas">
+            <a class="verantia-btn verantia-btn--main" href="/contacto/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+              Pedir mi auditoría gratuita
+            </a>
+            <a class="verantia-btn verantia-btn--line" href="#verantia-calculadora">
+              Calcular lo que pierdo
+            </a>
+          </div>
+
+          <ul class="verantia-hero__micro">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Sin coste ni compromiso
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Informe escrito, tuyo para siempre
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Equipo local en Valladolid
+            </li>
+          </ul>
         </div>
 
-        <ul class="verantia-trust">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Diagnóstico inicial sin compromiso
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Sin contratos de permanencia
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Equipo local, trato directo
-          </li>
-        </ul>
+        <aside class="verantia-deliver" aria-labelledby="verantia-deliver-t">
+          <h2 id="verantia-deliver-t">Qué te llevas de la auditoría</h2>
+          <p class="verantia-deliver__sub">Tanto si trabajas con nosotros después como si no.</p>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+              El mapa de tus procesos actuales, puesto por escrito
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Cuánto te cuesta al mes cada tarea manual
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Qué automatizar primero y qué no toca aún
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M2 12h3m14 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+              Dónde encaja la IA en tu negocio y dónde sobra
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              Una hoja de ruta priorizada por retorno
+            </li>
+          </ul>
+          <p class="verantia-deliver__price">
+            <strong>0 €</strong>
+            <span>La primera auditoría es gratuita y sin compromiso</span>
+          </p>
+        </aside>
 
       </div>
     </div>
   </section>
 
-  <!-- ======================= PROBLEMA ======================= -->
-  <section class="verantia-section">
+  <!-- ===================== SEÑALES ===================== -->
+  <section class="verantia-sec verantia-sec--soft">
     <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">El punto de partida</p>
-        <h2 class="verantia-h2">Las tareas manuales tienen un coste que no aparece en ninguna factura</h2>
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">El punto de partida</p>
+        <h2 class="verantia-h2">Si te reconoces en tres de estas, hay dinero sobre la mesa</h2>
         <p class="verantia-lead">
-          Casi ningún negocio sabe cuántas horas dedica a trabajo repetitivo. Cuando se mide, casi
-          siempre sorprende.
+          Son las señales que más vemos al auditar negocios y pymes de Valladolid. Ninguna aparece
+          en la contabilidad, pero todas se pagan.
         </p>
       </header>
 
-      <div class="verantia-grid verantia-grid--3">
+      <ul class="verantia-grid verantia-g3">
+        <li class="verantia-signal">
+          <span class="verantia-signal__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Alguien de tu equipo pasa datos de un programa a otro a mano, todas las semanas.</p>
+        </li>
+        <li class="verantia-signal">
+          <span class="verantia-signal__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Los mensajes que entran fuera de horario se quedan sin contestar hasta el día siguiente.</p>
+        </li>
+        <li class="verantia-signal">
+          <span class="verantia-signal__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Si una persona concreta falta, hay procesos que directamente se paran.</p>
+        </li>
+        <li class="verantia-signal">
+          <span class="verantia-signal__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Pagas varias herramientas que no se hablan entre sí, o que apenas usáis.</p>
+        </li>
+        <li class="verantia-signal">
+          <span class="verantia-signal__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>No sabrías decir, con números, qué cliente o qué servicio te deja más margen.</p>
+        </li>
+        <li class="verantia-signal">
+          <span class="verantia-signal__dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Has oído que deberías «usar IA», pero nadie te ha dicho para qué en tu caso concreto.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CALCULADORA ===================== -->
+  <section class="verantia-sec" id="verantia-calculadora">
+    <div class="verantia-wrap">
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">Calculadora</p>
+        <h2 class="verantia-h2">Cuánto te cuesta al año el trabajo manual</h2>
+        <p class="verantia-lead">
+          Ajusta los tres datos a tu realidad y verás el coste aproximado de las tareas
+          repetitivas en tu negocio.
+        </p>
+      </header>
+
+      <div class="verantia-calc" id="verantia-calc">
+        <div>
+          <h3>Tus datos</h3>
+          <p class="verantia-calc__intro">
+            Piensa solo en tareas administrativas y repetitivas: introducir datos, emitir
+            facturas, cuadrar hojas de cálculo, responder lo mismo cada día.
+          </p>
+
+          <div class="verantia-field">
+            <label for="verantia-personas">Personas que hacen esas tareas</label>
+            <div class="verantia-stepper">
+              <button type="button" data-v-step="-1" data-v-target="verantia-personas" aria-label="Reducir número de personas">−</button>
+              <input type="number" id="verantia-personas" value="3" min="1" max="60" step="1" inputmode="numeric">
+              <button type="button" data-v-step="1" data-v-target="verantia-personas" aria-label="Aumentar número de personas">+</button>
+            </div>
+          </div>
+
+          <div class="verantia-field">
+            <label for="verantia-horas">Horas a la semana que dedica cada una</label>
+            <div class="verantia-stepper">
+              <button type="button" data-v-step="-1" data-v-target="verantia-horas" aria-label="Reducir horas semanales">−</button>
+              <input type="number" id="verantia-horas" value="6" min="1" max="40" step="1" inputmode="numeric">
+              <button type="button" data-v-step="1" data-v-target="verantia-horas" aria-label="Aumentar horas semanales">+</button>
+            </div>
+          </div>
+
+          <div class="verantia-field">
+            <label for="verantia-coste">Coste medio por hora (€)</label>
+            <div class="verantia-stepper">
+              <button type="button" data-v-step="-1" data-v-target="verantia-coste" aria-label="Reducir coste por hora">−</button>
+              <input type="number" id="verantia-coste" value="18" min="8" max="120" step="1" inputmode="numeric">
+              <button type="button" data-v-step="1" data-v-target="verantia-coste" aria-label="Aumentar coste por hora">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="verantia-calc__out" aria-live="polite">
+          <p class="verantia-calc__big" id="verantia-out-anual">16.848 €</p>
+          <p class="verantia-calc__biglab">al año en tareas que podrían estar automatizadas</p>
+
+          <div class="verantia-calc__row">
+            <div>
+              <p class="verantia-calc__num" id="verantia-out-mes">1.404 €</p>
+              <p class="verantia-calc__lab">al mes</p>
+            </div>
+            <div>
+              <p class="verantia-calc__num" id="verantia-out-dias">117 días</p>
+              <p class="verantia-calc__lab">de trabajo al año (jornadas de 8 h)</p>
+            </div>
+
+            <p class="verantia-calc__note">
+              Estimación orientativa a partir de tus datos. No todo ese tiempo es automatizable
+              al 100 %: precisamente eso es lo que determina la auditoría.
+            </p>
+          </div>
+
+          <p class="verantia-calc__cta">
+            <a class="verantia-btn verantia-btn--main" href="/contacto/">Quiero saber cuánto puedo recuperar</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LA AUDITORÍA: CÓMO FUNCIONA ===================== -->
+  <section class="verantia-sec verantia-sec--soft">
+    <div class="verantia-wrap">
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">La auditoría</p>
+        <h2 class="verantia-h2">Cómo trabajamos, paso a paso</h2>
+        <p class="verantia-lead">
+          Un proceso corto y con puntos de control claros. Al terminar tienes un informe propio,
+          aunque decidas no seguir con nosotros.
+        </p>
+      </header>
+
+      <ol class="verantia-grid verantia-g4">
+        <li class="verantia-step">
+          <span class="verantia-step__n">PASO 01</span>
+          <h3>Reunión inicial</h3>
+          <p>
+            Una conversación de una hora, contigo y con quien hace el trabajo cada día. Sin
+            tecnicismos y sin presentación comercial.
+          </p>
+        </li>
+        <li class="verantia-step">
+          <span class="verantia-step__n">PASO 02</span>
+          <h3>Mapa y medición</h3>
+          <p>
+            Dibujamos cada proceso tal y como ocurre de verdad y le ponemos números: horas,
+            frecuencia, errores y coste real.
+          </p>
+        </li>
+        <li class="verantia-step">
+          <span class="verantia-step__n">PASO 03</span>
+          <h3>Informe y prioridades</h3>
+          <p>
+            Te entregamos qué automatizar, dónde aplicar IA, qué presupuesto requiere cada
+            punto y en qué orden conviene abordarlo.
+          </p>
+        </li>
+        <li class="verantia-step">
+          <span class="verantia-step__n">PASO 04</span>
+          <h3>Tú decides</h3>
+          <p>
+            Puedes implementarlo con nosotros, con tu equipo o no hacer nada. El informe es tuyo
+            en cualquiera de los tres casos.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== QUÉ ANALIZAMOS ===================== -->
+  <section class="verantia-sec">
+    <div class="verantia-wrap">
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">Alcance</p>
+        <h2 class="verantia-h2">Qué revisamos en tu negocio</h2>
+        <p class="verantia-lead">
+          Miramos el negocio completo, no solo la parte informática. A veces la mejora más
+          rentable no necesita tecnología nueva, solo reordenar cómo se hacen las cosas.
+        </p>
+      </header>
+
+      <div class="verantia-grid verantia-g3">
         <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16V9m5 7V5m5 11v-4"/></svg>
           </p>
-          <h3>Horas que se van en lo repetitivo</h3>
+          <h3>Procesos internos</h3>
           <p>
-            Copiar datos de un programa a otro, emitir las mismas facturas cada mes, rehacer el
-            informe de cada semana. Trabajo necesario que no aporta valor y que nadie contabiliza.
+            Administración, facturación, pedidos, stock, altas de cliente. Dónde se repite
+            trabajo, dónde se cuela el error y qué pasos sobran.
           </p>
         </article>
 
@@ -494,125 +670,140 @@
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg>
           </p>
-          <h3>Clientes que se enfrían esperando</h3>
+          <h3>Atención al cliente</h3>
           <p>
-            Un mensaje que entra por la noche o una llamada que nadie coge acaba en la competencia.
-            En la mayoría de sectores, quien responde primero es quien cierra la venta.
+            Cómo y cuándo os contactan, cuánto tardáis en responder y cuántas oportunidades se
+            pierden por llegar tarde o fuera de horario.
           </p>
         </article>
 
         <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
           </p>
-          <h3>Procesos que dependen de una sola persona</h3>
+          <h3>Captación y seguimiento</h3>
           <p>
-            Cuando solo una persona sabe cómo se hace algo, sus vacaciones o una baja frenan al
-            negocio entero. Automatizar también es documentar y repartir ese conocimiento.
+            Por dónde entran los contactos, cuáles acaban en venta y en qué punto del seguimiento
+            se enfrían los que sí tenían interés.
+          </p>
+        </article>
+
+        <article class="verantia-card">
+          <p class="verantia-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>
+          </p>
+          <h3>Datos y herramientas</h3>
+          <p>
+            Qué software pagas, qué parte usas de verdad, qué datos están duplicados y qué
+            información necesitarías tener a la vista para decidir mejor.
+          </p>
+        </article>
+
+        <article class="verantia-card">
+          <p class="verantia-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M2 12h3m14 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          </p>
+          <h3>Oportunidades de IA</h3>
+          <p>
+            En qué tareas concretas la inteligencia artificial aporta valor real en tu negocio,
+            y en cuáles sería gastar dinero para presumir.
+          </p>
+        </article>
+
+        <article class="verantia-card">
+          <p class="verantia-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </p>
+          <h3>Presencia y reputación</h3>
+          <p>
+            Cómo te encuentra un cliente nuevo, qué ve al buscarte y cómo estáis gestionando las
+            reseñas y la imagen del negocio.
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ======================= QUÉ HACEMOS ======================= -->
-  <section class="verantia-section verantia-section--alt">
+  <!-- ===================== QUÉ SALE DE LA AUDITORÍA (SERVICIOS) ===================== -->
+  <section class="verantia-sec verantia-sec--soft">
     <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">Qué hacemos</p>
-        <h2 class="verantia-h2">Soluciones de automatización con IA adaptadas a tu negocio</h2>
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">Después del informe</p>
+        <h2 class="verantia-h2">Lo que suele salir de una auditoría</h2>
         <p class="verantia-lead">
-          No vendemos un producto cerrado. Estas son las áreas donde vemos más resultado en
-          empresas de Valladolid, y cada una se diseña sobre tus procesos reales.
+          Nada de esto se vende antes de medir. Estas son las soluciones que implementamos cuando
+          el informe dice que merecen la pena.
         </p>
       </header>
 
-      <div class="verantia-grid verantia-grid--3">
-        <article class="verantia-card verantia-svc">
+      <div class="verantia-grid verantia-g3">
+        <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg>
           </p>
-          <h3>Chatbots y asistentes virtuales</h3>
-          <p>
-            Atienden consultas, resuelven las preguntas de siempre y cierran citas en tu web y en
-            WhatsApp a cualquier hora, incluidos fines de semana y festivos.
-          </p>
-          <a class="verantia-svc__link" href="/servicios/chatbots-asistentes-virtuales/">
+          <h3>Atención automatizada</h3>
+          <p>Un asistente que responde, resuelve dudas y cierra citas a cualquier hora en tu web y en WhatsApp.</p>
+          <a class="verantia-card__link" href="/servicios/chatbots-asistentes-virtuales/">
             Chatbots y asistentes virtuales 24/7
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </article>
 
-        <article class="verantia-card verantia-svc">
+        <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
           </p>
-          <h3>Automatización de procesos</h3>
-          <p>
-            Facturas, pedidos, altas de cliente e informes que hoy se hacen a mano y pasan a
-            ejecutarse solos, conectando las herramientas que ya utilizas.
-          </p>
-          <a class="verantia-svc__link" href="/servicios/automatizacion-de-procesos/">
+          <h3>Procesos que se ejecutan solos</h3>
+          <p>Facturas, pedidos, informes y altas de cliente conectando las herramientas que ya utilizas.</p>
+          <a class="verantia-card__link" href="/servicios/automatizacion-de-procesos/">
             Automatización de procesos repetitivos
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </article>
 
-        <article class="verantia-card verantia-svc">
+        <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
           </p>
-          <h3>Clasificación inteligente de leads</h3>
-          <p>
-            Cada contacto que entra se puntúa según su interés real y su urgencia, para que tu
-            equipo comercial sepa a quién llamar primero.
-          </p>
-          <a class="verantia-svc__link" href="/servicios/clasificador-de-leads/">
+          <h3>Priorización de oportunidades</h3>
+          <p>Cada contacto puntuado según interés real y urgencia, para que tu equipo llame primero a quien va en serio.</p>
+          <a class="verantia-card__link" href="/servicios/clasificador-de-leads/">
             Clasificador inteligente de leads
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </article>
 
-        <article class="verantia-card verantia-svc">
+        <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           </p>
-          <h3>Aplicaciones a medida</h3>
-          <p>
-            Cuando el software genérico se queda corto, desarrollamos la herramienta concreta que
-            tu negocio necesita: control de inventario, gestión interna o portal de cliente.
-          </p>
-          <a class="verantia-svc__link" href="/servicios/aplicaciones-personalizadas/">
+          <h3>Herramienta propia a medida</h3>
+          <p>Cuando el software genérico se queda corto: control de inventario, gestión interna o portal de cliente.</p>
+          <a class="verantia-card__link" href="/servicios/aplicaciones-personalizadas/">
             Aplicaciones personalizadas para empresas
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </article>
 
-        <article class="verantia-card verantia-svc">
+        <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
           </p>
-          <h3>IA generativa para contenido</h3>
-          <p>
-            Imágenes y vídeos creados y retocados con IA para que tu producto y tus redes se vean
-            al nivel de tu trabajo, sin sesiones de fotos cada temporada.
-          </p>
-          <a class="verantia-svc__link" href="/servicios/ia-generativa-contenido-visual/">
+          <h3>Contenido visual con IA</h3>
+          <p>Imágenes y vídeos generados y retocados para que tu producto y tus redes se vean al nivel de tu trabajo.</p>
+          <a class="verantia-card__link" href="/servicios/ia-generativa-contenido-visual/">
             IA generativa para contenido visual
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </article>
 
-        <article class="verantia-card verantia-svc">
+        <article class="verantia-card">
           <p class="verantia-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </p>
-          <h3>Reseñas automáticas en Google</h3>
-          <p>
-            Al terminar el servicio, tu cliente recibe solo el enlace para valorarte. Más reseñas
-            y mejor posición local sin tener que acordarte de pedirlas.
-          </p>
-          <a class="verantia-svc__link" href="/servicios/resenas-automaticas-google/">
+          <h3>Reputación en automático</h3>
+          <p>Al terminar el servicio, tu cliente recibe solo el enlace para valorarte en Google. Más reseñas, mejor posición local.</p>
+          <a class="verantia-card__link" href="/servicios/resenas-automaticas-google/">
             Reseñas automáticas en Google
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -621,351 +812,213 @@
     </div>
   </section>
 
-  <!-- ======================= CÓMO FUNCIONA ======================= -->
-  <section class="verantia-section verantia-section--dark">
+  <!-- ===================== MÉTRICAS ===================== -->
+  <section class="verantia-sec verantia-sec--dark">
     <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">Cómo trabajamos</p>
-        <h2 class="verantia-h2">De la primera reunión al proceso automatizado</h2>
-        <p class="verantia-lead">
-          Un camino corto y con puntos de control claros. En ningún momento tienes que decidir a
-          ciegas.
-        </p>
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">Por qué insistimos en medir</p>
+        <h2 class="verantia-h2">El margen está ahí, aunque no se vea en la cuenta de resultados</h2>
       </header>
 
-      <ol class="verantia-grid verantia-grid--4">
-        <li class="verantia-glass verantia-step">
-          <span class="verantia-step__num">PASO 01</span>
-          <h3>Diagnóstico de procesos</h3>
-          <p>
-            Hablamos contigo y con quien hace el trabajo cada día. Medimos cuánto tiempo consume
-            cada proceso y dónde se atasca de verdad.
-          </p>
-        </li>
-        <li class="verantia-glass verantia-step">
-          <span class="verantia-step__num">PASO 02</span>
-          <h3>Propuesta con números</h3>
-          <p>
-            Te decimos qué merece la pena automatizar, qué no, cuánto cuesta y qué ahorro puedes
-            esperar. Si no hay margen real, te lo decimos igual.
-          </p>
-        </li>
-        <li class="verantia-glass verantia-step">
-          <span class="verantia-step__num">PASO 03</span>
-          <h3>Implementación por fases</h3>
-          <p>
-            Empezamos por lo que antes da resultado y conectamos tus herramientas actuales, en
-            lugar de obligarte a migrar todo de golpe.
-          </p>
-        </li>
-        <li class="verantia-glass verantia-step">
-          <span class="verantia-step__num">PASO 04</span>
-          <h3>Seguimiento y ajuste</h3>
-          <p>
-            Revisamos el funcionamiento con datos reales de uso, lo afinamos y te dejamos
-            documentado cómo opera cada automatización.
-          </p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ======================= BENEFICIOS ======================= -->
-  <section class="verantia-section">
-    <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">Beneficios</p>
-        <h2 class="verantia-h2">Qué gana tu empresa con procesos automatizados</h2>
-      </header>
-
-      <div class="verantia-grid verantia-grid--3">
-        <article class="verantia-benefit">
-          <p class="verantia-benefit__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </p>
-          <div>
-            <h3>Recuperas horas cada semana</h3>
-            <p>El tiempo que hoy se va en tareas mecánicas vuelve a tu equipo para atender clientes y vender.</p>
-          </div>
-        </article>
-
-        <article class="verantia-benefit">
-          <p class="verantia-benefit__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </p>
-          <div>
-            <h3>Menos errores y menos reprocesos</h3>
-            <p>Al desaparecer la copia manual de datos desaparecen también las facturas mal emitidas y los pedidos duplicados.</p>
-          </div>
-        </article>
-
-        <article class="verantia-benefit">
-          <p class="verantia-benefit__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </p>
-          <div>
-            <h3>Atención disponible siempre</h3>
-            <p>Tu negocio responde a consultas y agenda citas fuera de horario, cuando tu competencia ya ha cerrado.</p>
-          </div>
-        </article>
-
-        <article class="verantia-benefit">
-          <p class="verantia-benefit__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </p>
-          <div>
-            <h3>Decisiones con datos, no por intuición</h3>
-            <p>Los indicadores de tu negocio quedan centralizados y actualizados, sin preparar informes a mano.</p>
-          </div>
-        </article>
-
-        <article class="verantia-benefit">
-          <p class="verantia-benefit__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </p>
-          <div>
-            <h3>Creces sin multiplicar la plantilla</h3>
-            <p>El volumen de trabajo administrativo deja de subir al mismo ritmo que tu facturación.</p>
-          </div>
-        </article>
-
-        <article class="verantia-benefit">
-          <p class="verantia-benefit__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </p>
-          <div>
-            <h3>Mejor experiencia para tu cliente</h3>
-            <p>Respuestas inmediatas, recordatorios de cita y seguimiento posterior sin que nadie tenga que acordarse.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="verantia-metrics">
+      <div class="verantia-grid verantia-g3">
         <article class="verantia-metric">
-          <p class="verantia-metric__fig">60&nbsp;%</p>
+          <p class="verantia-metric__fig">60<span>%</span></p>
           <p>de las actividades de una empresa podrían automatizarse, ahorrando en torno al 30&nbsp;% del tiempo</p>
           <cite>McKinsey Global Institute</cite>
         </article>
         <article class="verantia-metric">
-          <p class="verantia-metric__fig">21×</p>
+          <p class="verantia-metric__fig">21<span>×</span></p>
           <p>más conversión logran las empresas que responden rápido frente a las que tardan más de 30 minutos</p>
           <cite>Aurora Inbox, 2026</cite>
         </article>
         <article class="verantia-metric">
-          <p class="verantia-metric__fig">97&nbsp;%</p>
-          <p>de los consumidores consulta reseñas antes de elegir un negocio local</p>
+          <p class="verantia-metric__fig">97<span>%</span></p>
+          <p>de los consumidores consulta reseñas antes de decidirse por un negocio local</p>
           <cite>Estadísticas de reseñas online, 2026</cite>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ======================= CASOS DE USO ======================= -->
-  <section class="verantia-section verantia-section--alt">
+  <!-- ===================== POR QUÉ VERANTIA ===================== -->
+  <section class="verantia-sec">
     <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">Casos de uso</p>
-        <h2 class="verantia-h2">Ejemplos de automatización por sector</h2>
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">Por qué Verantia</p>
+        <h2 class="verantia-h2">Nuestro compromiso contigo</h2>
         <p class="verantia-lead">
-          Situaciones habituales y qué se puede automatizar en cada una. Son ejemplos de
-          aplicación: el alcance real se define siempre tras el diagnóstico.
+          Trabajamos como socio tecnológico de negocios locales y pymes. Esto es lo que puedes
+          esperar de nosotros, por escrito.
         </p>
       </header>
 
-      <div class="verantia-grid verantia-grid--3">
-        <article class="verantia-case">
-          <h3>Clínicas y centros de estética</h3>
-          <dl>
-            <dt>Situación</dt>
-            <dd>Huecos perdidos por pacientes que no se presentan y recepción al teléfono confirmando citas.</dd>
-            <dt>Automatizable</dt>
-            <dd><strong>Reserva online, recordatorios automáticos</strong> y lista de espera que reocupa el hueco si alguien cancela.</dd>
-          </dl>
+      <div class="verantia-grid verantia-g2">
+        <article class="verantia-promise">
+          <span class="verantia-promise__n" aria-hidden="true">1</span>
+          <div>
+            <h3>Si no hay margen, te lo decimos</h3>
+            <p>
+              Hay negocios que ya funcionan bien y no necesitan automatizar nada todavía. Cuando
+              es el caso, lo escribimos en el informe y no te proponemos ningún proyecto.
+            </p>
+          </div>
         </article>
 
-        <article class="verantia-case">
-          <h3>Talleres y servicios técnicos</h3>
-          <dl>
-            <dt>Situación</dt>
-            <dd>Presupuestos que se redactan uno a uno y clientes llamando para saber si su vehículo está listo.</dd>
-            <dt>Automatizable</dt>
-            <dd><strong>Presupuestos generados desde plantilla</strong> y avisos automáticos de estado por WhatsApp.</dd>
-          </dl>
+        <article class="verantia-promise">
+          <span class="verantia-promise__n" aria-hidden="true">2</span>
+          <div>
+            <h3>Primero medir, después presupuestar</h3>
+            <p>
+              Ninguna propuesta sale sin horas y euros detrás. Sabrás qué ahorro esperar antes de
+              aprobar una sola factura.
+            </p>
+          </div>
         </article>
 
-        <article class="verantia-case">
-          <h3>Tiendas y comercio electrónico</h3>
-          <dl>
-            <dt>Situación</dt>
-            <dd>Stock que se actualiza a mano en varios sitios y las mismas preguntas sobre envíos cada día.</dd>
-            <dt>Automatizable</dt>
-            <dd><strong>Sincronización de inventario</strong> y un asistente que resuelve envíos, tallas y devoluciones.</dd>
-          </dl>
+        <article class="verantia-promise">
+          <span class="verantia-promise__n" aria-hidden="true">3</span>
+          <div>
+            <h3>Tecnología solo cuando aporta</h3>
+            <p>
+              Si el problema se arregla cambiando el orden de dos pasos, te lo diremos antes de
+              venderte una herramienta. No cobramos por complicar las cosas.
+            </p>
+          </div>
         </article>
 
-        <article class="verantia-case">
-          <h3>Restaurantes y hostelería</h3>
-          <dl>
-            <dt>Situación</dt>
-            <dd>Reservas por teléfono en plena hora punta y reseñas que solo dejan los clientes descontentos.</dd>
-            <dt>Automatizable</dt>
-            <dd><strong>Reservas por WhatsApp</strong> y solicitud de reseña justo al terminar el servicio.</dd>
-          </dl>
+        <article class="verantia-promise">
+          <span class="verantia-promise__n" aria-hidden="true">4</span>
+          <div>
+            <h3>Nada de dependencia técnica</h3>
+            <p>
+              Lo que montamos queda documentado y explicado en lenguaje claro. Si algún día
+              quieres llevarlo con otro proveedor, podrás.
+            </p>
+          </div>
         </article>
 
-        <article class="verantia-case">
-          <h3>Asesorías y despachos</h3>
-          <dl>
-            <dt>Situación</dt>
-            <dd>Recopilar documentación de cada cliente cada trimestre, persiguiendo correos y archivos.</dd>
-            <dt>Automatizable</dt>
-            <dd><strong>Recordatorios y recogida de documentos</strong> con seguimiento de quién falta por entregar.</dd>
-          </dl>
+        <article class="verantia-promise">
+          <span class="verantia-promise__n" aria-hidden="true">5</span>
+          <div>
+            <h3>Trato directo y local</h3>
+            <p>
+              Estamos en Valladolid y hablas siempre con quien conoce tu proyecto, no con un
+              departamento distinto cada vez.
+            </p>
+          </div>
         </article>
 
-        <article class="verantia-case">
-          <h3>Inmobiliarias</h3>
-          <dl>
-            <dt>Situación</dt>
-            <dd>Decenas de contactos al día sin saber cuáles tienen intención real de comprar o alquilar.</dd>
-            <dt>Automatizable</dt>
-            <dd><strong>Cualificación automática de cada contacto</strong> y aviso inmediato de los más urgentes.</dd>
-          </dl>
+        <article class="verantia-promise">
+          <span class="verantia-promise__n" aria-hidden="true">6</span>
+          <div>
+            <h3>Sin permanencia</h3>
+            <p>
+              Ni en la auditoría ni después. Te quedas porque lo que implementamos te está
+              ahorrando tiempo o dinero.
+            </p>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ======================= POR QUÉ VERANTIA ======================= -->
-  <section class="verantia-section verantia-section--dark">
+  <!-- ===================== FAQ ===================== -->
+  <section class="verantia-sec verantia-sec--soft">
     <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">Por qué Verantia</p>
-        <h2 class="verantia-h2">Un socio tecnológico cercano, no un proveedor más</h2>
-      </header>
-
-      <div class="verantia-grid verantia-grid--4">
-        <article class="verantia-glass">
-          <h3>Cercanía real</h3>
-          <p>
-            Somos un equipo local. Nos reunimos contigo cuando hace falta y hablas siempre con
-            quien conoce tu proyecto, no con un centro de atención rotatorio.
-          </p>
-        </article>
-        <article class="verantia-glass">
-          <h3>A medida, no plantillas</h3>
-          <p>
-            Cada solución se construye sobre tus procesos reales. Si lo que necesitas ya existe y
-            es más barato, también te lo decimos.
-          </p>
-        </article>
-        <article class="verantia-glass">
-          <h3>Primero medir, después vender</h3>
-          <p>
-            Empezamos siempre por la auditoría de procesos. Sin datos sobre la mesa, cualquier
-            inversión en tecnología es una apuesta.
-          </p>
-        </article>
-        <article class="verantia-glass">
-          <h3>Sin dependencia técnica</h3>
-          <p>
-            Te entregamos todo documentado y te explicamos cómo funciona en lenguaje claro. El
-            sistema es tuyo, no un alquiler encubierto.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= FAQ ======================= -->
-  <section class="verantia-section">
-    <div class="verantia-wrap">
-      <header class="verantia-head verantia-head--center">
-        <p class="verantia-eyebrow">Dudas frecuentes</p>
-        <h2 class="verantia-h2">Preguntas frecuentes sobre automatización empresarial</h2>
+      <header class="verantia-head verantia-head--c">
+        <p class="verantia-tag">Dudas frecuentes</p>
+        <h2 class="verantia-h2">Preguntas sobre la auditoría tecnológica</h2>
       </header>
 
       <div class="verantia-faq">
         <details>
-          <summary><h3>¿Cuánto cuesta automatizar los procesos de mi empresa?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿La auditoría es gratuita de verdad? ¿Dónde está la trampa?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            Depende del alcance, así que nunca damos un precio a ciegas. Empezamos con un
-            diagnóstico gratuito y sin compromiso y, con esos datos, te decimos qué automatización
-            tiene sentido, cuánto cuesta y qué ahorro puede generar. Si el retorno no está claro,
-            te lo decimos antes de que inviertas.
+            Es gratuita y sin compromiso: no pagas nada y no firmas nada. Lo hacemos porque sin
+            medir tu negocio no podríamos proponerte nada honesto, y porque en la mayoría de casos
+            el propio informe deja claro si merece la pena trabajar juntos. Si decides no
+            continuar, el informe se queda contigo igualmente.
           </p>
         </details>
 
         <details>
-          <summary><h3>¿Cuánto tiempo tarda en estar funcionando?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿Cuánto tiempo me va a quitar?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            La mayoría de automatizaciones, chatbots e integraciones quedan operativas en una a
-            tres semanas. Los desarrollos a medida más complejos suelen ir de dos a seis meses, y
-            en esos casos trabajamos por fases para que empieces a usar lo útil cuanto antes.
+            Una reunión inicial de aproximadamente una hora y, después, algunas preguntas
+            puntuales a las personas que llevan cada proceso. No paramos tu actividad ni te
+            ocupamos jornadas completas.
           </p>
         </details>
 
         <details>
-          <summary><h3>¿Tengo que cambiar los programas que ya uso?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿Qué me entregáis exactamente al terminar?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            Normalmente no. La mayor parte del trabajo consiste precisamente en conectar entre sí
-            las herramientas que ya tienes. Solo proponemos sustituir un software cuando es él
-            quien está limitando al negocio, y explicando por qué.
+            Un informe escrito con el mapa de tus procesos actuales, el coste estimado de cada
+            tarea manual, qué conviene automatizar y en qué orden, dónde encaja la inteligencia
+            artificial en tu caso y una hoja de ruta priorizada por retorno.
           </p>
         </details>
 
         <details>
-          <summary><h3>¿Esto sustituye a mi equipo?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿Tengo que cambiar los programas que ya uso?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            No es el objetivo. Lo que se automatiza es la parte mecánica del trabajo: copiar datos,
-            enviar recordatorios, responder lo de siempre. El criterio, la relación con el cliente
-            y las decisiones siguen siendo de las personas.
+            Casi nunca. La mayor parte del trabajo consiste en conectar entre sí las herramientas
+            que ya tienes. Solo proponemos sustituir un software cuando es él quien está limitando
+            al negocio, y explicando por qué.
           </p>
         </details>
 
         <details>
-          <summary><h3>¿Trabajáis solo con empresas de Valladolid?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿Esto sustituye a mi equipo?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            Nuestra base está en Valladolid y es donde trabajamos de forma presencial, con negocios
-            de la ciudad y la provincia. Si estás fuera de la zona, escríbenos y valoramos si
-            podemos darte servicio en remoto.
+            No es el objetivo. Lo que se automatiza es la parte mecánica: mover datos, enviar
+            recordatorios, responder lo de siempre. El criterio, la relación con el cliente y las
+            decisiones siguen siendo de las personas.
           </p>
         </details>
 
         <details>
-          <summary><h3>¿Qué pasa con los datos de mis clientes?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿Mi negocio es demasiado pequeño para esto?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            Se tratan de forma confidencial, se usan únicamente para prestar el servicio acordado y
-            no se comparten con terceros. Cada integración se configura con los permisos mínimos
-            necesarios para funcionar.
+            Suele ser lo contrario. Cuanto más pequeño es el equipo, más se nota recuperar cinco
+            horas a la semana. Buena parte de lo que implementamos es para negocios de dos a diez
+            personas.
           </p>
         </details>
 
         <details>
-          <summary><h3>¿Mi negocio es demasiado pequeño para automatizar?</h3><span class="verantia-faq__sign" aria-hidden="true"></span></summary>
+          <summary><h3>¿Trabajáis solo con empresas de Valladolid?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
           <p>
-            Suele ser justo al contrario. Cuanto más pequeño es el equipo, más se nota recuperar
-            cinco horas a la semana. Muchas de las automatizaciones que montamos son para negocios
-            de dos a diez personas.
+            Nuestra base está en Valladolid y es donde trabajamos de forma presencial, con
+            negocios de la ciudad y la provincia. Si estás fuera de la zona, escríbenos y
+            valoramos si podemos darte servicio en remoto.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>¿Qué pasa con los datos de mi negocio y de mis clientes?</h3><span class="verantia-faq__s" aria-hidden="true"></span></summary>
+          <p>
+            Se tratan de forma confidencial, se usan únicamente para la auditoría y el servicio
+            acordado y no se comparten con terceros. Cada integración se configura con los
+            permisos mínimos necesarios para funcionar.
           </p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- ======================= CTA FINAL ======================= -->
-  <section class="verantia-section verantia-section--dark verantia-cta">
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="verantia-sec verantia-sec--dark verantia-cta">
     <div class="verantia-wrap">
-      <div class="verantia-cta__inner">
-        <h2 class="verantia-h2">Hablemos de tu caso</h2>
+      <div class="verantia-cta__in">
+        <h2 class="verantia-h2">Empecemos por saber dónde estás perdiendo dinero</h2>
         <p class="verantia-cta__lead">
-          Cuéntanos cómo trabajas hoy y te decimos, sin compromiso, qué se puede automatizar y qué
-          impacto tendría. Si no vemos margen de mejora, también te lo diremos.
+          Pide tu auditoría gratuita. Una hora de conversación y te entregamos por escrito qué
+          puedes automatizar, dónde aplicar IA y cuánto podrías recuperar. Sin coste y sin
+          compromiso.
         </p>
 
-        <a class="verantia-btn verantia-btn--light" href="/contacto/">
-          Solicitar diagnóstico gratuito
-        </a>
+        <a class="verantia-btn verantia-btn--light" href="/contacto/">Pedir mi auditoría gratuita</a>
 
         <p class="verantia-cta__direct">
           <a href="tel:+34601855347">
@@ -986,3 +1039,60 @@
   </section>
 
 </div>
+
+<script>
+/* Calculadora de coste del trabajo manual.
+   Los valores por defecto ya vienen calculados en el HTML, así que si este
+   script no llegara a ejecutarse la sección sigue mostrando un ejemplo válido. */
+(function () {
+  var box = document.getElementById('verantia-calc');
+  if (!box) return;
+
+  var personas = document.getElementById('verantia-personas');
+  var horas = document.getElementById('verantia-horas');
+  var coste = document.getElementById('verantia-coste');
+  var outAnual = document.getElementById('verantia-out-anual');
+  var outMes = document.getElementById('verantia-out-mes');
+  var outDias = document.getElementById('verantia-out-dias');
+  if (!personas || !horas || !coste || !outAnual || !outMes || !outDias) return;
+
+  var eur = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+
+  function leer(input) {
+    var n = parseInt(input.value, 10);
+    var min = parseInt(input.min, 10);
+    var max = parseInt(input.max, 10);
+    if (isNaN(n)) n = min;
+    if (n < min) n = min;
+    if (n > max) n = max;
+    return n;
+  }
+
+  function calcular() {
+    var p = leer(personas), h = leer(horas), c = leer(coste);
+    var horasAno = p * h * 52;
+    var anual = horasAno * c;
+
+    outAnual.textContent = eur.format(anual) + ' €';
+    outMes.textContent = eur.format(anual / 12) + ' €';
+    outDias.textContent = eur.format(horasAno / 8) + ' días';
+  }
+
+  [personas, horas, coste].forEach(function (input) {
+    input.addEventListener('input', calcular);
+    input.addEventListener('change', calcular);
+  });
+
+  box.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-v-step]');
+    if (!btn) return;
+    var input = document.getElementById(btn.getAttribute('data-v-target'));
+    if (!input) return;
+    var paso = parseInt(btn.getAttribute('data-v-step'), 10);
+    input.value = leer(input) + paso;
+    calcular();
+  });
+
+  calcular();
+})();
+</script>
