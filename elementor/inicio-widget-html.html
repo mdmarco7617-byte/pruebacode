@@ -238,10 +238,6 @@
 .vr-home.vr-js .vr-rv.vr-in{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
-@media (min-width:1025px){
-  /* con 7 tarjetas, la ultima queda sola en su fila: la centramos */
-  .vr-grid-svc>:last-child:nth-child(3n+1){grid-column:2}
-}
 @media (max-width:1024px){
   .vr-hero-grid{grid-template-columns:1fr;gap:40px}
   .vr-hero-media{max-width:560px;margin:0 auto;width:100%}
@@ -312,10 +308,10 @@
         <p class="vr-lead">Somos una agencia de Valladolid que implanta <strong>inteligencia artificial y automatizaciones</strong> en los procesos de tu negocio para que ahorres tiempo y dinero. Sin jerga técnica, con presupuestos de pyme y diciéndote la verdad cuando algo no te hace falta.</p>
         <div class="vr-cta-row">
           <a class="vr-btn vr-btn--primary" href="https://verantiapro.es/contacto/">Cuéntanos tu caso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/">Ver todos los servicios</a>
+          <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/auditoria-de-procesos/">Ver la auditoría de procesos</a>
         </div>
         <ul class="vr-trust">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Presupuestos de pyme, no de gran cuenta</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Presupuesto ajustado a negocios y pymes</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Primera conversación sin compromiso</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Presencia local en Valladolid</span></li>
         </ul>
@@ -380,60 +376,16 @@
     </div>
   </section>
 
-  <!-- ============ 4. SERVICIOS (7 enlaces internos) ============ -->
+  <!-- ============ 4. QUÉ HACEMOS (enlace a la página de servicios) ============ -->
   <section class="vr-sec vr-sec--soft" aria-labelledby="vr-svc">
     <div class="vr-wrap">
       <div class="vr-head vr-rv">
       <p class="vr-eyebrow">Qué hacemos</p>
-      <h2 id="vr-svc">Siete formas de quitarte trabajo de encima</h2>
-      <p>Cada servicio tiene su propia página con ejemplos, datos y todo el detalle.</p>
+      <h2 id="vr-svc">Chatbots, automatizaciones y aplicaciones a medida</h2>
+      <p>Trabajamos siete líneas de servicio: chatbots y asistentes virtuales, automatización de procesos, aplicaciones personalizadas, IA generativa, clasificador de leads, reseñas en Google y auditoría de procesos. Cada una tiene su propia página con el detalle completo, ejemplos y datos.</p>
       </div>
-      <div class="vr-grid-3 vr-grid-svc">
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></div>
-          <h3>Chatbots y asistentes virtuales</h3>
-          <p>Atienden a tus clientes en la web y en WhatsApp a cualquier hora, resuelven las dudas de siempre y te pasan solo lo importante.</p>
-          <span class="vr-svc-more">Ver chatbots y asistentes virtuales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/automatizacion-de-procesos/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
-          <h3>Automatización de procesos</h3>
-          <p>Conectamos las herramientas que ya usas para que los datos viajen solos y nadie vuelva a copiarlos a mano.</p>
-          <span class="vr-svc-more">Ver automatización de procesos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/aplicaciones-personalizadas/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="16" x="3" y="4" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01"/><path d="M10 6.5h.01"/></svg></div>
-          <h3>Aplicaciones personalizadas</h3>
-          <p>Cuando ningún programa del mercado encaja con tu forma de trabajar, construimos el que sí encaja.</p>
-          <span class="vr-svc-more">Ver aplicaciones personalizadas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M5 12H3"/><path d="M21 12h-2"/><path d="m7 7 1.4 1.4"/><path d="m15.6 15.6 1.4 1.4"/><path d="m17 7-1.4 1.4"/><path d="m8.4 15.6-1.4 1.4"/><circle cx="12" cy="12" r="3.2"/></svg></div>
-          <h3>IA generativa y contenido visual</h3>
-          <p>Textos, imágenes y fichas de producto generadas con inteligencia artificial, con tu tono y tu estilo de marca.</p>
-          <span class="vr-svc-more">Ver IA generativa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/clasificador-de-leads/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg></div>
-          <h3>Clasificador de leads</h3>
-          <p>Ordena y prioriza los contactos que entran para que dediques tu tiempo a los que de verdad van a comprar.</p>
-          <span class="vr-svc-more">Ver el clasificador de leads <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/resenas-automaticas-google/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.9z"/></svg></div>
-          <h3>Reseñas automáticas en Google</h3>
-          <p>Pedimos la reseña en el momento justo y de forma respetuosa con las normas de Google, para reforzar tu ficha local.</p>
-          <span class="vr-svc-more">Ver reseñas automáticas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="vr-card vr-svc vr-rv" href="https://verantiapro.es/servicios/auditoria-de-procesos/">
-          <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1"/><path d="m9 13 2 2 4-4"/></svg></div>
-          <h3>Auditoría de procesos</h3>
-          <p>Ponemos números a lo que te cuesta cada tarea manual y te decimos qué merece la pena automatizar y qué no.</p>
-          <span class="vr-svc-more">Ver la auditoría de procesos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-      </div>
-      <div class="vr-cta-row vr-rv" style="justify-content:center;margin-top:44px">
-        <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/">Comparar todos los servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <div class="vr-cta-row vr-rv" style="justify-content:center;margin-top:-16px">
+        <a class="vr-btn vr-btn--primary" href="https://verantiapro.es/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </div>
     </div>
   </section>
@@ -454,7 +406,7 @@
         </div>
         <div class="vr-card vr-rv">
           <div class="vr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 7a7.5 7.5 0 1 0 0 10"/><path d="M3 10h9"/><path d="M3 14h9"/></svg></div>
-          <h3>Presupuesto de pyme</h3>
+          <h3>Presupuesto ajustado a negocios y pymes</h3>
           <p>Precios pensados para negocios locales y pequeñas empresas, no tarifas de gran consultora.</p>
         </div>
         <div class="vr-card vr-rv">
@@ -476,32 +428,32 @@
     <div class="vr-wrap">
       <div class="vr-head vr-rv">
       <p class="vr-eyebrow">El contexto</p>
-      <h2 id="vr-datos">La IA no es el futuro: es la ventaja que ya tienen otros</h2>
-      <p>Estos son datos públicos, no estimaciones nuestras. Explican bastante bien por qué existimos.</p>
+      <h2 id="vr-datos">Lo que cuesta de verdad hacerlo todo a mano</h2>
+      <p>Cuatro datos públicos, de fuentes que puedes consultar tú mismo. Ninguno es una estimación nuestra.</p>
       </div>
       <div class="vr-grid-4">
         <div class="vr-metric vr-rv">
-          <p class="vr-metric-n"><span data-vr-count="21.1" data-vr-dec="1">21,1</span><span class="vr-metric-u">%</span></p>
-          <p class="vr-metric-l">de las empresas españolas de 10 o más empleados ya usa inteligencia artificial.</p>
-          <p class="vr-metric-s">INE · 1.<sup>er</sup> trimestre de 2025</p>
-        </div>
-        <div class="vr-metric vr-rv">
-          <p class="vr-metric-n"><span data-vr-count="13.4" data-vr-dec="1">13,4</span><span class="vr-metric-u">%</span></p>
-          <p class="vr-metric-l">es la cifra entre las microempresas: la mayoría del tejido local todavía se queda fuera.</p>
-          <p class="vr-metric-s">INE · ETICCE 2024</p>
-        </div>
-        <div class="vr-metric vr-rv">
-          <p class="vr-metric-n"><span data-vr-count="44.9" data-vr-dec="1">44,9</span><span class="vr-metric-u">pts</span></p>
-          <p class="vr-metric-l">de brecha entre las grandes empresas (58,2 %) y las microempresas (13,4 %) en uso de IA.</p>
-          <p class="vr-metric-s">INE · ETICCE 2024</p>
+          <p class="vr-metric-n"><span data-vr-count="226" data-vr-dec="0">226</span><span class="vr-metric-u">h</span></p>
+          <p class="vr-metric-l">al año dedica de media un autónomo en España solo a trámites con la Administración: 3.390 € de su propio tiempo.</p>
+          <p class="vr-metric-s">ATA · agosto de 2026</p>
         </div>
         <div class="vr-metric vr-rv">
           <p class="vr-metric-n"><span data-vr-count="16" data-vr-dec="0">16</span><span class="vr-metric-u">h</span></p>
-          <p class="vr-metric-l">a la semana dedica de media un empleado en España a cinco tareas administrativas.</p>
+          <p class="vr-metric-l">a la semana se le van a un empleado en cinco tareas administrativas. Casi dos días laborables de cada cinco.</p>
           <p class="vr-metric-s">Ricoh Europe · 2026</p>
         </div>
+        <div class="vr-metric vr-rv">
+          <p class="vr-metric-n"><span>60–70</span><span class="vr-metric-u">%</span></p>
+          <p class="vr-metric-l">del tiempo de trabajo actual lo ocupan actividades que la tecnología de IA que ya existe podría automatizar.</p>
+          <p class="vr-metric-s">McKinsey Global Institute · 2023</p>
+        </div>
+        <div class="vr-metric vr-rv">
+          <p class="vr-metric-n"><span data-vr-count="5.6" data-vr-dec="1">5,6</span><span class="vr-metric-u">%</span></p>
+          <p class="vr-metric-l">de las pymes españolas alcanza un nivel digital muy alto. El margen para adelantar a tu competencia es enorme.</p>
+          <p class="vr-metric-s">ONTSI y KPMG · Informe de digitalización de las pymes 2025</p>
+        </div>
       </div>
-      <p class="vr-sources vr-rv">Fuentes: <a href="https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm" target="_blank" rel="noopener nofollow">INE, Encuesta sobre el uso de TIC y comercio electrónico en las empresas</a> (datos definitivos, octubre de 2025) · <a href="https://cotec.es/proyectos-cpt/uso-de-la-ia-en-las-empresas/" target="_blank" rel="noopener nofollow">Fundación Cotec</a>, explotación de los datos del INE por tamaño de empresa · estudio de Ricoh Europe sobre carga administrativa en España.</p>
+      <p class="vr-sources vr-rv">Fuentes: <a href="https://www.muypymes.com/2026/08/18/autonomos-destinan-horas-anuales-tramites-burocracia-ata" target="_blank" rel="noopener nofollow">ATA (Federación Nacional de Asociaciones de Trabajadores Autónomos)</a>, agosto de 2026 · estudio de Ricoh Europe sobre carga administrativa en España · <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener nofollow">McKinsey Global Institute, <i>The economic potential of generative AI</i></a> (2023) · <a href="https://www.ontsi.es/es/publicaciones/intensidad-digital-pymes" target="_blank" rel="noopener nofollow">ONTSI y KPMG, Informe de digitalización de las pymes 2025</a>. El 60–70 % de McKinsey es potencial técnico de automatización, no una promesa de ahorro: lo que de verdad se puede automatizar en tu negocio lo decide una auditoría.</p>
     </div>
   </section>
 
@@ -534,15 +486,15 @@
       <div class="vr-faq">
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Cuánto cuesta implementar inteligencia artificial en un negocio pequeño?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
-          <div class="vr-faq-a"><p>Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel.</p><p>Lo que sí te garantizamos: en la primera conversación sales con una <strong>horquilla de precio realista</strong> y con el ahorro estimado al lado, para que puedas decidir con números. Y trabajamos con presupuestos pensados para pymes y negocios locales, no con tarifas de gran consultora.</p></div>
+          <div class="vr-faq-a"><p>Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel.</p><p>Lo que sí te garantizamos: sales de la primera conversación con una <strong>horquilla de precio realista</strong> y con el ahorro estimado al lado, para que puedas decidir con números. Y trabajamos con presupuestos ajustados a negocios y pymes, no con tarifas de gran consultora.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Necesito conocimientos técnicos para usar lo que me montáis?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
           <div class="vr-faq-a"><p>No. Lo montamos para que funcione en segundo plano y tú sigas trabajando como siempre: los avisos te llegan al correo o a WhatsApp, y los paneles son del estilo de una hoja de cálculo.</p><p>Al entregarlo te enseñamos cómo funciona con tus propios datos y te dejamos una guía corta. Si algo se rompe, lo arreglamos nosotros; no te dejamos con un manual de 40 páginas.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
-          <summary><h3>¿En cuánto tiempo se ven resultados?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
-          <div class="vr-faq-a"><p>Una automatización sencilla suele estar funcionando en <strong>una o dos semanas</strong> desde que tenemos los accesos, y el ahorro de tiempo se nota desde el primer día porque esa tarea deja de hacerse a mano.</p><p>Los proyectos más grandes —un asistente virtual completo, una aplicación a medida— van por fases: la primera fase útil suele entrar en producción en pocas semanas y a partir de ahí se amplía.</p></div>
+          <summary><h3>¿Tengo que cambiar los programas que ya uso?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>Casi nunca. Nuestro trabajo suele consistir justo en lo contrario: hacer que las herramientas que ya tienes se hablen entre ellas. Si tu gestoría trabaja con un programa concreto o llevas años con la misma hoja de cálculo, partimos de ahí.</p><p>Solo proponemos cambiar algo cuando la herramienta actual es la causa del problema, y en ese caso te explicamos por qué y cuánto costaría el cambio. La decisión es tuya.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Y si no sé exactamente qué necesito?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
@@ -554,7 +506,7 @@
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Qué diferencia hay entre vosotros y una agencia grande?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
-          <div class="vr-faq-a"><p>Tres cosas concretas. La primera: hablas siempre con la persona que construye tu proyecto, no con un comercial que luego lo pasa a un equipo que no conoces.</p><p>La segunda: el presupuesto está dimensionado para una pyme, porque nuestra estructura también lo está. La tercera, y la que más nos importa: si algo no te va a dar retorno, <strong>te lo decimos y no te lo cobramos</strong>. Una agencia que factura por volumen tiene el incentivo contrario.</p></div>
+          <div class="vr-faq-a"><p>Tres cosas concretas. La primera: hablas siempre con la persona que construye tu proyecto, no con un comercial que luego lo pasa a un equipo que no conoces.</p><p>La segunda: el presupuesto está ajustado a negocios y pymes, porque nuestra estructura también lo está. La tercera, y la que más nos importa: si algo no te va a dar retorno, <strong>te lo decimos y no te lo cobramos</strong>. Una agencia que factura por volumen tiene el incentivo contrario.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Qué pasa con mis datos y los de mis clientes?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
@@ -589,7 +541,7 @@
       "name": "¿Cuánto cuesta implementar inteligencia artificial en un negocio pequeño?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel."
+        "text": "Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel. Lo que sí te garantizamos: sales de la primera conversación con una horquilla de precio realista y con el ahorro estimado al lado."
       }
     },
     {
@@ -602,10 +554,10 @@
     },
     {
       "@type": "Question",
-      "name": "¿En cuánto tiempo se ven resultados?",
+      "name": "¿Tengo que cambiar los programas que ya uso?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Una automatización sencilla suele estar funcionando en una o dos semanas desde que tenemos los accesos, y el ahorro de tiempo se nota desde el primer día porque esa tarea deja de hacerse a mano. Los proyectos más grandes van por fases: la primera fase útil suele entrar en producción en pocas semanas y a partir de ahí se amplía."
+        "text": "Casi nunca. Nuestro trabajo suele consistir justo en lo contrario: hacer que las herramientas que ya tienes se hablen entre ellas. Si tu gestoría trabaja con un programa concreto o llevas años con la misma hoja de cálculo, partimos de ahí. Solo proponemos cambiar algo cuando la herramienta actual es la causa del problema, y en ese caso te explicamos por qué y cuánto costaría el cambio."
       }
     },
     {
@@ -629,7 +581,7 @@
       "name": "¿Qué diferencia hay entre vosotros y una agencia grande?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tres cosas concretas. La primera: hablas siempre con la persona que construye tu proyecto, no con un comercial que luego lo pasa a un equipo que no conoces. La segunda: el presupuesto está dimensionado para una pyme, porque nuestra estructura también lo está. La tercera: si algo no te va a dar retorno, te lo decimos y no te lo cobramos."
+        "text": "Tres cosas concretas. La primera: hablas siempre con la persona que construye tu proyecto, no con un comercial que luego lo pasa a un equipo que no conoces. La segunda: el presupuesto está ajustado a negocios y pymes, porque nuestra estructura también lo está. La tercera: si algo no te va a dar retorno, te lo decimos y no te lo cobramos."
       }
     },
     {
