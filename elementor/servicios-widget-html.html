@@ -1,0 +1,228 @@
+<style>
+  #verantia-servicios-v2 {
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 90px 48px;
+    box-sizing: border-box;
+  }
+
+  #verantia-servicios-v2 .sv-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  /* El titulo pasa de h2 a h1: esta pagina no tenia ningun h1. */
+  #verantia-servicios-v2 .sv-header h1 {
+    font-size: 46px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 14px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  #verantia-servicios-v2 .sv-header p {
+    font-size: 18px;
+    color: #444d5a;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1000px) {
+    #verantia-servicios-v2 { padding: 70px 32px; }
+    #verantia-servicios-v2 .sv-header h1 { font-size: 36px; }
+  }
+  @media (max-width: 640px) {
+    #verantia-servicios-v2 { padding: 56px 20px; }
+    /* Aqui habia un white-space:nowrap. Con el titulo nuevo, mas largo,
+       provocaba scroll horizontal en movil. Se elimina. */
+    #verantia-servicios-v2 .sv-header h1 { font-size: 27px; }
+    #verantia-servicios-v2 .sv-header p { font-size: 14.5px; }
+    #verantia-servicios-v2 .sv-header { margin-bottom: 38px; }
+  }
+
+  /* --- GRID DE TARJETAS --- */
+  #verantia-servicios-v2 .sv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 1000px) {
+    #verantia-servicios-v2 .sv-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+  @media (max-width: 640px) {
+    #verantia-servicios-v2 .sv-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  #verantia-servicios-v2 .sv-card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 34px 30px;
+    border: 2px solid var(--sv-color, #3b82f6);
+    border-color: color-mix(in srgb, var(--sv-color, #3b82f6) 35%, transparent);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  #verantia-servicios-v2 .sv-card:hover {
+    transform: translate3d(0,-6px,0);
+    border-color: color-mix(in srgb, var(--sv-color, #3b82f6) 90%, transparent);
+    box-shadow: 0 16px 34px -12px color-mix(in srgb, var(--sv-color, #3b82f6) 45%, transparent);
+  }
+
+  #verantia-servicios-v2 .sv-icon-box {
+    width: 68px;
+    height: 68px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--sv-color, #3b82f6) 14%, white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    flex: 0 0 auto;
+    transition: transform 0.25s ease;
+  }
+  #verantia-servicios-v2 .sv-card:hover .sv-icon-box { transform: scale(1.08); }
+  #verantia-servicios-v2 .sv-icon-box svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--sv-color, #3b82f6);
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Los titulos de tarjeta pasan de h3 a h2: cuelgan directamente del h1. */
+  #verantia-servicios-v2 .sv-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+  #verantia-servicios-v2 .sv-card p {
+    font-size: 16.5px;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  #verantia-servicios-v2 .sv-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 16px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--sv-color, #3b82f6);
+    text-decoration: none;
+    align-self: flex-start;
+  }
+  #verantia-servicios-v2 .sv-more:hover { text-decoration: underline; }
+  #verantia-servicios-v2 .sv-more span { transition: transform 0.22s ease; }
+  #verantia-servicios-v2 .sv-card:hover .sv-more span { transform: translateX(4px); }
+  #verantia-servicios-v2 .sv-more:focus-visible {
+    outline: 3px solid var(--sv-color, #3b82f6);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 640px) {
+    #verantia-servicios-v2 .sv-card { padding: 24px 22px; }
+    #verantia-servicios-v2 .sv-icon-box { width: 52px; height: 52px; margin-bottom: 16px; }
+    #verantia-servicios-v2 .sv-icon-box svg { width: 24px; height: 24px; }
+    #verantia-servicios-v2 .sv-card h2 { font-size: 18px; }
+    #verantia-servicios-v2 .sv-card p { font-size: 14.5px; }
+  }
+</style>
+
+<div id="verantia-servicios-v2">
+
+  <div class="sv-header">
+    <h1>Servicios de inteligencia artificial y automatización para pymes</h1>
+    <p>Soluciones de IA y automatización adaptadas a lo que tu negocio necesita de verdad. Trabajamos con pymes y negocios locales de Valladolid y de toda España.</p>
+  </div>
+
+  <div class="sv-grid">
+
+    <div class="sv-card" style="--sv-color:#3b82f6;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h2>Chatbots y Asistentes Virtuales 24/7</h2>
+      <p>Agendan citas, responden preguntas y atienden a tus clientes a cualquier hora, en tu web y WhatsApp, sin descansos ni festivos.</p>
+      <a href="/servicios/chatbots-asistentes-virtuales/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#f59e0b;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <h2>Automatización de Procesos Repetitivos</h2>
+      <p>Facturas, pedidos y tareas administrativas que hoy haces a mano, funcionando solas. Ahorras tiempo, dinero, y ganas eficacia desde el primer día.</p>
+      <a href="/servicios/automatizacion-de-procesos/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#8b5cf6;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <h2>Aplicaciones Personalizadas</h2>
+      <p>¿Necesitas llevar el control de tu inventario u otra gestión concreta sin pagar un software genérico? Creamos una app a medida, solo con lo que tu negocio necesita.</p>
+      <a href="/servicios/aplicaciones-personalizadas/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#06b6d4;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      </div>
+      <h2>IA Generativa para Contenido Visual</h2>
+      <p>Mejoramos y creamos imágenes y vídeos con IA para que tu negocio destaque: fotos de producto más atractivas, contenido para redes sociales listo para publicar, o vídeos cortos que dan vida a tu web.</p>
+      <a href="/servicios/ia-generativa-contenido-visual/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#10b981;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg>
+      </div>
+      <h2>Clasificador Inteligente de Leads</h2>
+      <p>¿Te llegan contactos pero no sabes a cuáles dedicar tiempo primero? Clasificamos automáticamente cada consulta según su interés real y urgencia.</p>
+      <a href="/servicios/clasificador-de-leads/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#14b8a6;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h2>Reseñas Automáticas en Google</h2>
+      <p>En cuanto termines una cita, entregues un pedido o completes un servicio, tu cliente recibe automáticamente el enlace para dejarte una reseña en Google, sin que tengas que acordarte cada vez.</p>
+      <a href="/servicios/resenas-automaticas-google/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#ec4899;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h2>Auditoría Completa de Procesos</h2>
+      <p>Analizamos tu negocio de arriba a abajo y te decimos, sin compromiso y sin coste, dónde estás perdiendo tiempo o dinero y qué tareas se pueden automatizar.</p>
+      <a href="/servicios/auditoria-de-procesos/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="sv-card" style="--sv-color:#6366f1;">
+      <div class="sv-icon-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      </div>
+      <h2>Soporte Personal</h2>
+      <p>Respondemos tus dudas por email, WhatsApp o llamada en menos de 24 horas laborables. Hablas con una persona real, nunca con un contestador automático.</p>
+      <a href="/contacto/" class="sv-more">Hablar con nosotros <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+  </div>
+
+</div>
