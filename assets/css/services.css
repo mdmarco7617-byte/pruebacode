@@ -62,7 +62,10 @@
   align-items: center;
   gap: 56px;
 }
-.service-hero h1 {
+/* Acepta h1 y h2: en las paginas de servicio el H1 real lo pinta el tema
+   (y lleva las palabras clave), asi que el titular del hero baja a h2. */
+.service-hero h1,
+.service-hero h2 {
   font-size: clamp(30px, 3.6vw, 44px);
   font-weight: 800;
   text-wrap: balance;
