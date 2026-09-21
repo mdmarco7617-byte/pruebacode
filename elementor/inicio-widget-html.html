@@ -210,6 +210,14 @@
 .vr-facts dt{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--vr-ink)}
 .vr-facts dd{margin:0;font-size:15.5px;color:var(--vr-text)}
 .vr-facts a{color:var(--vr-blue-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.vr-contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+.vr-contact a{display:inline-flex;align-items:center;gap:9px;padding:9px 16px 9px 12px;
+  border:1px solid var(--vr-border);border-radius:999px;background:#fff;
+  font-size:14.5px;font-weight:600;color:var(--vr-ink);text-decoration:none;
+  transition:transform .22s var(--vr-ease),box-shadow .22s var(--vr-ease),border-color .22s ease}
+.vr-contact a:hover{transform:translateY(-2px);box-shadow:var(--vr-sh-m);
+  border-color:var(--vr-c,var(--vr-blue-light))}
+.vr-contact svg{width:19px;height:19px;flex:0 0 auto;color:var(--vr-c,var(--vr-blue-dark))}
 /* Siete enlaces seguidos en negrita cargaban demasiado el parrafo:
    se quedan en azul y subrayado, que ya los identifica como enlaces. */
 .vr-head p a{color:var(--vr-blue-dark);text-decoration:underline;text-underline-offset:3px;
@@ -245,7 +253,8 @@
 .vr-final h2{color:#fff;font-size:clamp(28px,3.8vw,42px);margin:0 0 16px;text-wrap:balance}
 .vr-final p{color:rgba(255,255,255,.72);max-width:620px;margin:0 auto;font-size:17.5px}
 .vr-final .vr-cta-row{justify-content:center}
-.vr-final-meta{margin-top:30px;font-size:14px;color:rgba(255,255,255,.55)}
+.vr-final .vr-final-meta{margin-top:30px;font-size:14px;color:rgba(255,255,255,.55)}
+/* con .vr-final-meta a secas, `.vr-final p{margin:0 auto}` la pisaba por especificidad */
 .vr-final-meta a{color:#fff;font-weight:600}
 
 /* ---------- Aparicion al hacer scroll ---------- */
@@ -275,7 +284,7 @@
   .vr-cta-row .vr-btn{width:100%}
   .vr-mq-item{width:128px;height:70px;margin-right:12px}
   .vr-facts{padding:4px 20px}
-  .vr-facts>div{grid-template-columns:1fr;gap:6px;padding:18px 0}
+  .vr-facts>div{grid-template-columns:1fr;gap:10px;padding:18px 0}
   .vr-faq-item summary{padding:18px 18px}
   .vr-faq-a{padding:0 18px 20px}
 }
@@ -323,10 +332,10 @@
       <div class="vr-hero-copy">
         <p class="vr-eyebrow">Agencia de IA y automatización · Valladolid</p>
         <h1 id="vr-h1">Automatización e inteligencia artificial para <span class="vr-grad">pymes y negocios locales</span></h1>
-        <p class="vr-lead">Somos una agencia de Valladolid que implanta <strong>inteligencia artificial y automatizaciones</strong> en los procesos de tu negocio para que ahorres tiempo y dinero. Sin jerga técnica, con presupuestos de pyme y diciéndote la verdad cuando algo no te hace falta.</p>
+        <p class="vr-lead">Somos una agencia de Valladolid que implanta <strong>inteligencia artificial y automatizaciones</strong> en los procesos de tu negocio para que ahorres tiempo y dinero. Sin tecnicismos, con presupuestos ajustados a negocios y pymes, y diciéndote la verdad cuando algo no te hace falta.</p>
         <div class="vr-cta-row">
           <a class="vr-btn vr-btn--primary" href="https://verantiapro.es/contacto/">Cuéntanos tu caso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/auditoria-de-procesos/">Ver la auditoría de procesos</a>
+          <a class="vr-btn vr-btn--ghost" href="https://verantiapro.es/servicios/auditoria-de-procesos/">Ver la auditoría gratuita</a>
         </div>
         <ul class="vr-trust">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Presupuesto ajustado a negocios y pymes</span></li>
@@ -506,11 +515,22 @@
       </div>
       <dl class="vr-facts vr-rv">
         <div><dt>Qué es Verantia</dt><dd>Una agencia de inteligencia artificial y automatización de procesos con base en Valladolid.</dd></div>
-        <div><dt>A quién ayudamos</dt><dd>A pymes, autónomos y negocios locales que quieren dejar de hacer a mano tareas que se repiten todos los días.</dd></div>
+        <div><dt>A quién ayudamos</dt><dd>A pymes, autónomos y negocios locales que quieren dejar de hacer a mano tareas que se repiten todos los días, y a empresas que saben que la inteligencia artificial puede aportarles algo pero no tienen claro por dónde empezar ni qué encaja en su caso.</dd></div>
         <div><dt>Zona de servicio</dt><dd>Valladolid y su provincia de forma presencial. Resto de Castilla y León y de España en remoto.</dd></div>
         <div><dt>Qué hacemos</dt><dd>Chatbots y asistentes virtuales, automatización de procesos, aplicaciones personalizadas, IA generativa, clasificador de leads, reseñas automáticas en Google y auditoría de procesos.</dd></div>
-        <div><dt>Por dónde se empieza</dt><dd>Por una <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría de procesos</a>: medimos qué tareas se repiten y cuánto cuestan antes de proponer nada. Si no sale a cuenta automatizar, te lo decimos.</dd></div>
-        <div><dt>Cómo contactar</dt><dd><a href="tel:+34601855347">601 85 53 47</a> · <a href="mailto:info@verantiapro.es">info@verantiapro.es</a></dd></div>
+        <div><dt>Por dónde se empieza</dt><dd>Por una <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría de procesos <strong>gratuita</strong></a>: medimos qué tareas se repiten y cuánto cuestan, sin coste y sin compromiso. Si del análisis sale que no te compensa automatizar, te lo decimos igual.</dd></div>
+        <div><dt>Cómo contactar</dt><dd>
+          <ul class="vr-contact">
+            <li style="--vr-c:#25D366"><a href="https://wa.me/34601855347" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#vr-lg5"/></svg><span>WhatsApp 601 85 53 47</span></a></li>
+            <li><a href="tel:+34601855347"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>601 85 53 47</span></a></li>
+            <!-- FIJO: cuando tengas el numero, descomenta esta linea y
+                 sustituye los dos 983XXXXXX por el numero real (sin espacios
+                 en el href, con espacios en el texto visible):
+            <li><a href="tel:+34983XXXXXX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>983 XX XX XX</span></a></li>
+            -->
+            <li><a href="mailto:info@verantiapro.es"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>info@verantiapro.es</span></a></li>
+          </ul>
+        </dd></div>
       </dl>
     </div>
   </section>
@@ -526,11 +546,11 @@
       <div class="vr-faq">
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Cuánto cuesta implementar inteligencia artificial en un negocio pequeño?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
-          <div class="vr-faq-a"><p>Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel.</p><p>Lo que sí te garantizamos: sales de la primera conversación con una <strong>horquilla de precio realista</strong> y con el ahorro estimado al lado, para que puedas decidir con números. Y trabajamos con presupuestos ajustados a negocios y pymes, no con tarifas de gran consultora.</p></div>
+          <div class="vr-faq-a"><p>Depende del alcance, y preferimos decirte eso antes que darte un precio inventado. Una automatización concreta y bien delimitada —por ejemplo, que los formularios de tu web entren solos en tu hoja de cálculo y te avisen por WhatsApp— es un proyecto pequeño. Un asistente virtual entrenado con tu catálogo y conectado a tu agenda es otro nivel.</p><p>La <strong>auditoría de procesos inicial es gratuita y sin compromiso</strong>, así que sales de ella con una horquilla de precio realista y con el ahorro estimado al lado, sin haber pagado nada por averiguarlo. Y trabajamos con presupuestos ajustados a negocios y pymes, no con tarifas de gran consultora.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
-          <summary><h3>¿Necesito conocimientos técnicos para usar lo que me montáis?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
-          <div class="vr-faq-a"><p>No. Lo montamos para que funcione en segundo plano y tú sigas trabajando como siempre: los avisos te llegan al correo o a WhatsApp, y los paneles son del estilo de una hoja de cálculo.</p><p>Al entregarlo te enseñamos cómo funciona con tus propios datos y te dejamos una guía corta. Si algo se rompe, lo arreglamos nosotros; no te dejamos con un manual de 40 páginas.</p></div>
+          <summary><h3>¿Necesito conocimientos técnicos para utilizar las soluciones que implementáis?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
+          <div class="vr-faq-a"><p>No. Las soluciones se diseñan para funcionar en segundo plano, sin cambiar la forma de trabajar de tu equipo: los avisos llegan al correo o a WhatsApp y los paneles tienen el aspecto de una hoja de cálculo.</p><p>En la entrega hacemos una <strong>sesión de formación con tus propios datos</strong> y te facilitamos una guía breve de uso. El mantenimiento y la resolución de incidencias corren de nuestra cuenta: no te dejamos un manual y una despedida.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Tengo que cambiar los programas que ya uso?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
@@ -538,7 +558,7 @@
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Y si no sé exactamente qué necesito?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
-          <div class="vr-faq-a"><p>Es el punto de partida más habitual y no es un problema. Empezamos por una <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría de procesos</a>: revisamos cómo trabajas hoy, cronometramos las tareas que se repiten y ponemos números a lo que cuestan.</p><p>Con eso encima de la mesa te decimos qué merece la pena automatizar, en qué orden y qué es mejor dejar como está. Muchas veces la respuesta corta es una sola automatización, no un proyecto grande.</p></div>
+          <div class="vr-faq-a"><p>Es el punto de partida más habitual y no es un problema. Empezamos por una <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría de procesos gratuita</a>: revisamos cómo trabajas hoy, cronometramos las tareas que se repiten y ponemos números a lo que cuestan.</p><p>Con eso encima de la mesa te decimos qué merece la pena automatizar, en qué orden y qué es mejor dejar como está. Muchas veces la respuesta corta es una sola automatización, no un proyecto grande.</p></div>
         </details>
         <details class="vr-faq-item vr-rv">
           <summary><h3>¿Trabajáis solo en Valladolid?</h3><span class="vr-faq-sign" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></summary>
@@ -560,10 +580,10 @@
   <section class="vr-sec vr-sec--tight">
     <div class="vr-wrap">
       <div class="vr-final vr-rv">
-        <h2>Cuéntanos qué tarea te está comiendo la semana</h2>
-        <p>Una conversación corta, sin compromiso y sin presupuesto sorpresa. Si vemos que la inteligencia artificial no es tu prioridad ahora mismo, te lo diremos.</p>
+        <h2>Hablemos de los procesos que te están restando tiempo</h2>
+        <p>Empezamos con una auditoría de procesos gratuita y sin compromiso. Analizamos cómo trabajas hoy y te decimos qué merece la pena automatizar. Si concluimos que la inteligencia artificial no es tu prioridad ahora mismo, también te lo diremos.</p>
         <div class="vr-cta-row">
-          <a class="vr-btn vr-btn--light" href="https://verantiapro.es/contacto/">Cuéntanos tu caso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="vr-btn vr-btn--light" href="https://verantiapro.es/contacto/">Solicitar la auditoría gratuita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
           <a class="vr-btn vr-btn--outline" href="tel:+34601855347">Llamar al 601 85 53 47</a>
         </div>
         <p class="vr-final-meta">También por correo: <a href="mailto:info@verantiapro.es">info@verantiapro.es</a> · Valladolid, Castilla y León</p>
@@ -745,7 +765,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Auditoría de procesos",
-              "description": "Medición del coste real de las tareas manuales y priorización de qué merece la pena automatizar.",
+              "description": "Medición gratuita del coste real de las tareas manuales y priorización de qué merece la pena automatizar.",
               "url": "https://verantiapro.es/servicios/auditoria-de-procesos/",
               "serviceType": "Auditoría de procesos",
               "provider": {
@@ -755,7 +775,10 @@
                 "@type": "AdministrativeArea",
                 "name": "Castilla y León"
               }
-            }
+            },
+            "price": "0",
+            "priceCurrency": "EUR",
+            "description": "Auditoría de procesos inicial gratuita y sin compromiso"
           }
         ]
       }
@@ -778,10 +801,10 @@
         },
         {
           "@type": "Question",
-          "name": "¿Necesito conocimientos técnicos para usar lo que me montáis?",
+          "name": "¿Necesito conocimientos técnicos para utilizar las soluciones que implementáis?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Lo montamos para que funcione en segundo plano y tú sigas trabajando como siempre: los avisos te llegan al correo o a WhatsApp, y los paneles son del estilo de una hoja de cálculo. Al entregarlo te enseñamos cómo funciona con tus propios datos y te dejamos una guía corta. Si algo se rompe, lo arreglamos nosotros."
+            "text": "No. Las soluciones se diseñan para funcionar en segundo plano, sin cambiar la forma de trabajar de tu equipo: los avisos llegan al correo o a WhatsApp y los paneles tienen el aspecto de una hoja de cálculo. En la entrega hacemos una sesión de formación con tus propios datos y te facilitamos una guía breve de uso. El mantenimiento y la resolución de incidencias corren de nuestra cuenta."
           }
         },
         {
@@ -797,7 +820,7 @@
           "name": "¿Y si no sé exactamente qué necesito?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Es el punto de partida más habitual y no es un problema. Empezamos por una auditoría de procesos: revisamos cómo trabajas hoy, cronometramos las tareas que se repiten y ponemos números a lo que cuestan. Con eso encima de la mesa te decimos qué merece la pena automatizar, en qué orden y qué es mejor dejar como está."
+            "text": "Es el punto de partida más habitual y no es un problema. Empezamos por una auditoría de procesos gratuita: revisamos cómo trabajas hoy, cronometramos las tareas que se repiten y ponemos números a lo que cuestan. Con eso encima de la mesa te decimos qué merece la pena automatizar, en qué orden y qué es mejor dejar como está."
           }
         },
         {
