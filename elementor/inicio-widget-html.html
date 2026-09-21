@@ -95,6 +95,7 @@
 .vr-trust li{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--vr-muted)}
 .vr-trust svg{width:17px;height:17px;flex:0 0 auto;color:#16a34a}
 .vr-hero-media{position:relative}
+.vr-hero-media picture{display:block}
 .vr-hero-media img{border-radius:var(--vr-r-lg);box-shadow:var(--vr-sh-l)}
 .vr-hero-media::after{content:'';position:absolute;inset:auto -18px -18px auto;width:62%;height:62%;
   z-index:-1;border-radius:var(--vr-r-lg);
@@ -330,12 +331,15 @@
         </ul>
       </div>
       <div class="vr-hero-media">
-        <img src="https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA-.png"
-             srcset="https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA--768x512.png 768w,
-                     https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA--1024x683.png 1024w,
-                     https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA-.png 1536w"
-             sizes="(max-width:1024px) 92vw, 560px" width="1536" height="1024"
-             fetchpriority="high" decoding="async" alt="Técnico de Verantia trabajando con chatbots, sistemas de agendamiento y automatizaciones para pymes">
+        <picture>
+          <source type="image/webp"
+                  srcset="https://verantiapro.es/wp-content/uploads/2026/09/verantia-automatizacion-ia-valladolid-768.webp 768w,
+                          https://verantiapro.es/wp-content/uploads/2026/09/verantia-automatizacion-ia-valladolid-1024.webp 1024w,
+                          https://verantiapro.es/wp-content/uploads/2026/09/verantia-automatizacion-ia-valladolid-1536.webp 1536w"
+                  sizes="(max-width:1024px) 92vw, 560px">
+          <img src="https://verantiapro.es/wp-content/uploads/2026/07/Trabajador-Verantia-Seo-Automatizaciones-e-IA-.png" width="1536" height="1024"
+               fetchpriority="high" decoding="async" alt="Técnico de Verantia trabajando con chatbots, sistemas de agendamiento y automatizaciones para pymes">
+        </picture>
       </div>
     </div>
   </section>
