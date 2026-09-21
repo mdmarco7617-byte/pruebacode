@@ -210,7 +210,11 @@
 .vr-facts dt{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--vr-ink)}
 .vr-facts dd{margin:0;font-size:15.5px;color:var(--vr-text)}
 .vr-facts a{color:var(--vr-blue-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.vr-head p a{color:var(--vr-blue-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* Siete enlaces seguidos en negrita cargaban demasiado el parrafo:
+   se quedan en azul y subrayado, que ya los identifica como enlaces. */
+.vr-head p a{color:var(--vr-blue-dark);text-decoration:underline;text-underline-offset:3px;
+  transition:color .2s ease}
+.vr-head p a:hover{color:var(--vr-blue)}
 
 /* ---------- FAQ ---------- */
 .vr-faq{max-width:860px;margin:0 auto}
@@ -399,7 +403,7 @@
       <div class="vr-head vr-rv">
       <p class="vr-eyebrow">Qué hacemos</p>
       <h2 id="vr-svc">Chatbots, automatizaciones y aplicaciones a medida</h2>
-      <p>Trabajamos siete líneas de servicio: <a href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/">chatbots y asistentes virtuales</a>, <a href="https://verantiapro.es/servicios/automatizacion-de-procesos/">automatización de procesos</a>, aplicaciones personalizadas, <a href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/">IA generativa</a>, clasificador de leads, reseñas en Google y auditoría de procesos. Cada una tiene su propia página con el detalle completo, ejemplos y datos.</p>
+      <p>Trabajamos siete líneas de servicio: <a href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/">chatbots y asistentes virtuales</a>, <a href="https://verantiapro.es/servicios/automatizacion-de-procesos/">automatización de procesos</a>, <a href="https://verantiapro.es/servicios/aplicaciones-personalizadas/">aplicaciones personalizadas</a>, <a href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/">IA generativa</a>, <a href="https://verantiapro.es/servicios/clasificador-de-leads/">clasificador de leads</a>, <a href="https://verantiapro.es/servicios/resenas-automaticas-google/">reseñas en Google</a> y <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría de procesos</a>. Cada una tiene su propia página con el detalle completo, ejemplos y datos.</p>
       </div>
       <div class="vr-cta-row vr-rv" style="justify-content:center;margin-top:-16px">
         <a class="vr-btn vr-btn--primary" href="https://verantiapro.es/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
