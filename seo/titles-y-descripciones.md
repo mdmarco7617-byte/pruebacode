@@ -1,140 +1,162 @@
-# Titles y meta descriptions — Verantia
+# Titles, descriptions y frases clave — Verantia
 
-Copiar y pegar en Yoast, en el cuadro **"Fragmento del motor de búsqueda"**
-(botón *Editar fragmento*) de cada página.
+Para pegar en Yoast, dentro de **cada página** (no en los ajustes globales).
+Orden dentro del recuadro de Yoast: frase clave → título SEO → meta descripción.
 
-Reglas aplicadas: title ≤ 60 caracteres, description entre 120 y 155.
-Todos los valores de abajo están medidos y dentro de límite.
+Todos los valores están medidos: título ≤ 60 caracteres, descripción entre 120 y 155.
+
+Estrategia: se prioriza la búsqueda local. Con un dominio nuevo es más realista
+posicionar "automatización de procesos Valladolid" que el término genérico.
 
 ---
 
 ## Inicio — `/`
-**Title** (55)
+
+**Frase clave objetivo**
+```
+automatización e IA para pymes
+```
+**Título SEO** (55)
 ```
 Automatización e IA para pymes en Valladolid | Verantia
 ```
-**Description** (138)
+**Meta descripción** (138)
 ```
 Agencia de Valladolid que implanta inteligencia artificial y automatizaciones en pymes y negocios locales. Auditoría de procesos gratuita.
 ```
 
 ## Servicios — `/servicios/`
-**Title** (54)
+
+**Frase clave objetivo**
+```
+servicios de IA y automatización
+```
+**Título SEO** (54)
 ```
 Servicios de IA y automatización para pymes | Verantia
 ```
-**Description** (129)
+**Meta descripción** (129)
 ```
 Chatbots, automatización de procesos, aplicaciones a medida e IA generativa para pymes de Valladolid. Primera auditoría gratuita.
 ```
 
-## Contacto — `/contacto/`
-**Title** (54)
-```
-Contacto | Verantia, automatización e IA en Valladolid
-```
-**Description** (133)
-```
-Escríbenos por WhatsApp, llámanos o usa el formulario. Auditoría de procesos gratuita y sin compromiso para pymes y negocios locales.
-```
-
 ## Chatbots — `/servicios/chatbots-asistentes-virtuales/`
-**Title** (58)
+
+**Frase clave objetivo**
 ```
-Chatbots y asistentes virtuales 24/7 para pymes | Verantia
+chatbots para pymes
 ```
-**Description** (133)
+**Título SEO** (58)
 ```
-Asistentes que atienden en tu web y en WhatsApp a cualquier hora, resuelven las dudas de siempre y agendan citas. Auditoría gratuita.
+Chatbots y asistentes virtuales 24/7 | Verantia Valladolid
+```
+**Meta descripción** (138)
+```
+Asistentes que atienden en tu web y en WhatsApp a cualquier hora, resuelven dudas y agendan citas. Para pymes de Valladolid y toda España.
 ```
 
 ## Automatización — `/servicios/automatizacion-de-procesos/`
-**Title** (48)
+
+**Frase clave objetivo**
 ```
-Automatización de procesos para pymes | Verantia
+automatización de procesos
 ```
-**Description** (138)
+**Título SEO** (51)
 ```
-Conectamos las herramientas que ya usas para que los datos dejen de moverse a mano. Automatización a medida para pymes y negocios locales.
+Automatización de procesos en Valladolid | Verantia
+```
+**Meta descripción** (128)
+```
+Conectamos las herramientas que ya usas para que los datos dejen de moverse a mano. Para pymes y negocios locales de Valladolid.
 ```
 
 ## Aplicaciones — `/servicios/aplicaciones-personalizadas/`
-**Title** (54)
+
+**Frase clave objetivo**
 ```
-Aplicaciones a medida para pymes y negocios | Verantia
+aplicaciones personalizadas
 ```
-**Description** (142)
+**Título SEO** (46)
 ```
-Desarrollamos el software que tu negocio necesita cuando ninguna herramienta del mercado encaja con tu forma de trabajar. Presupuesto de pyme.
+Aplicaciones a medida en Valladolid | Verantia
+```
+**Meta descripción** (140)
+```
+Desarrollamos el software que tu negocio necesita cuando ninguna herramienta del mercado encaja. Agencia de Valladolid, presupuesto de pyme.
 ```
 
-## IA generativa — `/servicios/ia-generativa-contenido-visual/`
-**Title** (57)
+## IA Generativa — `/servicios/ia-generativa-contenido-visual/`
+
+**Frase clave objetivo**
 ```
-IA generativa y contenido visual para empresas | Verantia
+IA generativa
 ```
-**Description** (136)
+**Título SEO** (54)
 ```
-Textos, imágenes y fichas de producto generados con inteligencia artificial, con el tono y el estilo de tu marca. Para pymes y negocios.
+IA generativa y contenido visual | Verantia Valladolid
+```
+**Meta descripción** (139)
+```
+Textos, imágenes y fichas de producto generados con IA, con el tono de tu marca. Para pymes y negocios locales de Valladolid y toda España.
 ```
 
-## Leads — `/servicios/clasificador-de-leads/`
-**Title** (50)
+## Clasificador — `/servicios/clasificador-de-leads/`
+
+**Frase clave objetivo**
 ```
-Clasificador de leads con IA para pymes | Verantia
+clasificador de leads
 ```
-**Description** (135)
+**Título SEO** (50)
 ```
-Ordena y prioriza automáticamente los contactos que entran en tu negocio para que dediques tu tiempo a los que de verdad van a comprar.
+Clasificador de leads con IA | Verantia Valladolid
+```
+**Meta descripción** (133)
+```
+Ordena y prioriza los contactos que entran en tu negocio para dedicar tu tiempo a los que van a comprar. Agencia de IA en Valladolid.
 ```
 
 ## Reseñas — `/servicios/resenas-automaticas-google/`
-**Title** (54)
+
+**Frase clave objetivo**
 ```
-Reseñas automáticas en Google para negocios | Verantia
+reseñas automáticas en Google
 ```
-**Description** (133)
+**Título SEO** (51)
+```
+Reseñas automáticas en Google | Verantia Valladolid
+```
+**Meta descripción** (133)
 ```
 Pedimos la reseña en el momento adecuado y respetando las normas de Google, para reforzar la ficha local de tu negocio en Valladolid.
 ```
 
 ## Auditoría — `/servicios/auditoria-de-procesos/`
-**Title** (52)
+
+**Frase clave objetivo**
 ```
-Auditoría de procesos gratuita para pymes | Verantia
+auditoría de procesos
 ```
-**Description** (129)
+**Título SEO** (52)
 ```
-Medimos qué tareas repetitivas te cuestan tiempo y dinero y te decimos qué merece la pena automatizar. Gratuita y sin compromiso.
+Auditoría de procesos gratuita | Verantia Valladolid
+```
+**Meta descripción** (130)
+```
+Medimos qué tareas repetitivas te cuestan tiempo y dinero y qué merece la pena automatizar. Gratuita y sin compromiso. Valladolid.
 ```
 
----
+## Contacto — `/contacto/`
 
-## Páginas de relleno a eliminar
-
-Las 10 entradas en latín del tema, más la de portada del blog:
-
+**Frase clave objetivo**
 ```
-/malesuada-fames-acturpis-egestas/
-/tortor-pretium-viverra-suspendisse/
-/commodo-nulla-facilisi-vehicula/
-/diam-vulputate-pharetra-sitamet/
-/bibendum-tristique-egestas-quis/
-/orci-acuctor-ougue-mauris-bugue/
-/neque-aliquam-vestibulum-corbi/
-/diam-donec-adipiscing-risus/
-/sodales-eusem-integer-vitae-justo/
-/pellentesque-adipiscing-commodo/
+(déjala vacía)
+```
+**Título SEO** (54)
+```
+Contacto | Verantia, automatización e IA en Valladolid
+```
+**Meta descripción** (133)
+```
+Escríbenos por WhatsApp, llámanos o usa el formulario. Auditoría de procesos gratuita y sin compromiso para pymes y negocios locales.
 ```
 
-Categorías de la plantilla, también a eliminar:
-
-```
-/category/guide/
-/category/health/
-/category/innovation/
-```
-
-`/novedades/` es la portada del blog y solo lista las entradas de arriba.
-Decidir si se conserva para publicar contenido propio (entonces: noindex
-mientras esté vacía) o se elimina.
