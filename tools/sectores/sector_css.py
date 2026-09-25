@@ -161,6 +161,7 @@ CSS = r"""
   background:linear-gradient(120deg,#fff,var(--s-light));-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent}
 .vsx-stat-u{font-size:.55em;margin-left:3px}
+.vsx-stat-x{font-size:.72em;white-space:nowrap}
 .vsx-stat-l{font-size:14.5px;color:rgba(255,255,255,.82);margin-top:14px}
 .vsx-stat-s{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
   color:rgba(255,255,255,.45);margin-top:12px}

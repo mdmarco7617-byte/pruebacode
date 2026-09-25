@@ -10,9 +10,12 @@ const [nw, nh] = await p.evaluate(() => { const i = document.getElementById('s')
 console.log(`  origen ${nw}x${nh}`);
 for (const w of widths.split(',').map(Number)) {
   const r = await p.evaluate(([w, q, cl, rt]) => {
-    const i = document.getElementById('s'); const sx = Math.round(i.naturalWidth * cl), sw = i.naturalWidth - sx;
-    let sy = 0, sh = i.naturalHeight;
-    if (rt > 0) { sh = Math.round(sw / rt); sy = Math.round((i.naturalHeight - sh) / 2); }
+    const i = document.getElementById('s');
+    let sx = Math.round(i.naturalWidth * cl), sw = i.naturalWidth - sx, sy = 0, sh = i.naturalHeight;
+    if (rt > 0) {                       // recorte tipo "cover" a la proporcion pedida
+      if (sw / sh > rt) { const n = Math.round(sh * rt); sx += Math.round((sw - n) / 2); sw = n; }
+      else { const n = Math.round(sw / rt); sy = Math.round((sh - n) / 2); sh = n; }
+    }
     const h = Math.round(sh * w / sw);
     const c = document.createElement('canvas'); c.width = w; c.height = h;
     const x = c.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(i, sx, sy, sw, sh, 0, 0, w, h);

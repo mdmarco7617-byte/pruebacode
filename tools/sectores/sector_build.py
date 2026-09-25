@@ -146,11 +146,14 @@ def build(S):
     w('  <section class="vsx-dark" aria-labelledby="vsx-stat-t">\n    <div class="vsx-wrap">\n      ')
     w(head(st["eyebrow"], st["h2"], st["sub"], "vsx-stat-t") + '\n      <div class="vsx-g4">\n')
     for tag, val, dec, unit, label, src in st["items"]:
-        shown = "{:,.{d}f}".format(float(val), d=dec).replace(",", "X").replace(".", ",").replace("X", ".")
+        try:
+            shown = "{:,.{d}f}".format(float(val), d=dec).replace(",", "X").replace(".", ",").replace("X", ".")
+            num = '<span data-vsx-count="%s" data-vsx-dec="%d">%s</span>' % (val, dec, shown)
+        except ValueError:           # cifras expresadas en texto, p. ej. "1 de cada 3": sin contador
+            num = '<span class="vsx-stat-x">%s</span>' % val
         w('        <div class="vsx-stat vsx-rv"><span class="vsx-stat-t">%s</span>'
-          '<p class="vsx-stat-n"><span data-vsx-count="%s" data-vsx-dec="%d">%s</span>'
-          '<span class="vsx-stat-u">%s</span></p><p class="vsx-stat-l">%s</p><p class="vsx-stat-s">%s</p></div>\n'
-          % (tag, val, dec, shown, unit, label, src))
+          '<p class="vsx-stat-n">%s<span class="vsx-stat-u">%s</span></p><p class="vsx-stat-l">%s</p><p class="vsx-stat-s">%s</p></div>\n'
+          % (tag, num, unit, label, src))
     w('      </div>\n      <p class="vsx-src vsx-rv">Fuentes: %s</p>\n    </div>\n  </section>\n\n' % st["sources"])
 
     # ---------- UN DIA CUALQUIERA ----------
