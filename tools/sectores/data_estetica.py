@@ -31,8 +31,8 @@ S = {
     "Una ausencia en un tratamiento largo es una cabina vacía durante una hora o más, y ese tiempo ya no se recupera."),
    ("star", "Reseñas que nunca llegan",
     "Tus clientas salen encantadas, pero casi ninguna deja su opinión en Google si nadie se lo recuerda."),
-   ("camera", "Instagram pide contenido",
-    "Promociones, novedades, fotos de la cabina… y al terminar la jornada no queda tiempo ni ganas de publicar."),
+   ("bell", "Recordatorios y bonos a mano",
+    "Avisar una a una a cada clienta de su cita y llevar la cuenta de los bonos en papel o en Excel se come horas cada semana."),
   ],
   "summary": "<strong>La buena noticia:</strong> casi todas estas tareas se repiten igual cada semana, y eso es "
              "exactamente lo que se puede automatizar sin perder el trato cercano que diferencia a tu centro.",
