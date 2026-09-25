@@ -4,23 +4,20 @@ S = {
  "name": "Centros de estética",
  "icon": "flower",
  "color": {"s": "#c7336f", "dark": "#a3245a", "light": "#f5c2d6", "soft": "#fdf1f6", "rgb": "199,51,111"},
- "credits": "Gustavo Fring y RDNE Stock Project en Pexels (licencia Pexels, uso comercial libre)",
+ "credits": "Gustavo Fring y Artbovich en Pexels (licencia Pexels, uso comercial libre)",
 
  "img1": {"file": "verantia-centro-estetica-tratamiento-facial",
           "alt": "Esteticista realizando un tratamiento facial a una clienta en la cabina de un centro de estética"},
- "img2": {"file": "verantia-centro-estetica-recepcion-citas",
-          "alt": "Recepcionista sonriente atendiendo en el mostrador de un centro de estética"},
+ "img2": {"file": "verantia-centro-estetica-cabina-tratamiento",
+          "alt": "Cabina de un centro de estética con camilla de tratamiento y lámpara de aumento"},
 
  "hero": {
-  "h1": "Inteligencia artificial y automatización para <em>centros de estética</em>",
-  "lead": "Tu agenda llena y tu WhatsApp bajo control, sin salir de la cabina. En Verantia implantamos "
-          "<strong>asistentes de citas, recordatorios automáticos, reseñas y contenido con IA</strong> en centros "
-          "de estética de Valladolid y de toda España, con presupuestos ajustados a tu negocio.",
-  "chips": ["Citas por WhatsApp a cualquier hora", "Menos huecos vacíos", "Más reseñas en Google"],
-  "float_chat": ("WhatsApp · ahora",
-                 "Hola, ¿tenéis hueco el jueves para una limpieza facial?",
-                 "¡Hola! Tengo el jueves a las 17:30. ¿Te la reservo?"),
-  "float_card": ("calok", "Cita confirmada", "Limpieza facial · jueves 17:30"),
+  "h1": "Inteligencia artificial para <em>centros de estética</em>",
+  "lead": "Tu agenda llena y tus clientas atendidas, sin salir de la cabina. En Verantia implantamos "
+          "<strong>asistentes virtuales para WhatsApp, la web y el teléfono</strong>, recordatorios automáticos "
+          "y reseñas en Google en centros de estética de Valladolid y de toda España, con presupuestos "
+          "ajustados a tu negocio.",
+  "chips": ["Atención por WhatsApp y teléfono", "Menos huecos vacíos", "Más reseñas en Google"],
  },
 
  "pains": {
@@ -28,8 +25,8 @@ S = {
   "h2": "Lo que se come el tiempo en un centro de estética",
   "sub": "Tratamientos largos, manos ocupadas y un móvil que no para de sonar. Seguro que te suena.",
   "items": [
-   ("chat", "WhatsApp en plena cabina",
-    "Las clientas escriben para pedir cita o preguntar precios justo cuando tienes las manos ocupadas. Contestas horas después, o se te pasa."),
+   ("phone", "El teléfono suena en plena cabina",
+    "Las clientas llaman o escriben para pedir cita justo cuando tienes las manos ocupadas. Contestas horas después, o se pierde."),
    ("calx", "Citas que no aparecen",
     "Una ausencia en un tratamiento largo es una cabina vacía durante una hora o más, y ese tiempo ya no se recupera."),
    ("star", "Reseñas que nunca llegan",
@@ -44,16 +41,24 @@ S = {
  "services": {
   "eyebrow": "Soluciones para tu centro",
   "h2": "Los 4 servicios más populares en centros de estética",
-  "sub": "Pensados para cómo trabaja de verdad un centro de estética. Puedes empezar por uno solo y sumar el resto cuando quieras.",
+  "sub": "Dos asistentes que atienden por ti y dos automatizaciones que llenan tu agenda y tu ficha de Google. Puedes empezar por uno solo y sumar el resto cuando quieras.",
   "items": [
-   {"icon": "chat", "base": "chatbots-asistentes-virtuales", "link": "Ver chatbots y asistentes virtuales",
-    "title": "Asistente de citas en WhatsApp y en tu web",
-    "desc": "Un asistente entrenado con tu carta de tratamientos que responde a tus clientas al momento, a cualquier hora, y les reserva cita.",
+   {"icon": "chat", "base": "chatbots-asistentes-virtuales", "link": "Ver asistentes virtuales",
+    "title": "Asistente virtual para WhatsApp y tu web",
+    "desc": "Un asistente entrenado con tu carta de tratamientos que responde a tus clientas por escrito al momento, a cualquier hora, y les reserva cita.",
     "bullets": ["Responde precios, duración y preparación de cada tratamiento.",
                 "Ofrece los huecos libres y reserva directamente en tu agenda.",
                 "Deriva a una profesional las consultas delicadas: alergias, embarazo o medicación.",
                 "Habla con el tono de tu centro, cercano y profesional."],
     "result": "ninguna clienta se queda sin respuesta, aunque estés en cabina o con el centro cerrado."},
+   {"icon": "phoneai", "base": "chatbots-asistentes-virtuales", "link": "Ver asistentes virtuales",
+    "title": "Asistente telefónico con inteligencia artificial",
+    "desc": "Una voz natural que atiende las llamadas que tú no puedes coger: resuelve dudas, da cita y te deja todo anotado. Lo desarrollamos a medida para tu centro.",
+    "bullets": ["Contesta cuando estás en cabina, en horas punta o con el centro cerrado.",
+                "Informa de tratamientos, precios y horarios, y reserva en tu agenda.",
+                "Si la consulta necesita a una persona, toma el recado y te avisa para devolver la llamada.",
+                "Te envía un resumen de cada llamada por WhatsApp o por correo."],
+    "result": "ninguna llamada se queda sin atender, aunque tengas las manos ocupadas."},
    {"icon": "bell", "base": "automatizacion-de-procesos", "link": "Ver automatización de procesos",
     "title": "Recordatorios automáticos y agenda sin huecos",
     "desc": "Automatizamos los avisos que hoy haces a mano para que las citas se confirmen solas y los huecos que se liberan vuelvan a ocuparse.",
@@ -70,50 +75,41 @@ S = {
                 "Sin descuentos a cambio de reseñas: está prohibido y pone en riesgo tu ficha.",
                 "Te avisa de cada reseña nueva para que puedas responderla."],
     "result": "una ficha de Google más completa y activa, que es lo primero que mira una clienta nueva."},
-   {"icon": "sparkle", "base": "ia-generativa-contenido-visual", "link": "Ver IA generativa y contenido visual",
-    "title": "Contenido para Instagram creado con IA",
-    "desc": "Mantén tus redes vivas sin robarle horas a la cabina: textos, imágenes y un calendario de publicaciones con el estilo de tu centro.",
-    "bullets": ["Textos para campañas de temporada: novias, verano, bonos regalo.",
-                "Fotos de producto y de cabina mejoradas para que luzcan profesionales.",
-                "Calendario mensual de publicaciones, listo para revisar y programar.",
-                "Contenido responsable: sin prometer resultados médicos ni usar fotos de clientas sin su consentimiento."],
-    "result": "presencia constante en redes dedicándole mucho menos tiempo."},
   ],
   "also_intro": "También te puede interesar:",
-  "also": [("auditoria-de-procesos", "Auditoría de procesos gratuita"),
-           ("clasificador-de-leads", "Clasificador de leads"),
+  "also": [("ia-generativa-contenido-visual", "Contenido para Instagram con IA"),
+           ("auditoria-de-procesos", "Auditoría de procesos gratuita"),
            ("aplicaciones-personalizadas", "Aplicaciones personalizadas")],
  },
 
  "stats": {
-  "eyebrow": "El sector en cifras",
-  "h2": "Un sector que crece y que ya vive en el móvil",
-  "sub": "Datos públicos de fuentes oficiales y del propio sector. Ninguno es una estimación nuestra.",
+  "eyebrow": "Por qué ahora",
+  "h2": "El teléfono sigue mandando y tus clientas esperan respuesta ya",
+  "sub": "Cuatro datos públicos que resumen el problema y la oportunidad. Ninguno es una estimación nuestra.",
   "items": [
-   ("11800", 0, "M€", "de consumo de cosmética y perfumería en España en 2025, un 5,8 % más que el año anterior.", "Stanpa · 2025"),
-   ("32", 0, "M", "de citas de belleza reservadas online en España solo a través de Booksy en 2025. En 2024 fueron 25 millones.", "Booksy · 2025"),
-   ("91", 0, "%", "de los usuarios de redes sociales en España usa WhatsApp cada mes. Tus clientas ya están ahí.", "IAB Spain · 2025"),
-   ("89", 0, "%", "de los españoles consulta reseñas online antes de comprar, frente al 74 % de media internacional.", "Skeepers · 2025"),
+   ("El problema", "57", 0, "%", "de los españoles pide cita en peluquerías y centros de belleza por teléfono. Si estás en cabina, esa llamada se pierde.", "Square · 2023"),
+   ("Lo que esperan", "74", 0, "%", "de los consumidores espera poder recibir atención las 24 horas del día, los 7 días de la semana.", "Zendesk · 2026"),
+   ("Ya lo hacen", "55", 0, "%", "de las empresas españolas ya usa WhatsApp para comunicarse con sus clientes.", "HubSpot · 2026"),
+   ("La oportunidad", "13.4", 1, "%", "de las microempresas usa inteligencia artificial. La mayoría de negocios pequeños aún no ha empezado.", "INE · 2024"),
   ],
-  "sources": '<a href="https://www.stanpa.com/notas-de-prensa/la-industria-cosmetica-supera-los-11-800-millones-de-euros-en-consumo-y-consolida-su-liderazgo-exportador-en-un-entorno-de-alta-exigencia-global/" target="_blank" rel="noopener nofollow">Stanpa, Asociación Nacional de Perfumería y Cosmética</a> (abril de 2026) · '
-             '<a href="https://www.distribucionactualidad.com/booksy-atrae-mas-salones-de-belleza-en-2025" target="_blank" rel="noopener nofollow">Booksy, vía DA Retail</a> (febrero de 2026) · '
-             '<a href="https://iabspain.es/estudio/estudio-redes-sociales-2025-iab-spain/" target="_blank" rel="noopener nofollow">IAB Spain, Estudio de Redes Sociales 2025</a> · '
-             '<a href="https://ucex.org/el-83-de-los-consumidores-espanoles-leen-resenas-online-antes-de-comprar-en-tiendas-fisicas/" target="_blank" rel="noopener nofollow">Skeepers, 10.000 encuestados en España</a> (febrero de 2025).',
+  "sources": '<a href="https://squareup.com/es/es/press/estudio-radiografia-del-consumo-en-espana-realizado-por-square" target="_blank" rel="noopener nofollow">Square, Radiografía del consumo en España</a> (más de 1.000 encuestados, 2023) · '
+             '<a href="https://cxtrends.zendesk.com/es/" target="_blank" rel="noopener nofollow">Zendesk CX Trends 2026</a> · '
+             '<a href="https://www.periodicopublicidad.com/articulo/estudios/whatsapp-gana-peso-relacion-entre-empresas-clientes/20260526101512173926.html" target="_blank" rel="noopener nofollow">HubSpot, vía El Periódico de la Publicidad</a> (mayo de 2026) · '
+             '<a href="https://cotec.es/proyectos-cpt/uso-de-la-ia-en-las-empresas/" target="_blank" rel="noopener nofollow">INE, Encuesta de uso de TIC en las empresas, vía Fundación Cotec</a>.',
  },
 
  "day": {
-  "eyebrow": "Así se nota",
-  "h2": "Un martes cualquiera en tu centro, con Verantia",
-  "sub": "Así encajan las cuatro soluciones en una jornada normal.",
-  "caption": "Tu equipo atiende en el centro. El asistente, en el móvil.",
+  "eyebrow": "Así funciona",
+  "h2": "De la primera pregunta a la reseña, sin estar pendiente del móvil",
+  "sub": "El recorrido de una clienta en tu centro, con las cuatro soluciones trabajando juntas.",
+  "caption": "Tú te ocupas de la cabina. Lo demás funciona solo.",
   "items": [
-   ("07:45", "<b>Antes de abrir.</b> Una clienta pide cita para una limpieza facial por WhatsApp. El asistente le ofrece dos huecos y se la deja reservada."),
-   ("10:30", "<b>En plena cabina.</b> Entran tres consultas sobre precios y bonos. Se responden solas y tú no sueltas el tratamiento."),
-   ("13:10", "<b>Una cancelación.</b> Se libera la cita de las 17:00 y el sistema avisa a la lista de espera para que vuelva a ocuparse."),
-   ("18:20", "<b>Fin del tratamiento.</b> La clienta recibe un mensaje de agradecimiento con el enlace para valorar tu centro en Google."),
-   ("20:30", "<b>Al cerrar.</b> Te llega un resumen: citas de mañana, bonos a punto de terminar y reseñas nuevas por responder."),
+   ("chat", "<b>Pregunta.</b> Escribe por WhatsApp o llama por teléfono para saber precios o disponibilidad, y recibe respuesta al momento."),
+   ("calok", "<b>Reserva.</b> El asistente le ofrece los huecos libres y deja la cita apuntada en tu agenda."),
+   ("bell", "<b>Recordatorio.</b> Antes de la cita recibe un aviso para confirmarla o cambiarla. Si cancela, el hueco se ofrece a la lista de espera."),
+   ("flower", "<b>Tratamiento.</b> Tú te dedicas por completo a la clienta, sin interrupciones del móvil ni del teléfono."),
+   ("star", "<b>Reseña.</b> Al terminar recibe un mensaje de agradecimiento con el enlace para valorar tu centro en Google."),
   ],
-  "note": "Ejemplo ilustrativo de cómo funcionan las soluciones combinadas. Cada centro las configura a su medida.",
  },
 
  "steps": {
@@ -149,9 +145,9 @@ S = {
    ("¿Pedir reseñas de forma automática está permitido por Google?",
     "<p>Sí. Pedir reseñas está permitido y Google lo recomienda. Lo que prohíbe es ofrecer algo a cambio, como descuentos o regalos, y pedírselas solo a las clientas contentas dejando fuera al resto.</p>"
     "<p>Por eso nuestro sistema pide la reseña a todas por igual y sin incentivos: tu ficha crece sin ponerla en riesgo.</p>"),
-   ("¿Y si mis clientas prefieren llamar por teléfono?",
-    "<p>Hoy nuestros asistentes trabajan por WhatsApp y en tu web, que es por donde entra la mayoría de las consultas. Estamos preparando también un asistente de voz para atender llamadas.</p>"
-    "<p>Si te interesa, cuéntanoslo en la auditoría y lo tenemos en cuenta para tu centro.</p>"),
+   ("¿Cómo funciona el asistente telefónico?",
+    "<p>Se conecta a tu número de teléfono para atender las llamadas que tú no puedes coger: cuando estás en cabina, en horas punta o con el centro cerrado. Responde con una voz natural, informa de tratamientos y precios, y reserva la cita en tu agenda.</p>"
+    "<p>Lo desarrollamos a medida para cada centro, y antes de activarlo escuchas cómo suena y apruebas lo que dice. Al empezar cada llamada avisa de que es un asistente automático, como exige la normativa europea de inteligencia artificial, y siempre ofrece dejar un recado para que le llames tú.</p>"),
    ("¿Cuánto cuesta para un centro de estética?",
     "<p>Depende de las soluciones que necesites: un sistema de recordatorios no tiene nada que ver con un asistente completo conectado a tu agenda.</p>"
     "<p>Por eso empezamos con una <strong>auditoría gratuita y sin compromiso</strong>: sales de ella con una horquilla de precio realista y ajustada al tamaño de tu centro.</p>"),
@@ -162,16 +158,16 @@ S = {
  },
 
  "cta": {
-  "h2": "Dedica tu tiempo a la cabina, no al móvil",
+  "h2": "Dedica tu tiempo a la cabina, no al teléfono",
   "p": "Empezamos con una auditoría gratuita de tu centro: vemos cómo trabajas hoy y te decimos qué merece la pena automatizar. Si no te compensa, te lo diremos igual.",
  },
 
- "schema_type": "Automatización e inteligencia artificial para centros de estética",
- "schema_desc": "Asistentes de citas por WhatsApp y web, recordatorios automáticos, reseñas en Google y contenido con IA para centros de estética de Valladolid y de toda España.",
+ "schema_type": "Inteligencia artificial para centros de estética",
+ "schema_desc": "Asistentes virtuales para WhatsApp, la web y el teléfono, recordatorios automáticos y reseñas en Google para centros de estética de Valladolid y de toda España.",
 
  "yoast": {
-  "keyphrase": "automatización para centros de estética",
-  "title": "IA y automatización para centros de estética | Verantia",
-  "desc": "Automatización para centros de estética: citas por WhatsApp, recordatorios, reseñas y contenido con IA. Agencia en Valladolid. Auditoría gratuita.",
+  "keyphrase": "inteligencia artificial para centros de estética",
+  "title": "Inteligencia artificial para centros de estética | Verantia",
+  "desc": "Inteligencia artificial para centros de estética: asistentes de WhatsApp y teléfono, recordatorios y reseñas. Agencia en Valladolid.",
  },
 }

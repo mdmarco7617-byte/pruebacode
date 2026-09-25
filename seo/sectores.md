@@ -1,25 +1,28 @@
 # Yoast — páginas de sector
 
+Regla para todos los sectores: el H1 y el título empiezan por
+"Inteligencia artificial para …". La automatización no va en el título.
+
 ## Centros de estética — `/sectores/centros-de-estetica/`
 
 **Frase clave objetivo**
 ```
-automatización para centros de estética
+inteligencia artificial para centros de estética
 ```
-**Título SEO** (55)
+**Título SEO** (59)
 ```
-IA y automatización para centros de estética | Verantia
+Inteligencia artificial para centros de estética | Verantia
 ```
-**Meta descripción** (146)
+**Meta descripción** (132)
 ```
-Automatización para centros de estética: citas por WhatsApp, recordatorios, reseñas y contenido con IA. Agencia en Valladolid. Auditoría gratuita.
+Inteligencia artificial para centros de estética: asistentes de WhatsApp y teléfono, recordatorios y reseñas. Agencia en Valladolid.
 ```
 
 Comprobado: la frase clave aparece literal en el título, la descripción y el H1.
 
 **Imágenes** (subir a Medios antes de pegar el widget):
 - verantia-centro-estetica-tratamiento-facial-1200.webp / -800.webp
-- verantia-centro-estetica-recepcion-citas-1200.webp / -800.webp
+- verantia-centro-estetica-cabina-tratamiento-1200.webp / -800.webp
 
-Fotos de Gustavo Fring y RDNE Stock Project en Pexels, licencia Pexels:
+Fotos de Gustavo Fring y Artbovich en Pexels, licencia Pexels:
 uso comercial libre, sin atribución obligatoria.

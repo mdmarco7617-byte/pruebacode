@@ -87,17 +87,6 @@ CSS = r"""
 .vsx-media>img{border-radius:var(--r-lg);box-shadow:var(--sh-l);aspect-ratio:3/2;object-fit:cover;width:100%}
 .vsx-media::before{content:'';position:absolute;z-index:-1;inset:auto -22px -22px auto;width:62%;height:62%;
   border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(var(--s-rgb),.22),rgba(var(--s-rgb),.06))}
-.vsx-float{position:absolute;background:#fff;border-radius:16px;box-shadow:var(--sh-l);
-  padding:13px 16px;font-size:13.5px;line-height:1.45;max-width:250px;animation:vsxFl 6s ease-in-out infinite}
-.vsx-float b{display:block;font-family:'Manrope',sans-serif;color:var(--ink);font-size:13.5px}
-.vsx-float--a{left:-26px;bottom:34px}
-.vsx-float--b{right:-20px;top:-26px;animation-delay:-3s;display:flex;gap:11px;align-items:center}
-.vsx-float--b i{width:34px;height:34px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
-  background:var(--s-soft);color:var(--s-dark)}
-.vsx-float--b svg{width:18px;height:18px}
-.vsx-bubble{background:#f2f2f2;border-radius:12px 12px 12px 4px;padding:8px 11px;margin-top:8px;color:var(--text)}
-.vsx-bubble--me{background:rgba(var(--s-rgb),.12);border-radius:12px 12px 4px 12px;margin-left:22px;color:var(--ink)}
-@keyframes vsxFl{50%{transform:translateY(-8px)}}
 .vsx-hero-copy{animation:vsxUp .8s var(--ease) both}
 .vsx-media{animation:vsxUp .9s .12s var(--ease) both}
 @keyframes vsxUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
@@ -165,6 +154,8 @@ CSS = r"""
 .vsx-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);border-radius:var(--r);
   padding:30px 22px;text-align:center;transition:transform .28s var(--ease),background .28s,border-color .28s}
 .vsx-stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.08);border-color:rgba(var(--s-rgb),.55)}
+.vsx-stat-t{display:inline-block;margin:0 0 16px;padding:5px 11px;border-radius:999px;font-family:'Manrope',sans-serif;
+  font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;background:rgba(var(--s-rgb),.24);color:#fff}
 .vsx-stat-n{font-family:'Manrope',sans-serif;font-size:clamp(36px,4.3vw,48px);font-weight:800;line-height:1;
   letter-spacing:-.03em;font-variant-numeric:tabular-nums;
   background:linear-gradient(120deg,#fff,var(--s-light));-webkit-background-clip:text;background-clip:text;
@@ -184,12 +175,12 @@ CSS = r"""
   background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   font-size:13.5px;color:var(--ink);box-shadow:var(--sh-m)}
 .vsx-tl{position:relative;display:grid;gap:18px}
-.vsx-tl::before{content:'';position:absolute;left:37px;top:10px;bottom:10px;width:2px;
+.vsx-tl::before{content:'';position:absolute;left:23px;top:14px;bottom:14px;width:2px;
   background:linear-gradient(var(--s),var(--s-light))}
-.vsx-tl li{position:relative;display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:start}
-.vsx-tl time{position:relative;z-index:1;justify-self:center;padding:6px 10px;border-radius:999px;
-  background:#fff;border:2px solid var(--s);font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;
-  color:var(--s-dark);font-variant-numeric:tabular-nums}
+.vsx-tl li{position:relative;display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start}
+.vsx-tl-i{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:#fff;border:2px solid var(--s);color:var(--s-dark);box-shadow:0 6px 16px -8px rgba(var(--s-rgb),.7)}
+.vsx-tl-i svg{width:21px;height:21px}
 .vsx-tl div{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 18px;
   box-shadow:var(--sh-s);font-size:15px;transition:transform .25s var(--ease),box-shadow .25s}
 .vsx-tl li:hover div{transform:translateX(4px);box-shadow:var(--sh-m)}
@@ -262,8 +253,6 @@ CSS = r"""
   .vsx-svcs,.vsx-steps,.vsx-rel{grid-template-columns:1fr}
   .vsx-sec,.vsx-dark{padding-top:70px;padding-bottom:70px}
   .vsx-cta{padding:52px 24px}
-  .vsx-float--a{left:10px;bottom:-18px}
-  .vsx-float--b{right:10px;top:-16px}
 }
 @media (max-width:560px){
   .vsx{font-size:16px}
@@ -271,11 +260,7 @@ CSS = r"""
   .vsx-g4{grid-template-columns:1fr}
   .vsx-ctas .vsx-btn{width:100%}
   .vsx-svc{padding:28px 22px 24px}
-  .vsx-float{max-width:210px;font-size:12.5px;padding:11px 13px}
-  .vsx-float--b{display:none}
-  .vsx-tl::before{left:29px}
-  .vsx-tl li{grid-template-columns:60px 1fr;gap:12px}
-  .vsx-tl time{font-size:12px;padding:5px 7px}
+  .vsx-tl li{gap:12px}
   .vsx-faq summary{padding:18px}
   .vsx-faq .a{padding:0 18px 20px}
 }

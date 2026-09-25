@@ -48,6 +48,7 @@ I = {
  "shield": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
  "doc":    '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
  "phone":  '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+ "phoneai":'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/><path d="M15 2.5a6.5 6.5 0 0 1 6.5 6.5M15 6a3 3 0 0 1 3 3"/>',
  "mail":   '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-9 5.7a2 2 0 0 1-2 0L2 7"/>',
  "trend":  '<path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>',
  "tag":    '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/>',
@@ -110,11 +111,6 @@ def build(S):
     w('        <img src="%s%s-1200.webp" srcset="%s%s-800.webp 800w, %s%s-1200.webp 1200w" '
       'sizes="(max-width:1080px) 92vw, 540px" width="1200" height="800" '
       'fetchpriority="high" decoding="async" alt="%s">\n' % (UP, img["file"], UP, img["file"], UP, img["file"], img["alt"]))
-    f = h["float_chat"]
-    w('        <div class="vsx-float vsx-float--a" aria-hidden="true"><b>%s</b>'
-      '<div class="vsx-bubble">%s</div><div class="vsx-bubble vsx-bubble--me">%s</div></div>\n' % (f[0], f[1], f[2]))
-    f = h["float_card"]
-    w('        <div class="vsx-float vsx-float--b" aria-hidden="true"><i>%s</i><div><b>%s</b>%s</div></div>\n' % (ic(f[0]), f[1], f[2]))
     w('      </div>\n    </div>\n  </section>\n\n')
 
     # ---------- DOLORES ----------
@@ -149,11 +145,12 @@ def build(S):
     st = S["stats"]
     w('  <section class="vsx-dark" aria-labelledby="vsx-stat-t">\n    <div class="vsx-wrap">\n      ')
     w(head(st["eyebrow"], st["h2"], st["sub"], "vsx-stat-t") + '\n      <div class="vsx-g4">\n')
-    for val, dec, unit, label, src in st["items"]:
+    for tag, val, dec, unit, label, src in st["items"]:
         shown = "{:,.{d}f}".format(float(val), d=dec).replace(",", "X").replace(".", ",").replace("X", ".")
-        w('        <div class="vsx-stat vsx-rv"><p class="vsx-stat-n"><span data-vsx-count="%s" data-vsx-dec="%d">%s</span>'
+        w('        <div class="vsx-stat vsx-rv"><span class="vsx-stat-t">%s</span>'
+          '<p class="vsx-stat-n"><span data-vsx-count="%s" data-vsx-dec="%d">%s</span>'
           '<span class="vsx-stat-u">%s</span></p><p class="vsx-stat-l">%s</p><p class="vsx-stat-s">%s</p></div>\n'
-          % (val, dec, shown, unit, label, src))
+          % (tag, val, dec, shown, unit, label, src))
     w('      </div>\n      <p class="vsx-src vsx-rv">Fuentes: %s</p>\n    </div>\n  </section>\n\n' % st["sources"])
 
     # ---------- UN DIA CUALQUIERA ----------
@@ -164,9 +161,9 @@ def build(S):
       'sizes="(max-width:1080px) 92vw, 460px" width="800" height="533" loading="lazy" decoding="async" alt="%s">'
       '<figcaption>%s</figcaption></figure>\n' % (UP, img["file"], UP, img["file"], UP, img["file"], img["alt"], d["caption"]))
     w('        <div class="vsx-rv">\n          <ol class="vsx-tl">\n')
-    for t, txt in d["items"]:
-        w('            <li><time>%s</time><div>%s</div></li>\n' % (t, txt))
-    w('          </ol>\n          <p class="vsx-note">%s</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n' % d["note"])
+    for icn, txt in d["items"]:
+        w('            <li><span class="vsx-tl-i" aria-hidden="true">%s</span><div>%s</div></li>\n' % (ic(icn), txt))
+    w('          </ol>\n        </div>\n      </div>\n    </div>\n  </section>\n\n')
 
     # ---------- PASOS ----------
     s = S["steps"]
