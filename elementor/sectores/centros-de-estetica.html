@@ -1,0 +1,697 @@
+<!-- ==========================================================
+     VERANTIA - Pagina de sector: Centros de estética
+     Pegar tal cual en un unico widget HTML de Elementor.
+     Ajustes de pagina en Elementor: Diseno de pagina =
+     "Elementor ancho completo", para que el tema no pinte un
+     segundo H1 con el titulo de la pagina.
+     Fotos: Gustavo Fring y RDNE Stock Project en Pexels (licencia Pexels, uso comercial libre)
+     ========================================================== -->
+
+<style>
+.vsx{
+  --ink:#1a1a1a; --text:#333; --muted:#5f6673; --border:#ebe6ea;
+  --r:18px; --r-lg:26px;
+  --sh-s:0 1px 2px rgba(20,16,24,.06);
+  --sh-m:0 16px 36px -16px rgba(20,16,24,.22);
+  --sh-l:0 30px 60px -28px rgba(20,16,24,.30);
+  --max:1180px; --ease:cubic-bezier(.16,1,.3,1);
+  font-family:'DM Sans',system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--text);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.vsx *,.vsx *::before,.vsx *::after{box-sizing:border-box}
+.vsx :where(h1,h2,h3,h4){font-family:'Manrope','DM Sans',sans-serif;color:var(--ink);
+  line-height:1.15;letter-spacing:-.022em;font-weight:700;margin:0}
+.vsx :where(p,ul,ol,figure){margin:0;padding:0}
+.vsx :where(li){list-style:none}
+.vsx :where(a){color:inherit;text-decoration:none}
+.vsx :where(img){display:block;max-width:100%;height:auto}
+.vsx svg{display:block}
+.vsx-wrap{max-width:var(--max);margin:0 auto}
+.vsx-sec{padding:96px 24px;position:relative}
+.vsx-sec--soft{background:var(--s-soft)}
+.vsx-head{max-width:740px;margin:0 auto 56px;text-align:center}
+.vsx-head h2{font-size:clamp(29px,3.8vw,42px);margin:0 0 16px;text-wrap:balance}
+.vsx-head p{font-size:18px;color:var(--muted)}
+.vsx-eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;
+  font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--s-dark)}
+.vsx-eyebrow::before{content:'';width:22px;height:2px;border-radius:2px;background:var(--s)}
+
+/* ---------- botones ---------- */
+.vsx-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Manrope',sans-serif;font-size:15.5px;font-weight:700;padding:15px 28px;
+  border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s,border-color .2s}
+.vsx-btn svg{width:17px;height:17px;transition:transform .25s var(--ease)}
+.vsx-btn:hover svg{transform:translateX(3px)}
+.vsx-btn--p{background:linear-gradient(135deg,var(--s),var(--s-dark));color:#fff;
+  box-shadow:0 12px 26px -12px rgba(var(--s-rgb),.8)}
+.vsx-btn--p:hover{transform:translateY(-3px);box-shadow:0 20px 36px -14px rgba(var(--s-rgb),.85)}
+.vsx-btn--g{background:#fff;color:var(--ink);border-color:var(--border);box-shadow:var(--sh-s)}
+.vsx-btn--g:hover{transform:translateY(-3px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsx-btn--w{background:#fff;color:var(--ink)}
+.vsx-btn--w:hover{transform:translateY(-3px);box-shadow:0 20px 36px -16px rgba(0,0,0,.5)}
+.vsx-btn--o{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.vsx-btn--o:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.vsx a:focus-visible,.vsx summary:focus-visible{outline:3px solid var(--s);outline-offset:3px;border-radius:12px}
+.vsx-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+
+/* ---------- hero ---------- */
+.vsx-hero{padding:34px 24px 96px;position:relative;isolation:isolate;overflow:hidden}
+.vsx-hero::before{content:'';position:absolute;inset:-12% -6%;z-index:-1;pointer-events:none;
+  background:radial-gradient(560px 340px at 6% 18%,rgba(var(--s-rgb),.13),transparent 70%),
+             radial-gradient(520px 360px at 94% 82%,rgba(var(--s-rgb),.10),transparent 70%);
+  animation:vsxAur 18s ease-in-out infinite alternate}
+@keyframes vsxAur{to{transform:translate3d(-2.5%,1.5%,0) scale(1.06)}}
+.vsx-crumb{max-width:var(--max);margin:0 auto 34px;font-size:13.5px;color:var(--muted)}
+.vsx-crumb ol{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.vsx-crumb li{display:flex;align-items:center;gap:8px}
+.vsx-crumb li+li::before{content:'›';color:#b9b0b6}
+.vsx-crumb a:hover{color:var(--s-dark);text-decoration:underline}
+.vsx-crumb [aria-current]{color:var(--ink);font-weight:600}
+.vsx-hero-grid{max-width:var(--max);margin:0 auto;display:grid;
+  grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.vsx-tag{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;margin:0 0 20px;
+  border-radius:999px;background:#fff;border:1px solid var(--s-light);box-shadow:var(--sh-s);
+  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--s-dark)}
+.vsx-tag i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--s),var(--s-dark));color:#fff}
+.vsx-tag svg{width:16px;height:16px}
+.vsx-hero h1{font-size:clamp(33px,4.7vw,54px);margin:0 0 22px;text-wrap:balance}
+.vsx-hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--s),var(--s-dark));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vsx-lead{font-size:19px;max-width:580px}
+.vsx-lead strong{color:var(--ink)}
+.vsx-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.vsx-chips li{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
+  background:var(--s-soft);font-size:13.5px;font-weight:600;color:var(--s-dark)}
+.vsx-chips svg{width:15px;height:15px}
+.vsx-media{position:relative}
+.vsx-media>img{border-radius:var(--r-lg);box-shadow:var(--sh-l);aspect-ratio:3/2;object-fit:cover;width:100%}
+.vsx-media::before{content:'';position:absolute;z-index:-1;inset:auto -22px -22px auto;width:62%;height:62%;
+  border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(var(--s-rgb),.22),rgba(var(--s-rgb),.06))}
+.vsx-float{position:absolute;background:#fff;border-radius:16px;box-shadow:var(--sh-l);
+  padding:13px 16px;font-size:13.5px;line-height:1.45;max-width:250px;animation:vsxFl 6s ease-in-out infinite}
+.vsx-float b{display:block;font-family:'Manrope',sans-serif;color:var(--ink);font-size:13.5px}
+.vsx-float--a{left:-26px;bottom:34px}
+.vsx-float--b{right:-20px;top:-26px;animation-delay:-3s;display:flex;gap:11px;align-items:center}
+.vsx-float--b i{width:34px;height:34px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
+  background:var(--s-soft);color:var(--s-dark)}
+.vsx-float--b svg{width:18px;height:18px}
+.vsx-bubble{background:#f2f2f2;border-radius:12px 12px 12px 4px;padding:8px 11px;margin-top:8px;color:var(--text)}
+.vsx-bubble--me{background:rgba(var(--s-rgb),.12);border-radius:12px 12px 4px 12px;margin-left:22px;color:var(--ink)}
+@keyframes vsxFl{50%{transform:translateY(-8px)}}
+.vsx-hero-copy{animation:vsxUp .8s var(--ease) both}
+.vsx-media{animation:vsxUp .9s .12s var(--ease) both}
+@keyframes vsxUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- tarjetas de problema ---------- */
+.vsx-g4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.vsx-pain{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;
+  box-shadow:var(--sh-s);transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s}
+.vsx-pain:hover{transform:translateY(-5px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsx-pain i{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+  background:var(--s-soft);color:var(--s-dark)}
+.vsx-pain svg{width:22px;height:22px}
+.vsx-pain h3{font-size:17.5px;margin:0 0 8px}
+.vsx-pain p{font-size:15px;color:var(--muted)}
+.vsx-summary{max-width:860px;margin:44px auto 0;padding:24px 30px;border-radius:var(--r);
+  background:#fff;border:1px solid var(--s-light);border-left:4px solid var(--s);
+  font-size:16.5px;box-shadow:var(--sh-s)}
+.vsx-summary strong{color:var(--ink)}
+
+/* ---------- los 4 servicios ---------- */
+.vsx-svcs{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.vsx-svc{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:36px 34px 32px;box-shadow:var(--sh-s);display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.vsx-svc::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,var(--s),var(--s-light));opacity:.9}
+.vsx-svc:hover{transform:translateY(-6px);box-shadow:var(--sh-l);border-color:var(--s-light)}
+.vsx-svc-top{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.vsx-svc-ico{width:58px;height:58px;flex:0 0 auto;border-radius:16px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--s),var(--s-dark));box-shadow:0 10px 22px -10px rgba(var(--s-rgb),.8);
+  transition:transform .3s var(--ease)}
+.vsx-svc:hover .vsx-svc-ico{transform:scale(1.07) rotate(-5deg)}
+.vsx-svc-ico svg{width:28px;height:28px}
+.vsx-svc-n{font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--s-dark)}
+.vsx-svc h3{font-size:22px;margin:4px 0 0;line-height:1.25}
+.vsx-svc>p{font-size:16px;margin-bottom:18px}
+.vsx-svc ul{display:grid;gap:10px;margin-bottom:22px}
+.vsx-svc li{display:flex;gap:10px;font-size:15px;line-height:1.5}
+.vsx-svc li svg{width:18px;height:18px;flex:0 0 auto;margin-top:2px;color:var(--s)}
+.vsx-svc-res{margin-top:auto;padding:14px 16px;border-radius:12px;background:var(--s-soft);
+  font-size:14.5px;color:var(--ink)}
+.vsx-svc-res b{color:var(--s-dark)}
+.vsx-svc-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;align-self:flex-start;
+  font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:700;color:var(--s-dark)}
+.vsx-svc-link svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.vsx-svc:hover .vsx-svc-link svg{transform:translateX(4px)}
+.vsx-also{margin:46px auto 0;max-width:900px;text-align:center}
+.vsx-also p{font-size:15px;color:var(--muted);margin-bottom:14px}
+.vsx-also ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.vsx-also a{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+  background:#fff;border:1px solid var(--border);font-size:14px;font-weight:600;color:var(--ink);
+  transition:border-color .2s,transform .2s var(--ease),box-shadow .2s}
+.vsx-also a:hover{border-color:var(--s);transform:translateY(-2px);box-shadow:var(--sh-m)}
+.vsx-also a::after{content:'→';color:var(--s-dark)}
+
+/* ---------- cifras ---------- */
+.vsx-dark{background:var(--ink);color:#fff;padding:92px 24px;position:relative;isolation:isolate;overflow:hidden}
+.vsx-dark::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(640px 360px at 15% 0%,rgba(var(--s-rgb),.30),transparent 68%),
+             radial-gradient(520px 320px at 90% 100%,rgba(var(--s-rgb),.20),transparent 68%)}
+.vsx-dark .vsx-head h2{color:#fff}
+.vsx-dark .vsx-head p{color:rgba(255,255,255,.66)}
+.vsx-dark .vsx-eyebrow{color:var(--s-light)}
+.vsx-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);border-radius:var(--r);
+  padding:30px 22px;text-align:center;transition:transform .28s var(--ease),background .28s,border-color .28s}
+.vsx-stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.08);border-color:rgba(var(--s-rgb),.55)}
+.vsx-stat-n{font-family:'Manrope',sans-serif;font-size:clamp(36px,4.3vw,48px);font-weight:800;line-height:1;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,#fff,var(--s-light));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.vsx-stat-u{font-size:.55em;margin-left:3px}
+.vsx-stat-l{font-size:14.5px;color:rgba(255,255,255,.82);margin-top:14px}
+.vsx-stat-s{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.45);margin-top:12px}
+.vsx-dark .vsx-src{max-width:900px;margin:44px auto 0;text-align:center;font-size:13px;color:rgba(255,255,255,.55)}
+.vsx-dark .vsx-src a{color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- un dia cualquiera ---------- */
+.vsx-day{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.vsx-day-media{position:relative}
+.vsx-day-media img{border-radius:var(--r-lg);box-shadow:var(--sh-l);aspect-ratio:4/5;object-fit:cover;width:100%}
+.vsx-day-media figcaption{position:absolute;left:18px;bottom:18px;right:18px;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-size:13.5px;color:var(--ink);box-shadow:var(--sh-m)}
+.vsx-tl{position:relative;display:grid;gap:18px}
+.vsx-tl::before{content:'';position:absolute;left:37px;top:10px;bottom:10px;width:2px;
+  background:linear-gradient(var(--s),var(--s-light))}
+.vsx-tl li{position:relative;display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:start}
+.vsx-tl time{position:relative;z-index:1;justify-self:center;padding:6px 10px;border-radius:999px;
+  background:#fff;border:2px solid var(--s);font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;
+  color:var(--s-dark);font-variant-numeric:tabular-nums}
+.vsx-tl div{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 18px;
+  box-shadow:var(--sh-s);font-size:15px;transition:transform .25s var(--ease),box-shadow .25s}
+.vsx-tl li:hover div{transform:translateX(4px);box-shadow:var(--sh-m)}
+.vsx-tl b{color:var(--ink);font-family:'Manrope',sans-serif}
+.vsx-note{margin-top:18px;font-size:13px;color:var(--muted);font-style:italic}
+
+/* ---------- pasos ---------- */
+.vsx-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:st}
+.vsx-step{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:34px 28px 30px;box-shadow:var(--sh-s);transition:transform .28s var(--ease),box-shadow .28s}
+.vsx-step:hover{transform:translateY(-5px);box-shadow:var(--sh-m)}
+.vsx-step::before{counter-increment:st;content:'0' counter(st);display:block;margin-bottom:16px;
+  font-family:'Manrope',sans-serif;font-size:40px;font-weight:800;line-height:1;letter-spacing:-.04em;
+  background:linear-gradient(120deg,var(--s),var(--s-light));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.vsx-step h3{font-size:19px;margin:0 0 10px}
+.vsx-step p{font-size:15.5px;color:var(--muted)}
+.vsx-step strong{color:var(--ink)}
+
+/* ---------- faq ---------- */
+.vsx-faq{max-width:880px;margin:0 auto}
+.vsx-faq details{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:14px;
+  box-shadow:var(--sh-s);transition:box-shadow .25s,border-color .25s}
+.vsx-faq details:hover,.vsx-faq details[open]{border-color:var(--s-light);box-shadow:var(--sh-m)}
+.vsx-faq summary{display:flex;align-items:center;gap:16px;padding:21px 26px;cursor:pointer;list-style:none}
+.vsx-faq summary::-webkit-details-marker{display:none}
+.vsx-faq summary h3{flex:1;font-size:17px;line-height:1.4}
+.vsx-faq summary i{flex:0 0 auto;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:var(--s-soft);color:var(--s-dark);transition:transform .3s var(--ease),background .25s,color .25s}
+.vsx-faq summary svg{width:14px;height:14px}
+.vsx-faq details[open] summary i{transform:rotate(45deg);background:var(--s);color:#fff}
+.vsx-faq .a{padding:0 26px 24px;font-size:15.5px}
+.vsx-faq .a p+p{margin-top:12px}
+.vsx-faq .a strong{color:var(--ink)}
+.vsx-faq .a a{color:var(--s-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- cierre ---------- */
+.vsx-cta{max-width:var(--max);margin:0 auto;border-radius:var(--r-lg);padding:66px 48px;text-align:center;color:#fff;
+  position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,var(--s-dark),#2a0f1e 120%)}
+.vsx-cta::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(520px 300px at 85% -10%,rgba(255,255,255,.18),transparent 70%)}
+.vsx-cta h2{color:#fff;font-size:clamp(27px,3.6vw,40px);margin:0 0 14px;text-wrap:balance}
+.vsx-cta p{max-width:620px;margin:0 auto;color:rgba(255,255,255,.82);font-size:17.5px}
+.vsx-cta .vsx-ctas{justify-content:center}
+.vsx-cta small{display:block;margin-top:26px;font-size:14px;color:rgba(255,255,255,.66)}
+.vsx-cta small a{color:#fff;font-weight:600}
+.vsx-rel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.vsx-rel a{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:16px;background:#fff;
+  border:1px solid var(--border);box-shadow:var(--sh-s);font-family:'Manrope',sans-serif;font-weight:700;
+  font-size:15px;color:var(--ink);transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
+.vsx-rel a:hover{transform:translateY(-4px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsx-rel i{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;
+  background:var(--s-soft);color:var(--s-dark)}
+.vsx-rel svg{width:20px;height:20px}
+.vsx-rel span{flex:1}
+.vsx-rel a::after{content:'→';color:var(--s-dark)}
+
+/* ---------- aparicion al hacer scroll ---------- */
+.vsx.vsx-js .vsx-rv{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.vsx.vsx-js .vsx-rv.vsx-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .vsx-hero-grid,.vsx-day{grid-template-columns:1fr;gap:46px}
+  .vsx-media{max-width:620px;width:100%;margin:0 auto}
+  .vsx-day-media{max-width:460px;width:100%;margin:0 auto}
+  .vsx-g4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:860px){
+  .vsx-svcs,.vsx-steps,.vsx-rel{grid-template-columns:1fr}
+  .vsx-sec,.vsx-dark{padding-top:70px;padding-bottom:70px}
+  .vsx-cta{padding:52px 24px}
+  .vsx-float--a{left:10px;bottom:-18px}
+  .vsx-float--b{right:10px;top:-16px}
+}
+@media (max-width:560px){
+  .vsx{font-size:16px}
+  .vsx-sec,.vsx-hero,.vsx-dark{padding-left:18px;padding-right:18px}
+  .vsx-g4{grid-template-columns:1fr}
+  .vsx-ctas .vsx-btn{width:100%}
+  .vsx-svc{padding:28px 22px 24px}
+  .vsx-float{max-width:210px;font-size:12.5px;padding:11px 13px}
+  .vsx-float--b{display:none}
+  .vsx-tl::before{left:29px}
+  .vsx-tl li{grid-template-columns:60px 1fr;gap:12px}
+  .vsx-tl time{font-size:12px;padding:5px 7px}
+  .vsx-faq summary{padding:18px}
+  .vsx-faq .a{padding:0 18px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .vsx *,.vsx *::before,.vsx *::after{animation:none!important;transition-duration:.001ms!important}
+  .vsx .vsx-rv{opacity:1!important;transform:none!important}
+}
+</style>
+
+<div class="vsx" style="--s:#c7336f;--s-dark:#a3245a;--s-light:#f5c2d6;--s-soft:#fdf1f6;--s-rgb:199,51,111">
+
+  <section class="vsx-hero" aria-labelledby="vsx-h1">
+    <nav class="vsx-crumb" aria-label="Ruta de navegación"><ol><li><a href="https://verantiapro.es/">Inicio</a></li><li><a href="https://verantiapro.es/sectores/">Sectores</a></li><li><span aria-current="page">Centros de estética</span></li></ol></nav>
+    <div class="vsx-hero-grid">
+      <div class="vsx-hero-copy">
+        <p class="vsx-tag"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M16.5 12H15M12 16.5V15"/></svg></i>Sector · Centros de estética</p>
+        <h1 id="vsx-h1">Inteligencia artificial y automatización para <em>centros de estética</em></h1>
+        <p class="vsx-lead">Tu agenda llena y tu WhatsApp bajo control, sin salir de la cabina. En Verantia implantamos <strong>asistentes de citas, recordatorios automáticos, reseñas y contenido con IA</strong> en centros de estética de Valladolid y de toda España, con presupuestos ajustados a tu negocio.</p>
+        <div class="vsx-ctas">
+          <a class="vsx-btn vsx-btn--p" href="https://verantiapro.es/contacto/">Solicitar auditoría gratuita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="vsx-btn vsx-btn--g" href="#vsx-servicios">Ver soluciones</a>
+        </div>
+        <ul class="vsx-chips">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Citas por WhatsApp a cualquier hora</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Menos huecos vacíos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Más reseñas en Google</li>
+        </ul>
+      </div>
+      <div class="vsx-media">
+        <img src="https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-tratamiento-facial-1200.webp" srcset="https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-tratamiento-facial-800.webp 800w, https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-tratamiento-facial-1200.webp 1200w" sizes="(max-width:1080px) 92vw, 540px" width="1200" height="800" fetchpriority="high" decoding="async" alt="Esteticista realizando un tratamiento facial a una clienta en la cabina de un centro de estética">
+        <div class="vsx-float vsx-float--a" aria-hidden="true"><b>WhatsApp · ahora</b><div class="vsx-bubble">Hola, ¿tenéis hueco el jueves para una limpieza facial?</div><div class="vsx-bubble vsx-bubble--me">¡Hola! Tengo el jueves a las 17:30. ¿Te la reservo?</div></div>
+        <div class="vsx-float vsx-float--b" aria-hidden="true"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></i><div><b>Cita confirmada</b>Limpieza facial · jueves 17:30</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-pain-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">El día a día</p>
+      <h2 id="vsx-pain-t">Lo que se come el tiempo en un centro de estética</h2>
+      <p>Tratamientos largos, manos ocupadas y un móvil que no para de sonar. Seguro que te suena.</p>
+      </div>
+      <div class="vsx-g4">
+        <div class="vsx-pain vsx-rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></i><h3>WhatsApp en plena cabina</h3><p>Las clientas escriben para pedir cita o preguntar precios justo cuando tienes las manos ocupadas. Contestas horas después, o se te pasa.</p></div>
+        <div class="vsx-pain vsx-rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m10 14 4 4M14 14l-4 4"/></svg></i><h3>Citas que no aparecen</h3><p>Una ausencia en un tratamiento largo es una cabina vacía durante una hora o más, y ese tiempo ya no se recupera.</p></div>
+        <div class="vsx-pain vsx-rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.9z"/></svg></i><h3>Reseñas que nunca llegan</h3><p>Tus clientas salen encantadas, pero casi ninguna deja su opinión en Google si nadie se lo recuerda.</p></div>
+        <div class="vsx-pain vsx-rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3.5"/></svg></i><h3>Instagram pide contenido</h3><p>Promociones, novedades, fotos de la cabina… y al terminar la jornada no queda tiempo ni ganas de publicar.</p></div>
+      </div>
+      <p class="vsx-summary vsx-rv"><strong>La buena noticia:</strong> casi todas estas tareas se repiten igual cada semana, y eso es exactamente lo que se puede automatizar sin perder el trato cercano que diferencia a tu centro.</p>
+    </div>
+  </section>
+
+  <section class="vsx-sec" id="vsx-servicios" aria-labelledby="vsx-svc-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Soluciones para tu centro</p>
+      <h2 id="vsx-svc-t">Los 4 servicios más populares en centros de estética</h2>
+      <p>Pensados para cómo trabaja de verdad un centro de estética. Puedes empezar por uno solo y sumar el resto cuando quieras.</p>
+      </div>
+      <div class="vsx-svcs">
+        <article class="vsx-svc vsx-rv">
+          <div class="vsx-svc-top"><div class="vsx-svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></div><div><span class="vsx-svc-n">Servicio 01</span><h3>Asistente de citas en WhatsApp y en tu web</h3></div></div>
+          <p>Un asistente entrenado con tu carta de tratamientos que responde a tus clientas al momento, a cualquier hora, y les reserva cita.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Responde precios, duración y preparación de cada tratamiento.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Ofrece los huecos libres y reserva directamente en tu agenda.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Deriva a una profesional las consultas delicadas: alergias, embarazo o medicación.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Habla con el tono de tu centro, cercano y profesional.</span></li>
+          </ul>
+          <p class="vsx-svc-res"><b>Resultado:</b> ninguna clienta se queda sin respuesta, aunque estés en cabina o con el centro cerrado.</p>
+          <a class="vsx-svc-link" href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/">Ver chatbots y asistentes virtuales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </article>
+        <article class="vsx-svc vsx-rv">
+          <div class="vsx-svc-top"><div class="vsx-svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div><div><span class="vsx-svc-n">Servicio 02</span><h3>Recordatorios automáticos y agenda sin huecos</h3></div></div>
+          <p>Automatizamos los avisos que hoy haces a mano para que las citas se confirmen solas y los huecos que se liberan vuelvan a ocuparse.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Recordatorio por WhatsApp antes de cada cita, con opción de confirmar o cambiarla.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Si alguien cancela, se avisa a las clientas que estaban en lista de espera.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Control de bonos: cuántas sesiones quedan y cuándo toca la siguiente.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Avisos de seguimiento en tratamientos por fases, como depilación láser o corporales.</span></li>
+          </ul>
+          <p class="vsx-svc-res"><b>Resultado:</b> menos ausencias, menos huecos muertos y ninguna sesión de bono olvidada.</p>
+          <a class="vsx-svc-link" href="https://verantiapro.es/servicios/automatizacion-de-procesos/">Ver automatización de procesos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </article>
+        <article class="vsx-svc vsx-rv">
+          <div class="vsx-svc-top"><div class="vsx-svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.9z"/></svg></div><div><span class="vsx-svc-n">Servicio 03</span><h3>Más reseñas en Google después de cada tratamiento</h3></div></div>
+          <p>Al terminar la cita, tu clienta recibe un mensaje amable de agradecimiento con el enlace directo para valorar tu centro en Google.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Se envía cuando la experiencia está más reciente.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Llega a todas las clientas por igual, como exigen las normas de Google.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Sin descuentos a cambio de reseñas: está prohibido y pone en riesgo tu ficha.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Te avisa de cada reseña nueva para que puedas responderla.</span></li>
+          </ul>
+          <p class="vsx-svc-res"><b>Resultado:</b> una ficha de Google más completa y activa, que es lo primero que mira una clienta nueva.</p>
+          <a class="vsx-svc-link" href="https://verantiapro.es/servicios/resenas-automaticas-google/">Ver reseñas automáticas en Google <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </article>
+        <article class="vsx-svc vsx-rv">
+          <div class="vsx-svc-top"><div class="vsx-svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M5 12H3M21 12h-2M7 7l1.4 1.4M15.6 15.6 17 17M17 7l-1.4 1.4M8.4 15.6 7 17"/><circle cx="12" cy="12" r="3.2"/></svg></div><div><span class="vsx-svc-n">Servicio 04</span><h3>Contenido para Instagram creado con IA</h3></div></div>
+          <p>Mantén tus redes vivas sin robarle horas a la cabina: textos, imágenes y un calendario de publicaciones con el estilo de tu centro.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Textos para campañas de temporada: novias, verano, bonos regalo.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Fotos de producto y de cabina mejoradas para que luzcan profesionales.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Calendario mensual de publicaciones, listo para revisar y programar.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Contenido responsable: sin prometer resultados médicos ni usar fotos de clientas sin su consentimiento.</span></li>
+          </ul>
+          <p class="vsx-svc-res"><b>Resultado:</b> presencia constante en redes dedicándole mucho menos tiempo.</p>
+          <a class="vsx-svc-link" href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/">Ver IA generativa y contenido visual <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </article>
+      </div>
+      <div class="vsx-also vsx-rv">
+        <p>También te puede interesar:</p>
+        <ul>
+          <li><a href="https://verantiapro.es/servicios/auditoria-de-procesos/">Auditoría de procesos gratuita</a></li>
+          <li><a href="https://verantiapro.es/servicios/clasificador-de-leads/">Clasificador de leads</a></li>
+          <li><a href="https://verantiapro.es/servicios/aplicaciones-personalizadas/">Aplicaciones personalizadas</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-dark" aria-labelledby="vsx-stat-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">El sector en cifras</p>
+      <h2 id="vsx-stat-t">Un sector que crece y que ya vive en el móvil</h2>
+      <p>Datos públicos de fuentes oficiales y del propio sector. Ninguno es una estimación nuestra.</p>
+      </div>
+      <div class="vsx-g4">
+        <div class="vsx-stat vsx-rv"><p class="vsx-stat-n"><span data-vsx-count="11800" data-vsx-dec="0">11.800</span><span class="vsx-stat-u">M€</span></p><p class="vsx-stat-l">de consumo de cosmética y perfumería en España en 2025, un 5,8 % más que el año anterior.</p><p class="vsx-stat-s">Stanpa · 2025</p></div>
+        <div class="vsx-stat vsx-rv"><p class="vsx-stat-n"><span data-vsx-count="32" data-vsx-dec="0">32</span><span class="vsx-stat-u">M</span></p><p class="vsx-stat-l">de citas de belleza reservadas online en España solo a través de Booksy en 2025. En 2024 fueron 25 millones.</p><p class="vsx-stat-s">Booksy · 2025</p></div>
+        <div class="vsx-stat vsx-rv"><p class="vsx-stat-n"><span data-vsx-count="91" data-vsx-dec="0">91</span><span class="vsx-stat-u">%</span></p><p class="vsx-stat-l">de los usuarios de redes sociales en España usa WhatsApp cada mes. Tus clientas ya están ahí.</p><p class="vsx-stat-s">IAB Spain · 2025</p></div>
+        <div class="vsx-stat vsx-rv"><p class="vsx-stat-n"><span data-vsx-count="89" data-vsx-dec="0">89</span><span class="vsx-stat-u">%</span></p><p class="vsx-stat-l">de los españoles consulta reseñas online antes de comprar, frente al 74 % de media internacional.</p><p class="vsx-stat-s">Skeepers · 2025</p></div>
+      </div>
+      <p class="vsx-src vsx-rv">Fuentes: <a href="https://www.stanpa.com/notas-de-prensa/la-industria-cosmetica-supera-los-11-800-millones-de-euros-en-consumo-y-consolida-su-liderazgo-exportador-en-un-entorno-de-alta-exigencia-global/" target="_blank" rel="noopener nofollow">Stanpa, Asociación Nacional de Perfumería y Cosmética</a> (abril de 2026) · <a href="https://www.distribucionactualidad.com/booksy-atrae-mas-salones-de-belleza-en-2025" target="_blank" rel="noopener nofollow">Booksy, vía DA Retail</a> (febrero de 2026) · <a href="https://iabspain.es/estudio/estudio-redes-sociales-2025-iab-spain/" target="_blank" rel="noopener nofollow">IAB Spain, Estudio de Redes Sociales 2025</a> · <a href="https://ucex.org/el-83-de-los-consumidores-espanoles-leen-resenas-online-antes-de-comprar-en-tiendas-fisicas/" target="_blank" rel="noopener nofollow">Skeepers, 10.000 encuestados en España</a> (febrero de 2025).</p>
+    </div>
+  </section>
+
+  <section class="vsx-sec" aria-labelledby="vsx-day-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Así se nota</p>
+      <h2 id="vsx-day-t">Un martes cualquiera en tu centro, con Verantia</h2>
+      <p>Así encajan las cuatro soluciones en una jornada normal.</p>
+      </div>
+      <div class="vsx-day">
+        <figure class="vsx-day-media vsx-rv"><img src="https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-recepcion-citas-800.webp" srcset="https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-recepcion-citas-800.webp 800w, https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-recepcion-citas-1200.webp 1200w" sizes="(max-width:1080px) 92vw, 460px" width="800" height="533" loading="lazy" decoding="async" alt="Recepcionista sonriente atendiendo en el mostrador de un centro de estética"><figcaption>Tu equipo atiende en el centro. El asistente, en el móvil.</figcaption></figure>
+        <div class="vsx-rv">
+          <ol class="vsx-tl">
+            <li><time>07:45</time><div><b>Antes de abrir.</b> Una clienta pide cita para una limpieza facial por WhatsApp. El asistente le ofrece dos huecos y se la deja reservada.</div></li>
+            <li><time>10:30</time><div><b>En plena cabina.</b> Entran tres consultas sobre precios y bonos. Se responden solas y tú no sueltas el tratamiento.</div></li>
+            <li><time>13:10</time><div><b>Una cancelación.</b> Se libera la cita de las 17:00 y el sistema avisa a la lista de espera para que vuelva a ocuparse.</div></li>
+            <li><time>18:20</time><div><b>Fin del tratamiento.</b> La clienta recibe un mensaje de agradecimiento con el enlace para valorar tu centro en Google.</div></li>
+            <li><time>20:30</time><div><b>Al cerrar.</b> Te llega un resumen: citas de mañana, bonos a punto de terminar y reseñas nuevas por responder.</div></li>
+          </ol>
+          <p class="vsx-note">Ejemplo ilustrativo de cómo funcionan las soluciones combinadas. Cada centro las configura a su medida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-steps-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Cómo empezamos</p>
+      <h2 id="vsx-steps-t">De la primera conversación a tu centro funcionando</h2>
+      </div>
+      <div class="vsx-steps">
+        <div class="vsx-step vsx-rv"><h3>Auditoría gratuita de tu centro</h3><p>Revisamos cómo gestionas hoy las citas, los mensajes, los bonos y las reseñas, y te decimos qué merece la pena automatizar. <strong>Sin coste y sin compromiso.</strong></p></div>
+        <div class="vsx-step vsx-rv"><h3>Lo configuramos a tu medida</h3><p>Cargamos tu carta de tratamientos, horarios, precios y tu forma de hablar. Conectamos tu WhatsApp y tu agenda.</p></div>
+        <div class="vsx-step vsx-rv"><h3>Lo activamos y te acompañamos</h3><p>Te enseñamos a usarlo con tus propias citas y seguimos ajustándolo contigo siempre que lo necesites.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-sec" aria-labelledby="vsx-faq-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Preguntas frecuentes</p>
+      <h2 id="vsx-faq-t">Lo que nos preguntan los centros de estética</h2>
+      <p>Respuestas claras, sin tecnicismos. Si te falta alguna, escríbenos.</p>
+      </div>
+      <div class="vsx-faq">
+        <details class="vsx-rv"><summary><h3>¿Funciona con el programa de citas que ya uso en mi centro?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Depende del programa. Si tu agenda permite conectarse con otras herramientas o se sincroniza con Google Calendar, el asistente puede reservar directamente en ella. Si no, te proponemos la alternativa más sencilla para que no tengas que llevar dos agendas.</p><p>Lo comprobamos en la <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría gratuita</a>, antes de que decidas nada.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿El asistente puede dar precios y recomendar tratamientos?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Sí, siempre a partir de la información que tú le das: tu carta, tus precios, tus bonos y tus promociones. Puede explicar en qué consiste cada tratamiento y orientar a la clienta.</p><p>Lo que no hace es inventar: si le preguntan algo que no está en tu información, lo dice con naturalidad y te pasa la conversación.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Qué pasa si una clienta pregunta por contraindicaciones o temas de salud?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>El asistente está configurado para no dar consejos de salud. Si una clienta menciona alergias, embarazo, medicación o cualquier duda médica, le explica con amabilidad que una profesional del centro la atenderá personalmente, y te avisa.</p><p>En estética, esa conversación siempre debe tenerla una persona.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Cómo se protegen los datos de mis clientas?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Trabajamos sobre tus propias cuentas y herramientas, y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD. Tus clientas son tuyas y puedes retirarnos el acceso cuando quieras.</p><p>Además configuramos el asistente para que no recoja por chat datos de salud, que la ley protege de forma especial.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Pedir reseñas de forma automática está permitido por Google?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Sí. Pedir reseñas está permitido y Google lo recomienda. Lo que prohíbe es ofrecer algo a cambio, como descuentos o regalos, y pedírselas solo a las clientas contentas dejando fuera al resto.</p><p>Por eso nuestro sistema pide la reseña a todas por igual y sin incentivos: tu ficha crece sin ponerla en riesgo.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Y si mis clientas prefieren llamar por teléfono?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Hoy nuestros asistentes trabajan por WhatsApp y en tu web, que es por donde entra la mayoría de las consultas. Estamos preparando también un asistente de voz para atender llamadas.</p><p>Si te interesa, cuéntanoslo en la auditoría y lo tenemos en cuenta para tu centro.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Cuánto cuesta para un centro de estética?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Depende de las soluciones que necesites: un sistema de recordatorios no tiene nada que ver con un asistente completo conectado a tu agenda.</p><p>Por eso empezamos con una <strong>auditoría gratuita y sin compromiso</strong>: sales de ella con una horquilla de precio realista y ajustada al tamaño de tu centro.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Trabajáis solo con centros de estética de Valladolid?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Somos una agencia de Valladolid y nos gusta visitar los centros en persona, pero todo lo que hacemos funciona igual en remoto.</p><p>Trabajamos con centros de estética de toda Castilla y León y del resto de España.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-sec" style="padding-top:0" aria-labelledby="vsx-cta-t">
+    <div class="vsx-cta vsx-rv">
+      <h2 id="vsx-cta-t">Dedica tu tiempo a la cabina, no al móvil</h2>
+      <p>Empezamos con una auditoría gratuita de tu centro: vemos cómo trabajas hoy y te decimos qué merece la pena automatizar. Si no te compensa, te lo diremos igual.</p>
+      <div class="vsx-ctas">
+        <a class="vsx-btn vsx-btn--w" href="https://verantiapro.es/contacto/">Solicitar auditoría gratuita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="vsx-btn vsx-btn--o" href="https://wa.me/34601855347" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.6.6 0 0 0 0-.5l-.9-2.3c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.5.9 3.3.8a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.2-.3-.3-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.7 17.8L0 24l6.3-1.7A11.8 11.8 0 0 0 24 12a11.7 11.7 0 0 0-3.5-8.5z"/></svg> WhatsApp 601 85 53 47</a>
+      </div>
+      <small>O llámanos al <a href="tel:+34983618315">983 61 83 15</a> · <a href="mailto:info@verantiapro.es">info@verantiapro.es</a></small>
+    </div>
+    <div class="vsx-wrap" style="margin-top:70px">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Sigue explorando</p>
+      <h2 id="vsx-rel-t">Más de Verantia</h2>
+      </div>
+      <div class="vsx-rel vsx-rv">
+        <a href="https://verantiapro.es/sectores/"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></i><span>Soluciones por sector</span></a>
+        <a href="https://verantiapro.es/servicios/"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></i><span>Todos los servicios</span></a>
+        <a href="https://verantiapro.es/servicios/auditoria-de-procesos/"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1"/><path d="m9 13 2 2 4-4"/></svg></i><span>Auditoría de procesos gratuita</span></a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://verantiapro.es/sectores/centros-de-estetica/#servicio",
+      "name": "Inteligencia artificial y automatización para centros de estética",
+      "url": "https://verantiapro.es/sectores/centros-de-estetica/",
+      "serviceType": "Automatización e inteligencia artificial para centros de estética",
+      "description": "Asistentes de citas por WhatsApp y web, recordatorios automáticos, reseñas en Google y contenido con IA para centros de estética de Valladolid y de toda España.",
+      "provider": {
+        "@id": "https://verantiapro.es/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Valladolid"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Castilla y León"
+        },
+        {
+          "@type": "Country",
+          "name": "España"
+        }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Centros de estética"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios para centros de estética",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Asistente de citas en WhatsApp y en tu web",
+              "description": "Un asistente entrenado con tu carta de tratamientos que responde a tus clientas al momento, a cualquier hora, y les reserva cita.",
+              "url": "https://verantiapro.es/servicios/chatbots-asistentes-virtuales/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Recordatorios automáticos y agenda sin huecos",
+              "description": "Automatizamos los avisos que hoy haces a mano para que las citas se confirmen solas y los huecos que se liberan vuelvan a ocuparse.",
+              "url": "https://verantiapro.es/servicios/automatizacion-de-procesos/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Más reseñas en Google después de cada tratamiento",
+              "description": "Al terminar la cita, tu clienta recibe un mensaje amable de agradecimiento con el enlace directo para valorar tu centro en Google.",
+              "url": "https://verantiapro.es/servicios/resenas-automaticas-google/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Contenido para Instagram creado con IA",
+              "description": "Mantén tus redes vivas sin robarle horas a la cabina: textos, imágenes y un calendario de publicaciones con el estilo de tu centro.",
+              "url": "https://verantiapro.es/servicios/ia-generativa-contenido-visual/"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://verantiapro.es/sectores/centros-de-estetica/#faq",
+      "inLanguage": "es",
+      "isPartOf": {
+        "@id": "https://verantiapro.es/sectores/centros-de-estetica/"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Funciona con el programa de citas que ya uso en mi centro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del programa. Si tu agenda permite conectarse con otras herramientas o se sincroniza con Google Calendar, el asistente puede reservar directamente en ella. Si no, te proponemos la alternativa más sencilla para que no tengas que llevar dos agendas.Lo comprobamos en la auditoría gratuita, antes de que decidas nada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El asistente puede dar precios y recomendar tratamientos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, siempre a partir de la información que tú le das: tu carta, tus precios, tus bonos y tus promociones. Puede explicar en qué consiste cada tratamiento y orientar a la clienta.Lo que no hace es inventar: si le preguntan algo que no está en tu información, lo dice con naturalidad y te pasa la conversación."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si una clienta pregunta por contraindicaciones o temas de salud?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El asistente está configurado para no dar consejos de salud. Si una clienta menciona alergias, embarazo, medicación o cualquier duda médica, le explica con amabilidad que una profesional del centro la atenderá personalmente, y te avisa.En estética, esa conversación siempre debe tenerla una persona."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se protegen los datos de mis clientas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabajamos sobre tus propias cuentas y herramientas, y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD. Tus clientas son tuyas y puedes retirarnos el acceso cuando quieras.Además configuramos el asistente para que no recoja por chat datos de salud, que la ley protege de forma especial."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Pedir reseñas de forma automática está permitido por Google?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Pedir reseñas está permitido y Google lo recomienda. Lo que prohíbe es ofrecer algo a cambio, como descuentos o regalos, y pedírselas solo a las clientas contentas dejando fuera al resto.Por eso nuestro sistema pide la reseña a todas por igual y sin incentivos: tu ficha crece sin ponerla en riesgo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Y si mis clientas prefieren llamar por teléfono?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hoy nuestros asistentes trabajan por WhatsApp y en tu web, que es por donde entra la mayoría de las consultas. Estamos preparando también un asistente de voz para atender llamadas.Si te interesa, cuéntanoslo en la auditoría y lo tenemos en cuenta para tu centro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta para un centro de estética?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de las soluciones que necesites: un sistema de recordatorios no tiene nada que ver con un asistente completo conectado a tu agenda.Por eso empezamos con una auditoría gratuita y sin compromiso: sales de ella con una horquilla de precio realista y ajustada al tamaño de tu centro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Trabajáis solo con centros de estética de Valladolid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Somos una agencia de Valladolid y nos gusta visitar los centros en persona, pero todo lo que hacemos funciona igual en remoto.Trabajamos con centros de estética de toda Castilla y León y del resto de España."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+</div>
+
+<script>
+/* Verantia - pagina de sector: aparicion al hacer scroll y contadores.
+   El contenido parte VISIBLE; solo se oculta si este script corre, y lo
+   que ya esta en pantalla se marca visible en el mismo ciclo (sin parpadeo
+   aunque la cache aplace el script). */
+(function () {
+  var root = document.querySelector('.vsx'); if (!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canIO = 'IntersectionObserver' in window;
+  if (canIO && !reduce) {
+    root.classList.add('vsx-js');
+    var io = new IntersectionObserver(function (es) {
+      for (var i = 0; i < es.length; i++) if (es[i].isIntersecting) { es[i].target.classList.add('vsx-in'); io.unobserve(es[i].target); }
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    var els = root.querySelectorAll('.vsx-rv'), vh = window.innerHeight || 800;
+    for (var n = 0; n < els.length; n++) {
+      if (els[n].getBoundingClientRect().top < vh * 0.95) els[n].classList.add('vsx-in');
+      else { els[n].style.transitionDelay = (Math.min(n % 4, 3) * 80) + 'ms'; io.observe(els[n]); }
+    }
+  }
+  var nums = root.querySelectorAll('[data-vsx-count]'); if (!nums.length) return;
+  function fmt(v, d) { return v.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function run(el) {
+    var t = parseFloat(el.getAttribute('data-vsx-count')), d = parseInt(el.getAttribute('data-vsx-dec') || '0', 10);
+    if (isNaN(t)) return;
+    if (reduce || !window.requestAnimationFrame) { el.textContent = fmt(t, d); return; }
+    var start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / 1300, 1);
+      el.textContent = fmt(t * (1 - Math.pow(1 - p, 3)), d);
+      if (p < 1) requestAnimationFrame(frame); else el.textContent = fmt(t, d);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!canIO || reduce) { for (var k = 0; k < nums.length; k++) run(nums[k]); return; }
+  var io2 = new IntersectionObserver(function (es) {
+    for (var j = 0; j < es.length; j++) if (es[j].isIntersecting) { run(es[j].target); io2.unobserve(es[j].target); }
+  }, { threshold: 0.45 });
+  for (var m = 0; m < nums.length; m++) io2.observe(nums[m]);
+})();
+</script>
