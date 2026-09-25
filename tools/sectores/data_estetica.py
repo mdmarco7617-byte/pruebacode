@@ -4,19 +4,19 @@ S = {
  "name": "Centros de estética",
  "icon": "flower",
  "color": {"s": "#c7336f", "dark": "#a3245a", "light": "#f5c2d6", "soft": "#fdf1f6", "rgb": "199,51,111"},
- "credits": "Gustavo Fring y Artbovich en Pexels (licencia Pexels, uso comercial libre)",
+ "credits": "Gustavo Fring y Zandatsu en Pexels (licencia Pexels, uso comercial libre)",
 
  "img1": {"file": "verantia-centro-estetica-tratamiento-facial",
           "alt": "Esteticista realizando un tratamiento facial a una clienta en la cabina de un centro de estética"},
- "img2": {"file": "verantia-centro-estetica-cabina-tratamiento",
-          "alt": "Cabina de un centro de estética con camilla de tratamiento y lámpara de aumento"},
+ "img2": {"file": "verantia-centro-estetica-cabina-moderna",
+          "alt": "Cabina de tratamiento moderna y luminosa con camilla blanca en un centro de estética"},
 
  "hero": {
   "h1": "Inteligencia artificial para <em>centros de estética</em>",
-  "lead": "Tu agenda llena y tus clientas atendidas, sin salir de la cabina. En Verantia implantamos "
-          "<strong>asistentes virtuales para WhatsApp, la web y el teléfono</strong>, recordatorios automáticos "
-          "y reseñas en Google en centros de estética de Valladolid y de toda España, con presupuestos "
-          "ajustados a tu negocio.",
+  "lead": "Tu agenda llena y tus clientas atendidas, sin salir de la cabina. Somos especialistas en "
+          "<strong>IA para centros de estética en Valladolid</strong> y en toda España: asistentes virtuales "
+          "para WhatsApp, la web y el teléfono, recordatorios automáticos y reseñas en Google, con "
+          "presupuestos ajustados a tu negocio.",
   "chips": ["Atención por WhatsApp y teléfono", "Menos huecos vacíos", "Más reseñas en Google"],
  },
 
@@ -53,11 +53,11 @@ S = {
     "result": "ninguna clienta se queda sin respuesta, aunque estés en cabina o con el centro cerrado."},
    {"icon": "phoneai", "base": "chatbots-asistentes-virtuales", "link": "Ver asistentes virtuales",
     "title": "Asistente telefónico con inteligencia artificial",
-    "desc": "Una voz natural que atiende las llamadas que tú no puedes coger: resuelve dudas, da cita y te deja todo anotado. Lo desarrollamos a medida para tu centro.",
+    "desc": "Una voz natural que atiende las llamadas que tú no puedes coger: resuelve dudas y da cita en tu agenda. Lo desarrollamos a medida para tu centro.",
     "bullets": ["Contesta cuando estás en cabina, en horas punta o con el centro cerrado.",
                 "Informa de tratamientos, precios y horarios, y reserva en tu agenda.",
                 "Si la consulta necesita a una persona, toma el recado y te avisa para devolver la llamada.",
-                "Te envía un resumen de cada llamada por WhatsApp o por correo."],
+                "Habla con el tono de tu centro y siempre avisa de que es un asistente automático."],
     "result": "ninguna llamada se queda sin atender, aunque tengas las manos ocupadas."},
    {"icon": "bell", "base": "automatizacion-de-procesos", "link": "Ver automatización de procesos",
     "title": "Recordatorios automáticos y agenda sin huecos",
@@ -127,7 +127,7 @@ S = {
 
  "faq": {
   "eyebrow": "Preguntas frecuentes",
-  "h2": "Lo que nos preguntan los centros de estética",
+  "h2": "Preguntas frecuentes sobre IA para centros de estética en Valladolid",
   "sub": "Respuestas claras, sin tecnicismos. Si te falta alguna, escríbenos.",
   "items": [
    ("¿Funciona con el programa de citas que ya uso en mi centro?",
@@ -163,11 +163,11 @@ S = {
  },
 
  "schema_type": "Inteligencia artificial para centros de estética",
- "schema_desc": "Asistentes virtuales para WhatsApp, la web y el teléfono, recordatorios automáticos y reseñas en Google para centros de estética de Valladolid y de toda España.",
+ "schema_desc": "IA para centros de estética en Valladolid y toda España: asistentes virtuales para WhatsApp, la web y el teléfono, recordatorios automáticos y reseñas en Google.",
 
  "yoast": {
-  "keyphrase": "inteligencia artificial para centros de estética",
-  "title": "Inteligencia artificial para centros de estética | Verantia",
-  "desc": "Inteligencia artificial para centros de estética: asistentes de WhatsApp y teléfono, recordatorios y reseñas. Agencia en Valladolid.",
+  "keyphrase": "IA para centros de estética en Valladolid",
+  "title": "IA para centros de estética en Valladolid | Verantia",
+  "desc": "IA para centros de estética en Valladolid: asistentes virtuales de WhatsApp y teléfono, recordatorios y reseñas en Google. Auditoría gratuita.",
  },
 }

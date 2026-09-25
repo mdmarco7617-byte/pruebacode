@@ -158,7 +158,7 @@ def build(S):
     w('  <section class="vsx-sec" aria-labelledby="vsx-day-t">\n    <div class="vsx-wrap">\n      ')
     w(head(d["eyebrow"], d["h2"], d["sub"], "vsx-day-t") + '\n      <div class="vsx-day">\n')
     w('        <figure class="vsx-day-media vsx-rv"><img src="%s%s-800.webp" srcset="%s%s-800.webp 800w, %s%s-1200.webp 1200w" '
-      'sizes="(max-width:1080px) 92vw, 460px" width="800" height="533" loading="lazy" decoding="async" alt="%s">'
+      'sizes="(max-width:1080px) 92vw, 460px" width="800" height="1000" loading="lazy" decoding="async" alt="%s">'
       '<figcaption>%s</figcaption></figure>\n' % (UP, img["file"], UP, img["file"], UP, img["file"], img["alt"], d["caption"]))
     w('        <div class="vsx-rv">\n          <ol class="vsx-tl">\n')
     for icn, txt in d["items"]:
