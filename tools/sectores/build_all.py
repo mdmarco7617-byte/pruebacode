@@ -11,3 +11,6 @@ for mod in sorted(f[:-3] for f in os.listdir(HERE) if f.startswith("data_") and 
     path = os.path.join(OUT, S["slug"] + ".html")
     open(path, "w", encoding="utf-8").write(build(S))
     print("  %-28s %6d bytes" % (S["slug"], os.path.getsize(path)))
+
+import hub_build
+hub_build.main()

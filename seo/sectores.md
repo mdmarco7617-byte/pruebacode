@@ -6,10 +6,31 @@ Reglas comunes a todos los sectores:
 - La frase clave aparece literal en la entradilla y en el H2 de preguntas
   frecuentes, que es lo que Yoast comprueba además del título y la descripción.
 - Ajustes de página en Elementor: Diseño de página = "Elementor ancho completo".
-- Página madre: /sectores/ (de momento en noindex hasta que tenga contenido).
+- Página madre: /sectores/ (índice de sectores, ver más abajo).
 - Imágenes: subir las 4 WebP del sector a Medios antes de pegar el widget
   (el HTML las busca en /wp-content/uploads/2026/09/).
 - Fotos de Pexels, licencia Pexels: uso comercial libre, sin atribución obligatoria.
+
+## Página índice — `/sectores/`
+
+Archivo: `elementor/sectores-widget-html.html` (lo genera `tools/sectores/hub_build.py`).
+Quitar el noindex: Yoast → Avanzado → "¿Permitir a los motores de búsqueda
+mostrar esta página?" → Sí.
+
+**Frase clave objetivo**
+```
+IA para negocios en Valladolid
+```
+**Título SEO** (55)
+```
+IA para negocios en Valladolid, por sectores | Verantia
+```
+**Meta descripción** (136)
+```
+IA para negocios en Valladolid adaptada a tu sector: estética, peluquerías, academias, restaurantes, talleres y más. Auditoría gratuita.
+```
+
+Sin fotos nuevas: reutiliza la foto principal de cada sector.
 
 ## Centros de estética — `/sectores/centros-de-estetica/`
 
