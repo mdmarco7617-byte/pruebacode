@@ -103,21 +103,21 @@ IA para inmobiliarias en Valladolid: asistentes de WhatsApp y teléfono, clasifi
 
 Fotos: RDNE Stock Project y Artbovich en Pexels.
 
-## Tiendas online — `/sectores/tiendas-online/`
+## Tiendas e-commerce — `/sectores/tiendas-ecommerce/`
 
-Archivo: `elementor/sectores/tiendas-online.html`
+Archivo: `elementor/sectores/tiendas-ecommerce.html`
 
 **Frase clave objetivo**
 ```
-IA para tiendas online en Valladolid
+IA para tiendas e-commerce en Valladolid
 ```
-**Título SEO** (47)
+**Título SEO** (51)
 ```
-IA para tiendas online en Valladolid | Verantia
+IA para tiendas e-commerce en Valladolid | Verantia
 ```
-**Meta descripción** (141)
+**Meta descripción** (145)
 ```
-IA para tiendas online en Valladolid: asistentes de WhatsApp y teléfono, pedidos automáticos y fichas de producto con IA. Auditoría gratuita.
+IA para tiendas e-commerce en Valladolid: asistentes de WhatsApp y teléfono, pedidos automáticos y fichas de producto con IA. Auditoría gratuita.
 ```
 
 **Imágenes**:

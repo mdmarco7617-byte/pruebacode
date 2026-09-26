@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 from fuentes import *
 S = {
- "slug": "tiendas-online", "name": "Tiendas online", "icon": "cart",
+ "slug": "tiendas-ecommerce", "name": "Tiendas e-commerce", "icon": "cart",
  "color": {"s": "#c2410c", "dark": "#9a3412", "light": "#fed7aa", "soft": "#fff7ed", "rgb": "194,65,12"},
  "credits": "Kampus Production en Pexels (licencia Pexels, uso comercial libre)",
- "img1": {"file": "verantia-ecommerce-preparando-pedidos", "alt": "Emprendedora preparando pedidos de su tienda online junto a cajas de envío"},
+ "img1": {"file": "verantia-ecommerce-preparando-pedidos", "alt": "Emprendedora preparando pedidos de su tienda junto a cajas de envío"},
  "img2": {"file": "verantia-ecommerce-etiquetando-paquete", "alt": "Manos etiquetando una caja de cartón para un envío"},
  "hero": {
-  "h1": "Inteligencia artificial para <em>tiendas online</em>",
-  "lead": "Más ventas y menos horas contestando lo mismo. Somos especialistas en "
-          "<strong>IA para tiendas online en Valladolid</strong> y en toda España: asistentes virtuales para WhatsApp, "
+  "h1": "Inteligencia artificial para <em>tiendas e-commerce</em>",
+  "lead": "Más ventas y menos horas contestando lo mismo, vendas solo por internet o también en tienda física. Somos especialistas en "
+          "<strong>IA para tiendas e-commerce en Valladolid</strong> y en toda España: asistentes virtuales para WhatsApp, "
           "la web y el teléfono, automatización de pedidos y contenido de producto creado con IA.",
   "chips": ["Atención al cliente a cualquier hora", "Pedidos sin tareas manuales", "Fichas de producto con IA"]},
  "pains": {
-  "eyebrow": "El día a día", "h2": "Lo que se come el tiempo en una tienda online",
+  "eyebrow": "El día a día", "h2": "Lo que se come el tiempo en una tienda e-commerce",
   "sub": "Preparar pedidos, contestar dudas y subir productos, todo a la vez. Seguro que te suena.",
   "items": [
    ("chat", "«¿Dónde está mi pedido?»", "Las mismas preguntas sobre envíos, tallas y devoluciones llegan cada día por WhatsApp, correo y redes."),
@@ -23,7 +23,7 @@ S = {
   ],
   "summary": "<strong>La buena noticia:</strong> casi todas estas tareas se repiten igual con cada pedido y cada producto, y eso es exactamente lo que se puede automatizar sin perder la cercanía de una marca pequeña."},
  "services": {
-  "eyebrow": "Soluciones para tu tienda", "h2": "Los 4 servicios más populares en tiendas online",
+  "eyebrow": "Soluciones para tu tienda", "h2": "Los 4 servicios más populares en tiendas e-commerce",
   "sub": "Dos asistentes que atienden por ti, una automatización para los pedidos y la IA generativa para tu catálogo.",
   "items": [
    {"icon": "chat", "base": "chatbots-asistentes-virtuales", "link": "Ver asistentes virtuales",
@@ -85,10 +85,10 @@ S = {
  "steps": STEPS("tienda", "la atención al cliente, los pedidos, el stock y el catálogo",
                 "Cargamos tu catálogo, tus políticas de envío y devolución y tu forma de hablar. Conectamos tu tienda, tu WhatsApp y tus herramientas."),
  "faq": {
-  "eyebrow": "Preguntas frecuentes", "h2": "Preguntas frecuentes sobre IA para tiendas online en Valladolid",
+  "eyebrow": "Preguntas frecuentes", "h2": "Preguntas frecuentes sobre IA para tiendas e-commerce en Valladolid",
   "sub": "Respuestas claras, sin tecnicismos. Si te falta alguna, escríbenos.",
   "items": [
-   ("¿Funciona con mi plataforma de tienda online?",
+   ("¿Funciona con mi plataforma de venta online?",
     "<p>Depende de la plataforma. Las más habituales, como WooCommerce, Shopify o PrestaShop, permiten conectarse con otras herramientas, y en ese caso lo integramos directamente.</p>"
     f"<p>Lo comprobamos en la {AUD}, antes de que decidas nada.</p>"),
    ("¿El asistente puede consultar el estado de un pedido?",
@@ -100,12 +100,12 @@ S = {
     "<p>Sí, si se hacen bien: descripciones originales, útiles para el cliente y con las palabras que de verdad busca. No publicamos texto genérico ni duplicado, y tú revisas cada ficha antes de que salga.</p>"),
    ("¿Podéis ayudarme a recuperar carritos abandonados?",
     "<p>Sí. Podemos automatizar un recordatorio al cliente que dejó el carrito a medias, siempre respetando su consentimiento para recibir comunicaciones, como exige la normativa.</p>"),
-   faq_precio("una tienda online"),
-   faq_zona("tiendas online"),
+   faq_precio("una tienda e-commerce"),
+   faq_zona("tiendas e-commerce"),
   ]},
  "cta": {"h2": "Dedica tu tiempo a tu marca, no a tareas repetidas",
          "p": "Empezamos con una auditoría gratuita de tu tienda: vemos cómo trabajas hoy y te decimos qué merece la pena automatizar. Si no te compensa, te lo diremos igual."},
- "schema_type": "Inteligencia artificial para tiendas online",
- "schema_desc": "IA para tiendas online en Valladolid y toda España: asistentes virtuales para WhatsApp, la web y el teléfono, automatización de pedidos y fichas de producto con IA.",
- "yoast": yoast("IA para tiendas online en Valladolid", "asistentes de WhatsApp y teléfono, pedidos automáticos y fichas de producto con IA. Auditoría gratuita."),
+ "schema_type": "Inteligencia artificial para tiendas e-commerce",
+ "schema_desc": "IA para tiendas e-commerce en Valladolid y toda España: asistentes virtuales para WhatsApp, la web y el teléfono, automatización de pedidos y fichas de producto con IA.",
+ "yoast": yoast("IA para tiendas e-commerce en Valladolid", "asistentes de WhatsApp y teléfono, pedidos automáticos y fichas de producto con IA. Auditoría gratuita."),
 }
