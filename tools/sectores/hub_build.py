@@ -28,23 +28,6 @@ BLURB = {
  "talleres-mecanicos": "Citas sin soltar la llave, avisos de coche listo, revisión e ITV y reseñas en Google.",
 }
 
-# Columnas de la tabla: (clave, titulo, enlace)
-COLS = [("wa", "Asistente de WhatsApp y web", "chatbots-asistentes-virtuales"),
-        ("tel", "Asistente telefónico", "chatbots-asistentes-virtuales"),
-        ("automatizacion-de-procesos", "Automatización y avisos", "automatizacion-de-procesos"),
-        ("resenas-automaticas-google", "Reseñas en Google", "resenas-automaticas-google"),
-        ("clasificador-de-leads", "Clasificador de contactos", "clasificador-de-leads"),
-        ("ia-generativa-contenido-visual", "Contenido con IA", "ia-generativa-contenido-visual")]
-
-BASE = [("chat", "Asistente virtual para WhatsApp y la web", "chatbots-asistentes-virtuales",
-         "Responde al momento, a cualquier hora, con tus precios, horarios y tono. Da cita, reserva o recoge el contacto."),
-        ("phoneai", "Asistente telefónico con IA", "chatbots-asistentes-virtuales",
-         "Atiende las llamadas que no puedes coger con una voz natural. Lo desarrollamos a medida y siempre avisa de que es automático."),
-        ("bell", "Automatización de avisos y tareas", "automatizacion-de-procesos",
-         "Recordatorios, confirmaciones, cobros, pedidos o renovaciones: lo que hoy haces a mano, funcionando solo."),
-        ("star", "Reseñas y reputación en Google", "resenas-automaticas-google",
-         "Un mensaje de agradecimiento con el enlace a tu ficha, a todos los clientes por igual y sin incentivos.")]
-
 OTHERS = ["Clínicas dentales", "Fisioterapia", "Clínicas veterinarias", "Asesorías y gestorías",
           "Despachos de abogados", "Hoteles y casas rurales", "Autoescuelas", "Ópticas", "Tiendas de barrio"]
 
@@ -103,7 +86,7 @@ HUB_CSS = r"""<style>
   background:linear-gradient(135deg,var(--s),var(--s-dark))}
 .vsx-hub .vsx-mosaic span svg{width:13px;height:13px}
 .vsx-hub .vsx-media::before{display:none}
-.vsx-count{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
+.vsx-count{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:36px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
 .vsx-count div{font-size:14px;color:var(--muted);line-height:1.35}
 .vsx-count b{display:block;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
 /* tarjetas de sector */
@@ -133,65 +116,54 @@ HUB_CSS = r"""<style>
   font-size:14px;font-weight:700;color:var(--s-dark)}
 .vsx-sc-more svg{width:15px;height:15px;transition:transform .25s var(--ease)}
 .vsx-sc:hover .vsx-sc-more svg{transform:translateX(4px)}
-/* bloques comunes */
-.vsx-base{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.vsx-base a{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:var(--r);
-  padding:28px 24px;box-shadow:var(--sh-s);transition:transform .28s var(--ease),box-shadow .28s,border-color .28s}
-.vsx-base a:hover{transform:translateY(-5px);box-shadow:var(--sh-m);border-color:var(--s-light)}
-.vsx-base i{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;color:#fff;
-  background:linear-gradient(135deg,var(--s),var(--s-dark));box-shadow:0 10px 22px -10px rgba(var(--s-rgb),.8)}
-.vsx-base i svg{width:24px;height:24px}
-.vsx-base h3{font-size:17.5px;margin:0 0 8px}
-.vsx-base p{font-size:15px;color:var(--muted);margin-bottom:16px}
-.vsx-base span{margin-top:auto;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:var(--s-dark)}
-/* tabla sector x solucion */
-.vsx-tbl-w{overflow-x:auto;border-radius:var(--r);border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
-  -webkit-overflow-scrolling:touch}
-.vsx-tbl{width:100%;border-collapse:collapse;min-width:760px;font-size:14.5px}
-.vsx-tbl caption{caption-side:bottom;padding:14px 18px;text-align:left;font-size:13px;color:rgba(255,255,255,.55)}
-.vsx-tbl th,.vsx-tbl td{padding:15px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,.08)}
-.vsx-tbl thead th{font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.02em;
-  color:rgba(255,255,255,.75);vertical-align:bottom;line-height:1.3}
-.vsx-tbl thead th a:hover{color:#fff;text-decoration:underline}
-.vsx-tbl thead th:first-child{text-align:left;padding-left:22px}
-.vsx-tbl tbody th{text-align:left;padding-left:22px;font-weight:600;color:#fff;white-space:nowrap}
-.vsx-tbl tbody th a{display:inline-flex;align-items:center;gap:10px}
-.vsx-tbl tbody th a:hover{text-decoration:underline;text-underline-offset:3px}
-.vsx-tbl tbody th i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px rgba(255,255,255,.06)}
-.vsx-tbl tbody tr{transition:background .2s}
-.vsx-tbl tbody tr:hover{background:rgba(255,255,255,.05)}
-.vsx-tbl tbody tr:last-child>*{border-bottom:0}
-.vsx-y{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(var(--s-rgb),.6);color:#fff}
-.vsx-y svg{width:15px;height:15px}
-.vsx-n{color:rgba(255,255,255,.28)}
-.vsx-tbl-hint{display:none;margin:0 0 12px;text-align:right;font-size:13px;color:rgba(255,255,255,.6)}
-.vsx-dark .vsx-tbl-note{max-width:820px;margin:26px auto 0;text-align:center;font-size:15px;color:rgba(255,255,255,.7)}
+/* azul Verantia en degradado (solo elementos generales, no las tarjetas de sector) */
+.vsx-hub{--g:linear-gradient(120deg,#0b2a6f 0%,#1d4ed8 50%,#60a5fa 100%);
+  --g-soft:linear-gradient(135deg,#e6efff,#f5f9ff)}
+.vsx-hub .vsx-hero .vsx-hub-h1{max-width:var(--max);margin:0 auto 64px;text-align:center;font-size:clamp(44px,7.4vw,86px)!important;
+  line-height:1.02!important;letter-spacing:-.035em!important;font-weight:800!important;padding-bottom:.06em;
+  background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:vsxUp .8s var(--ease) both}
+.vsx-hub .vsx-hub-h2{font-size:clamp(28px,3.4vw,40px);margin:0 0 20px;text-wrap:balance}
+.vsx-hub .vsx-hub-h2 em{font-style:normal;background:var(--g);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.vsx-hub .vsx-btn--p{background:var(--g);background-size:140% 100%;background-position:0 0;
+  box-shadow:0 12px 26px -12px rgba(29,78,216,.75);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background-position .4s var(--ease)}
+.vsx-hub .vsx-btn--p:hover{background-position:100% 0}
+.vsx-hub .vsx-eyebrow{color:#1d4ed8}
+.vsx-hub .vsx-eyebrow::before{background:var(--g)}
+.vsx-count b{background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vsx-hub .vsx-sec--soft{background:var(--g-soft)}
+.vsx-hub .vsx-step::before{background:var(--g);-webkit-background-clip:text;background-clip:text}
+.vsx-hub .vsx-faq summary i{background:var(--g-soft);color:#1d4ed8}
+.vsx-hub .vsx-faq details[open] summary i{background:var(--g);color:#fff}
+.vsx-hub .vsx-faq details:hover,.vsx-hub .vsx-faq details[open]{border-color:#bfdbfe}
+.vsx-hub .vsx-rel i{background:var(--g);color:#fff}
+.vsx-hub .vsx-rel a::after{color:#1d4ed8}
+.vsx-hub .vsx-crumb a:hover{color:#1d4ed8}
+.vsx-hub .vsx-cta{background:linear-gradient(125deg,#0b2a6f 0%,#1d4ed8 55%,#3b82f6 100%)!important}
 /* otros sectores */
 .vsx-other{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;background:#fff;
   border:1px solid var(--border);border-radius:var(--r-lg);padding:48px;box-shadow:var(--sh-m)}
 .vsx-other h2{font-size:clamp(26px,3.2vw,34px);margin:0 0 14px}
 .vsx-other p{color:var(--muted)}
 .vsx-other ul{display:flex;flex-wrap:wrap;gap:10px}
-.vsx-other li{padding:9px 15px;border-radius:999px;background:var(--s-soft);border:1px solid var(--s-light);
-  font-size:14px;font-weight:600;color:var(--s-dark)}
+.vsx-other li{padding:9px 15px;border-radius:999px;background:var(--g-soft);border:1px solid #bfdbfe;
+  font-size:14px;font-weight:600;color:#1d4ed8}
 .vsx-nw{white-space:nowrap}
 .vsx-other li:last-child{background:#fff;border-style:dashed}
 @media (max-width:1080px){
-  .vsx-secs,.vsx-base{grid-template-columns:repeat(2,1fr)}
+  .vsx-secs{grid-template-columns:repeat(2,1fr)}
   .vsx-other{grid-template-columns:1fr;gap:30px;padding:38px 30px}
   .vsx-hub .vsx-media{max-width:560px}
-}
-@media (max-width:860px){
-  .vsx-tbl-hint{display:block}
-  .vsx-tbl thead th:first-child,.vsx-tbl tbody th{position:sticky;left:0;z-index:1;background:#232323}
+  .vsx-hub .vsx-hero .vsx-hub-h1{margin-bottom:44px}
 }
 @media (max-width:560px){
-  .vsx-secs,.vsx-base{grid-template-columns:1fr}
+  .vsx-secs{grid-template-columns:1fr}
   .vsx-hub .vsx-mosaic{gap:10px}
   .vsx-hub .vsx-mosaic a:nth-child(2),.vsx-hub .vsx-mosaic a:nth-child(4){transform:translateY(16px)}
   .vsx-hub .vsx-mosaic span{font-size:11px;left:6px;bottom:6px;padding:4px 9px 4px 4px}
   .vsx-hub .vsx-mosaic span i{width:20px;height:20px}
-  .vsx-count{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .vsx-count{grid-template-columns:repeat(3,1fr);gap:12px}
   .vsx-count div{font-size:12.5px}
   .vsx-count b{font-size:23px}
   .vsx-other{padding:30px 20px}
@@ -219,12 +191,12 @@ def build():
     w('  <section class="vsx-hero" aria-labelledby="vsx-h1">\n')
     w('    <nav class="vsx-crumb" aria-label="Ruta de navegación"><ol><li><a href="%s/">Inicio</a></li>'
       '<li><span aria-current="page">Sectores</span></li></ol></nav>\n' % SITE)
+    w('    <h1 id="vsx-h1" class="vsx-hub-h1">Soluciones por sector</h1>\n')
     w('    <div class="vsx-hero-grid">\n      <div class="vsx-hero-copy">\n')
-    w('        <p class="vsx-tag"><i>%s</i>Soluciones por sector</p>\n' % ic("grid"))
-    w('        <h1 id="vsx-h1">Inteligencia artificial para <em>cada tipo de negocio</em></h1>\n')
-    w('        <p class="vsx-lead">Cada negocio pierde el tiempo en sitios distintos: la peluquería, en el teléfono; la tienda e-commerce, '
-      'en las mismas dudas; el taller, en los avisos. Somos especialistas en <strong>%s</strong> y en toda España, '
-      'y adaptamos la IA a lo que de verdad necesita tu sector.</p>\n' % KP)
+    w('        <h2 class="vsx-hub-h2">Inteligencia artificial para <em>cada tipo de negocio</em></h2>\n')
+    w('        <p class="vsx-lead">Cada tipo de negocio tiene sus propias características y necesidades: no se atiende igual a los clientes '
+      'de una peluquería que a los de un taller o una tienda e-commerce. Somos especialistas en <strong>%s</strong> y en toda España, '
+      'y adaptamos cada solución a tu sector para que ahorres tiempo, reduzcas costes y hagas crecer tu negocio.</p>\n' % KP)
     w('        <div class="vsx-ctas">\n')
     w('          <a class="vsx-btn vsx-btn--p" href="#vsx-lista">Buscar mi sector %s</a>\n' % ic("arrow"))
     w('          <a class="vsx-btn vsx-btn--g" href="%s/contacto/">Solicitar auditoría gratuita</a>\n' % SITE)
@@ -240,9 +212,7 @@ def build():
 
     # ---------- LISTA DE SECTORES ----------
     w('  <section class="vsx-sec vsx-sec--soft" id="vsx-lista" aria-labelledby="vsx-list-t">\n    <div class="vsx-wrap">\n      ')
-    w(head("Elige tu sector", "Soluciones de IA pensadas para tu sector",
-           "Cada página explica los problemas típicos del sector, las cuatro soluciones que mejor funcionan y datos públicos con su fuente.",
-           "vsx-list-t") + '\n      <div class="vsx-secs">\n')
+    w(head("Elige tu sector", "Encuentra la solución para tu negocio", None, "vsx-list-t") + '\n      <div class="vsx-secs">\n')
     for S in SS:
         w('        <article class="vsx-sc vsx-rv" style="%s">\n' % colors(S["color"]))
         w('          <div class="vsx-sc-img"><div class="vsx-sc-ph"><img src="%s%s-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="%s"></div>'
@@ -255,46 +225,6 @@ def build():
         w('            </ul>\n            <span class="vsx-sc-more" aria-hidden="true">Ver soluciones %s</span>\n' % ic("arrow"))
         w('          </div>\n        </article>\n')
     w('      </div>\n    </div>\n  </section>\n\n')
-
-    # ---------- BLOQUES COMUNES ----------
-    w('  <section class="vsx-sec" aria-labelledby="vsx-base-t">\n    <div class="vsx-wrap">\n      ')
-    w(head("La base de todo", "Cuatro soluciones que funcionan en casi cualquier negocio",
-           "Cambian los detalles de cada sector, pero la mayoría del tiempo perdido está en los mismos sitios: mensajes, llamadas, tareas repetidas y reputación.",
-           "vsx-base-t") + '\n      <div class="vsx-base">\n')
-    for icn, t, base, d in BASE:
-        w('        <a class="vsx-rv" href="%s%s/"><i>%s</i><h3>%s</h3><p>%s</p><span>Ver servicio →</span></a>\n'
-          % (SVC, base, ic(icn), t, d))
-    w('      </div>\n    </div>\n  </section>\n\n')
-
-    # ---------- TABLA SECTOR x SOLUCION ----------
-    w('  <section class="vsx-dark" aria-labelledby="vsx-tbl-t">\n    <div class="vsx-wrap">\n      ')
-    w(head("De un vistazo", "Qué solución de IA encaja en cada sector",
-           "Las cuatro soluciones más populares en cada página de sector. Todas se pueden combinar y adaptar a tu caso.",
-           "vsx-tbl-t") + '\n')
-    w('      <p class="vsx-tbl-hint" aria-hidden="true">Desliza para ver todas las soluciones →</p>\n')
-    w('      <div class="vsx-tbl-w vsx-rv">\n        <table class="vsx-tbl">\n')
-    w('          <caption>✓ = una de las 4 soluciones más populares del sector. El resto también se puede aplicar si tu negocio lo necesita.</caption>\n')
-    w('          <thead><tr><th scope="col">Sector</th>')
-    for _, t, base in COLS:
-        w('<th scope="col"><a href="%s%s/">%s</a></th>' % (SVC, base, t))
-    w('</tr></thead>\n          <tbody>\n')
-    for S in SS:
-        bases = [it["base"] for it in S["services"]["items"]]
-        have = {"wa": True, "tel": True}
-        for b in bases:
-            have[b] = True
-        w('            <tr><th scope="row"><a href="%s%s/"><i style="--c:%s" aria-hidden="true"></i>%s</a></th>'
-          % (URL, S["slug"], S["color"]["s"], S["name"]))
-        for k, t, _ in COLS:
-            if have.get(k):
-                w('<td><span class="vsx-y" role="img" aria-label="Sí">%s</span></td>' % ic("check"))
-            else:
-                w('<td><span class="vsx-n" role="img" aria-label="No incluida">–</span></td>')
-        w('</tr>\n')
-    w('          </tbody>\n        </table>\n      </div>\n')
-    w('      <p class="vsx-tbl-note vsx-rv">Los asistentes de WhatsApp, web y teléfono aparecen en todos los sectores porque '
-      'atender a tiempo es el problema más repetido en cualquier negocio local.</p>\n')
-    w('    </div>\n  </section>\n\n')
 
     # ---------- OTROS SECTORES ----------
     w('  <section class="vsx-sec" aria-labelledby="vsx-other-t">\n    <div class="vsx-wrap">\n')
@@ -328,8 +258,7 @@ def build():
     w('      </div>\n    </div>\n  </section>\n\n')
 
     # ---------- CTA ----------
-    w('  <section class="vsx-sec" style="padding-top:0" aria-labelledby="vsx-cta-t">\n    <div class="vsx-cta vsx-rv" '
-      'style="background:linear-gradient(135deg,#1d4ed8,#0b1b4d 120%)">\n')
+    w('  <section class="vsx-sec" style="padding-top:0" aria-labelledby="vsx-cta-t">\n    <div class="vsx-cta vsx-rv">\n')
     w('      <h2 id="vsx-cta-t">Dedica tu tiempo a tus clientes, no a tareas repetidas</h2>\n')
     w('      <p>Empezamos con una auditoría gratuita de tu negocio: vemos cómo trabajas hoy y te decimos qué merece la pena automatizar. '
       'Si no te compensa, te lo diremos igual.</p>\n      <div class="vsx-ctas">\n')
