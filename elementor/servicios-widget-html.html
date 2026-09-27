@@ -419,18 +419,6 @@
 .vsp-need span i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;
   background:linear-gradient(135deg,var(--s),var(--s-dark))}
 .vsp-need span svg{width:12px;height:12px}
-/* sectores */
-.vsp-secs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.vsp-sec{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:16px;background:#fff;border:1px solid var(--border);
-  box-shadow:var(--sh-s);font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--ink);
-  transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
-.vsp-sec:hover{transform:translateY(-4px);box-shadow:var(--sh-m);border-color:var(--s-light)}
-.vsp-sec i{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(135deg,var(--s),var(--s-dark))}
-.vsp-sec i svg{width:20px;height:20px}
-.vsp-sec b{flex:1;font-weight:700}
-.vsp-sec::after{content:'→';color:var(--s-dark)}
-.vsp-secs-more{text-align:center;margin-top:30px}
 /* por que Verantia */
 .vsp-vals{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .vsp-val{padding:28px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--border);box-shadow:var(--sh-s);
@@ -444,10 +432,10 @@
   .vsp-grid{grid-template-columns:repeat(2,1fr)}
   .vsp-audit{grid-template-columns:1fr;gap:24px;padding:40px 32px}
   .vsp-audit-ctas{grid-auto-flow:column;justify-content:start}
-  .vsp-secs,.vsp-vals{grid-template-columns:repeat(2,1fr)}
+  .vsp-vals{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:640px){
-  .vsp-grid,.vsp-secs,.vsp-vals{grid-template-columns:1fr}
+  .vsp-grid,.vsp-vals{grid-template-columns:1fr}
   .vsp-need{grid-template-columns:1fr;gap:12px}
   .vsp-need span{justify-self:start}
   .vsp-audit{padding:32px 22px}
@@ -586,27 +574,7 @@
     </div>
   </section>
 
-  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-sec-t">
-    <div class="vsx-wrap">
-      <div class="vsx-head vsx-rv">
-      <p class="vsx-eyebrow">Por sectores</p>
-      <h2 id="vsx-sec-t">Soluciones adaptadas a tu tipo de negocio</h2>
-      </div>
-      <div class="vsp-secs">
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/centros-de-estetica/" style="--s:#c7336f;--s-dark:#a3245a;--s-light:#f5c2d6;--s-soft:#fdf1f6;--s-rgb:199,51,111"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M16.5 12H15M12 16.5V15"/></svg></i><b>Centros de estética</b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/peluquerias/" style="--s:#7c3aed;--s-dark:#5b21b6;--s-light:#d9c7fb;--s-soft:#f6f1ff;--s-rgb:124,58,237"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></i><b>Peluquerías</b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/academias/" style="--s:#4f46e5;--s-dark:#3730a3;--s-light:#c7d2fe;--s-soft:#eef2ff;--s-rgb:79,70,229"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></i><b>Academias</b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/inmobiliarias/" style="--s:#0e7490;--s-dark:#155e75;--s-light:#a5f3fc;--s-soft:#ecfeff;--s-rgb:14,116,144"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M15 8l2 2"/></svg></i><b>Inmobiliarias</b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/tiendas-ecommerce/" style="--s:#c2410c;--s-dark:#9a3412;--s-light:#fed7aa;--s-soft:#fff7ed;--s-rgb:194,65,12"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.5L22 7H6"/></svg></i><b>Tiendas <span class="vsx-nw">e-commerce</span></b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/restaurantes/" style="--s:#dc2626;--s-dark:#b91c1c;--s-light:#fecaca;--s-soft:#fef2f2;--s-rgb:220,38,38"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a3 3 0 0 0 6 0V2M6 2v20M21 15V2a5 5 0 0 0-5 5v6h5zM21 15v7"/></svg></i><b>Restaurantes</b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/gimnasios/" style="--s:#15803d;--s-dark:#166534;--s-light:#bbf7d0;--s-soft:#f0fdf4;--s-rgb:21,128,61"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></i><b>Gimnasios</b></a>
-        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/talleres-mecanicos/" style="--s:#475569;--s-dark:#334155;--s-light:#cbd5e1;--s-soft:#f1f5f9;--s-rgb:71,85,105"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></i><b>Talleres mecánicos</b></a>
-      </div>
-      <p class="vsp-secs-more vsx-rv"><a class="vsx-btn vsx-btn--g" href="https://verantiapro.es/sectores/">Ver todos los sectores <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
-    </div>
-  </section>
-
-  <section class="vsx-sec" aria-labelledby="vsx-val-t">
+  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-val-t">
     <div class="vsx-wrap">
       <div class="vsx-head vsx-rv">
       <p class="vsx-eyebrow">Por qué Verantia</p>
@@ -616,12 +584,12 @@
         <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></i><h3>Hablas con una persona</h3><p>Respondemos tus dudas por email, WhatsApp o llamada en menos de 24 horas laborables. Nunca con un contestador automático.</p></div>
         <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></i><h3>Hecho a tu medida</h3><p>Nada de plantillas genéricas: cada solución se configura con tus servicios, tus precios y tu forma de hablar.</p></div>
         <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></i><h3>Tus datos, protegidos</h3><p>Trabajamos sobre tus propias herramientas y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD.</p></div>
-        <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></i><h3>Cerca de ti</h3><p>Somos una agencia de Valladolid. Nos gusta conocer los negocios en persona, y trabajamos en remoto con toda España.</p></div>
+        <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 7a7.5 7.5 0 1 0 0 10"/><path d="M3 10h9M3 14h9"/></svg></i><h3>Presupuestos para pymes</h3><p>Precios pensados para pymes y negocios locales, no para grandes empresas. Pagas solo por lo que tu negocio necesita.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-faq-t">
+  <section class="vsx-sec" aria-labelledby="vsx-faq-t">
     <div class="vsx-wrap">
       <div class="vsx-head vsx-rv">
       <p class="vsx-eyebrow">Preguntas frecuentes</p>

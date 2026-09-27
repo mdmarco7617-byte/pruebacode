@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Pagina /servicios/: los 7 servicios, auditoria destacada, buscador por
-necesidad, enlaces a sectores, por que Verantia, FAQ y datos estructurados
+necesidad, por que Verantia, FAQ y datos estructurados
 (ItemList de Service + FAQPage). Mismo sistema visual que /sectores/.
 Uso: python3 tools/sectores/servicios_build.py (tambien lo llama build_all.py)."""
 import os, sys, json
@@ -8,7 +8,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import sector_build
 from sector_build import CSS, JS, SITE, SVC, WA, ic, esc, head
-from hub_build import HUB_CSS, colors, load, nw
+from hub_build import HUB_CSS, colors
 from fuentes import faq_datos, faq_zona, AUD
 
 sector_build.I.update({
@@ -71,7 +71,7 @@ VALUES = [
  ("headset", "Hablas con una persona", "Respondemos tus dudas por email, WhatsApp o llamada en menos de 24 horas laborables. Nunca con un contestador automático."),
  ("layers", "Hecho a tu medida", "Nada de plantillas genéricas: cada solución se configura con tus servicios, tus precios y tu forma de hablar."),
  ("shield", "Tus datos, protegidos", "Trabajamos sobre tus propias herramientas y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD."),
- ("pin", "Cerca de ti", "Somos una agencia de Valladolid. Nos gusta conocer los negocios en persona, y trabajamos en remoto con toda España."),
+ ("euro", "Presupuestos para pymes", "Precios pensados para pymes y negocios locales, no para grandes empresas. Pagas solo por lo que tu negocio necesita."),
 ]
 
 FAQ = [
@@ -158,18 +158,6 @@ SVP_CSS = r"""<style>
 .vsp-need span i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;
   background:linear-gradient(135deg,var(--s),var(--s-dark))}
 .vsp-need span svg{width:12px;height:12px}
-/* sectores */
-.vsp-secs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.vsp-sec{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:16px;background:#fff;border:1px solid var(--border);
-  box-shadow:var(--sh-s);font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--ink);
-  transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
-.vsp-sec:hover{transform:translateY(-4px);box-shadow:var(--sh-m);border-color:var(--s-light)}
-.vsp-sec i{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(135deg,var(--s),var(--s-dark))}
-.vsp-sec i svg{width:20px;height:20px}
-.vsp-sec b{flex:1;font-weight:700}
-.vsp-sec::after{content:'→';color:var(--s-dark)}
-.vsp-secs-more{text-align:center;margin-top:30px}
 /* por que Verantia */
 .vsp-vals{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .vsp-val{padding:28px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--border);box-shadow:var(--sh-s);
@@ -183,10 +171,10 @@ SVP_CSS = r"""<style>
   .vsp-grid{grid-template-columns:repeat(2,1fr)}
   .vsp-audit{grid-template-columns:1fr;gap:24px;padding:40px 32px}
   .vsp-audit-ctas{grid-auto-flow:column;justify-content:start}
-  .vsp-secs,.vsp-vals{grid-template-columns:repeat(2,1fr)}
+  .vsp-vals{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:640px){
-  .vsp-grid,.vsp-secs,.vsp-vals{grid-template-columns:1fr}
+  .vsp-grid,.vsp-vals{grid-template-columns:1fr}
   .vsp-need{grid-template-columns:1fr;gap:12px}
   .vsp-need span{justify-self:start}
   .vsp-audit{padding:32px 22px}
@@ -199,7 +187,6 @@ SVP_CSS = r"""<style>
 
 
 def build():
-    SS = load()
     hub_c = {"s": "#2563eb", "dark": "#1d4ed8", "light": "#bfdbfe", "soft": "#eff6ff", "rgb": "37,99,235"}
     o = []; w = o.append
     w('<!-- ==========================================================\n'
@@ -266,25 +253,15 @@ def build():
           % (href, colors(c), txt, ic(icn), name))
     w('      </div>\n    </div>\n  </section>\n\n')
 
-    # ---------- SECTORES ----------
-    w('  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-sec-t">\n    <div class="vsx-wrap">\n      ')
-    w(head("Por sectores", "Soluciones adaptadas a tu tipo de negocio", None, "vsx-sec-t") + '\n      <div class="vsp-secs">\n')
-    for S in SS:
-        w('        <a class="vsp-sec vsx-rv" href="%s/sectores/%s/" style="%s"><i aria-hidden="true">%s</i><b>%s</b></a>\n'
-          % (SITE, S["slug"], colors(S["color"]), ic(S["icon"]), nw(S["name"])))
-    w('      </div>\n      <p class="vsp-secs-more vsx-rv"><a class="vsx-btn vsx-btn--g" href="%s/sectores/">Ver todos los sectores %s</a></p>\n'
-      % (SITE, ic("arrow")))
-    w('    </div>\n  </section>\n\n')
-
     # ---------- POR QUE VERANTIA ----------
-    w('  <section class="vsx-sec" aria-labelledby="vsx-val-t">\n    <div class="vsx-wrap">\n      ')
+    w('  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-val-t">\n    <div class="vsx-wrap">\n      ')
     w(head("Por qué Verantia", "Tecnología a medida, trato de tú a tú", None, "vsx-val-t") + '\n      <div class="vsp-vals">\n')
     for icn, t, d in VALUES:
         w('        <div class="vsp-val vsx-rv"><i aria-hidden="true">%s</i><h3>%s</h3><p>%s</p></div>\n' % (ic(icn), t, d))
     w('      </div>\n    </div>\n  </section>\n\n')
 
     # ---------- FAQ ----------
-    w('  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-faq-t">\n    <div class="vsx-wrap">\n      ')
+    w('  <section class="vsx-sec" aria-labelledby="vsx-faq-t">\n    <div class="vsx-wrap">\n      ')
     w(head("Preguntas frecuentes", "Preguntas frecuentes sobre nuestros %s" % KP,
            "Respuestas claras, sin tecnicismos. Si te falta alguna, escríbenos.", "vsx-faq-t") + '\n      <div class="vsx-faq">\n')
     for q, a in FAQ:
