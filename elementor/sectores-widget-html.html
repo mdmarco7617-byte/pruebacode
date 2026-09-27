@@ -276,21 +276,10 @@
 </style>
 <style>
 /* ---------- indice de sectores (complementa el CSS comun) ---------- */
-.vsx-hub .vsx-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
-.vsx-hub .vsx-mosaic a{position:relative;display:block;border-radius:20px;overflow:hidden;box-shadow:var(--sh-m);
-  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.vsx-hub .vsx-mosaic a:nth-child(2){transform:translateY(28px)}
-.vsx-hub .vsx-mosaic a:nth-child(4){transform:translateY(28px)}
-.vsx-hub .vsx-mosaic a:hover{box-shadow:var(--sh-l);z-index:1}
-.vsx-hub .vsx-mosaic img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .6s var(--ease)}
-.vsx-hub .vsx-mosaic a:hover img{transform:scale(1.05)}
-.vsx-hub .vsx-mosaic span{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:7px;
-  padding:6px 12px 6px 6px;border-radius:999px;background:rgba(255,255,255,.94);font-family:'Manrope',sans-serif;
-  font-size:12.5px;font-weight:700;color:var(--ink);box-shadow:var(--sh-s);white-space:nowrap}
-.vsx-hub .vsx-mosaic span i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(135deg,var(--s),var(--s-dark))}
-.vsx-hub .vsx-mosaic span svg{width:13px;height:13px}
-.vsx-hub .vsx-media::before{display:none}
+.vsx-hub-intro{max-width:800px;margin:0 auto;text-align:center}
+.vsx-hub-intro .vsx-lead{max-width:none}
+.vsx-hub-intro .vsx-ctas{justify-content:center}
+.vsx-hub-intro .vsx-count{justify-content:center}
 .vsx-count{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:36px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
 .vsx-count div{font-size:14px;color:var(--muted);line-height:1.35}
 .vsx-count b{display:block;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
@@ -359,15 +348,10 @@
 @media (max-width:1080px){
   .vsx-secs{grid-template-columns:repeat(2,1fr)}
   .vsx-other{grid-template-columns:1fr;gap:30px;padding:38px 30px}
-  .vsx-hub .vsx-media{max-width:560px}
   .vsx-hub .vsx-hero .vsx-hub-h1{margin-bottom:44px}
 }
 @media (max-width:560px){
   .vsx-secs{grid-template-columns:1fr}
-  .vsx-hub .vsx-mosaic{gap:10px}
-  .vsx-hub .vsx-mosaic a:nth-child(2),.vsx-hub .vsx-mosaic a:nth-child(4){transform:translateY(16px)}
-  .vsx-hub .vsx-mosaic span{font-size:11px;left:6px;bottom:6px;padding:4px 9px 4px 4px}
-  .vsx-hub .vsx-mosaic span i{width:20px;height:20px}
   .vsx-count{grid-template-columns:repeat(3,1fr);gap:12px}
   .vsx-count div{font-size:12.5px}
   .vsx-count b{font-size:23px}
@@ -380,7 +364,7 @@
   <section class="vsx-hero" aria-labelledby="vsx-h1">
     <nav class="vsx-crumb" aria-label="Ruta de navegación"><ol><li><a href="https://verantiapro.es/">Inicio</a></li><li><span aria-current="page">Sectores</span></li></ol></nav>
     <h1 id="vsx-h1" class="vsx-hub-h1">Soluciones por sector</h1>
-    <div class="vsx-hero-grid">
+    <div class="vsx-hub-intro">
       <div class="vsx-hero-copy">
         <h2 class="vsx-hub-h2">Inteligencia artificial para <em>cada tipo de negocio</em></h2>
         <p class="vsx-lead">Cada tipo de negocio tiene sus propias características y necesidades: no se atiende igual a los clientes de una peluquería que a los de un taller o una tienda e-commerce. Somos especialistas en <strong>IA para negocios en Valladolid</strong> y en toda España, y adaptamos cada solución a tu sector para que ahorres tiempo, reduzcas costes y hagas crecer tu negocio.</p>
@@ -389,14 +373,6 @@
           <a class="vsx-btn vsx-btn--g" href="https://verantiapro.es/contacto/">Solicitar auditoría gratuita</a>
         </div>
         <div class="vsx-count"><div><b>8</b>sectores con soluciones propias</div><div><b>24/7</b>atención por WhatsApp, web y teléfono</div><div><b>0 €</b>la auditoría de procesos</div></div>
-      </div>
-      <div class="vsx-media">
-        <div class="vsx-mosaic">
-          <a href="https://verantiapro.es/sectores/centros-de-estetica/" style="--s:#c7336f;--s-dark:#a3245a;--s-light:#f5c2d6;--s-soft:#fdf1f6;--s-rgb:199,51,111"><img src="https://verantiapro.es/wp-content/uploads/2026/09/verantia-centro-estetica-tratamiento-facial-800.webp" width="800" height="533" decoding="async" alt="Esteticista realizando un tratamiento facial a una clienta en la cabina de un centro de estética"><span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M16.5 12H15M12 16.5V15"/></svg></i>Centros de estética</span></a>
-          <a href="https://verantiapro.es/sectores/restaurantes/" style="--s:#dc2626;--s-dark:#b91c1c;--s-light:#fecaca;--s-soft:#fef2f2;--s-rgb:220,38,38"><img src="https://verantiapro.es/wp-content/uploads/2026/09/verantia-restaurante-camarero-sala-800.webp" width="800" height="533" decoding="async" alt="Camarero atendiendo a clientes en la sala de un restaurante"><span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a3 3 0 0 0 6 0V2M6 2v20M21 15V2a5 5 0 0 0-5 5v6h5zM21 15v7"/></svg></i>Restaurantes</span></a>
-          <a href="https://verantiapro.es/sectores/talleres-mecanicos/" style="--s:#475569;--s-dark:#334155;--s-light:#cbd5e1;--s-soft:#f1f5f9;--s-rgb:71,85,105"><img src="https://verantiapro.es/wp-content/uploads/2026/09/verantia-taller-mecanico-revision-800.webp" width="800" height="533" decoding="async" alt="Mecánico revisando el motor de un coche en un taller"><span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></i>Talleres mecánicos</span></a>
-          <a href="https://verantiapro.es/sectores/tiendas-ecommerce/" style="--s:#c2410c;--s-dark:#9a3412;--s-light:#fed7aa;--s-soft:#fff7ed;--s-rgb:194,65,12"><img src="https://verantiapro.es/wp-content/uploads/2026/09/verantia-ecommerce-preparando-pedidos-800.webp" width="800" height="533" decoding="async" alt="Emprendedora preparando pedidos de su tienda junto a cajas de envío"><span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.5L22 7H6"/></svg></i>Tiendas e-commerce</span></a>
-        </div>
       </div>
     </div>
   </section>

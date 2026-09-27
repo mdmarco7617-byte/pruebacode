@@ -71,21 +71,10 @@ def colors(c):
 
 HUB_CSS = r"""<style>
 /* ---------- indice de sectores (complementa el CSS comun) ---------- */
-.vsx-hub .vsx-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
-.vsx-hub .vsx-mosaic a{position:relative;display:block;border-radius:20px;overflow:hidden;box-shadow:var(--sh-m);
-  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.vsx-hub .vsx-mosaic a:nth-child(2){transform:translateY(28px)}
-.vsx-hub .vsx-mosaic a:nth-child(4){transform:translateY(28px)}
-.vsx-hub .vsx-mosaic a:hover{box-shadow:var(--sh-l);z-index:1}
-.vsx-hub .vsx-mosaic img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .6s var(--ease)}
-.vsx-hub .vsx-mosaic a:hover img{transform:scale(1.05)}
-.vsx-hub .vsx-mosaic span{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:7px;
-  padding:6px 12px 6px 6px;border-radius:999px;background:rgba(255,255,255,.94);font-family:'Manrope',sans-serif;
-  font-size:12.5px;font-weight:700;color:var(--ink);box-shadow:var(--sh-s);white-space:nowrap}
-.vsx-hub .vsx-mosaic span i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(135deg,var(--s),var(--s-dark))}
-.vsx-hub .vsx-mosaic span svg{width:13px;height:13px}
-.vsx-hub .vsx-media::before{display:none}
+.vsx-hub-intro{max-width:800px;margin:0 auto;text-align:center}
+.vsx-hub-intro .vsx-lead{max-width:none}
+.vsx-hub-intro .vsx-ctas{justify-content:center}
+.vsx-hub-intro .vsx-count{justify-content:center}
 .vsx-count{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:36px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
 .vsx-count div{font-size:14px;color:var(--muted);line-height:1.35}
 .vsx-count b{display:block;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
@@ -154,15 +143,10 @@ HUB_CSS = r"""<style>
 @media (max-width:1080px){
   .vsx-secs{grid-template-columns:repeat(2,1fr)}
   .vsx-other{grid-template-columns:1fr;gap:30px;padding:38px 30px}
-  .vsx-hub .vsx-media{max-width:560px}
   .vsx-hub .vsx-hero .vsx-hub-h1{margin-bottom:44px}
 }
 @media (max-width:560px){
   .vsx-secs{grid-template-columns:1fr}
-  .vsx-hub .vsx-mosaic{gap:10px}
-  .vsx-hub .vsx-mosaic a:nth-child(2),.vsx-hub .vsx-mosaic a:nth-child(4){transform:translateY(16px)}
-  .vsx-hub .vsx-mosaic span{font-size:11px;left:6px;bottom:6px;padding:4px 9px 4px 4px}
-  .vsx-hub .vsx-mosaic span i{width:20px;height:20px}
   .vsx-count{grid-template-columns:repeat(3,1fr);gap:12px}
   .vsx-count div{font-size:12.5px}
   .vsx-count b{font-size:23px}
@@ -192,7 +176,7 @@ def build():
     w('    <nav class="vsx-crumb" aria-label="Ruta de navegación"><ol><li><a href="%s/">Inicio</a></li>'
       '<li><span aria-current="page">Sectores</span></li></ol></nav>\n' % SITE)
     w('    <h1 id="vsx-h1" class="vsx-hub-h1">Soluciones por sector</h1>\n')
-    w('    <div class="vsx-hero-grid">\n      <div class="vsx-hero-copy">\n')
+    w('    <div class="vsx-hub-intro">\n      <div class="vsx-hero-copy">\n')
     w('        <h2 class="vsx-hub-h2">Inteligencia artificial para <em>cada tipo de negocio</em></h2>\n')
     w('        <p class="vsx-lead">Cada tipo de negocio tiene sus propias características y necesidades: no se atiende igual a los clientes '
       'de una peluquería que a los de un taller o una tienda e-commerce. Somos especialistas en <strong>%s</strong> y en toda España, '
@@ -203,12 +187,7 @@ def build():
     w('        </div>\n')
     w('        <div class="vsx-count"><div><b>%d</b>sectores con soluciones propias</div>'
       '<div><b>24/7</b>atención por WhatsApp, web y teléfono</div><div><b>0 €</b>la auditoría de procesos</div></div>\n' % len(SS))
-    w('      </div>\n      <div class="vsx-media">\n        <div class="vsx-mosaic">\n')
-    for S in [SS[i] for i in (0, 5, 7, 4)]:
-        w('          <a href="%s%s/" style="%s"><img src="%s%s-800.webp" width="800" height="533" decoding="async" alt="%s">'
-          '<span><i>%s</i>%s</span></a>\n' % (URL, S["slug"], colors(S["color"]), UP, S["img1"]["file"],
-                                              S["img1"]["alt"], ic(S["icon"]), S["name"]))
-    w('        </div>\n      </div>\n    </div>\n  </section>\n\n')
+    w('      </div>\n    </div>\n  </section>\n\n')
 
     # ---------- LISTA DE SECTORES ----------
     w('  <section class="vsx-sec vsx-sec--soft" id="vsx-lista" aria-labelledby="vsx-list-t">\n    <div class="vsx-wrap">\n      ')
