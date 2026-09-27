@@ -14,3 +14,5 @@ for mod in sorted(f[:-3] for f in os.listdir(HERE) if f.startswith("data_") and 
 
 import hub_build
 hub_build.main()
+import servicios_build
+servicios_build.main()

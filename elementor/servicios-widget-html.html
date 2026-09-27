@@ -1,228 +1,951 @@
+<!-- ==========================================================
+     VERANTIA - Pagina de servicios (/servicios/)
+     Pegar tal cual en un unico widget HTML de Elementor.
+     Ajustes de pagina en Elementor: Diseno de pagina =
+     "Elementor ancho completo", para que el tema no pinte un
+     segundo H1 con el titulo de la pagina.
+     Sin fotos nuevas: usa solo iconos.
+     ========================================================== -->
+
 <style>
-  #verantia-servicios-v2 {
-    font-family: 'DM Sans', sans-serif;
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 90px 48px;
-    box-sizing: border-box;
-  }
+.vsx{
+  --ink:#1a1a1a; --text:#333; --muted:#5f6673; --border:#ebe6ea;
+  --r:18px; --r-lg:26px;
+  --sh-s:0 1px 2px rgba(20,16,24,.06);
+  --sh-m:0 16px 36px -16px rgba(20,16,24,.22);
+  --sh-l:0 30px 60px -28px rgba(20,16,24,.30);
+  --max:1180px; --ease:cubic-bezier(.16,1,.3,1);
+  font-family:'DM Sans',system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--text);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.vsx *,.vsx *::before,.vsx *::after{box-sizing:border-box}
+.vsx :where(h1,h2,h3,h4){font-family:'Manrope','DM Sans',sans-serif;color:var(--ink);
+  line-height:1.15;letter-spacing:-.022em;font-weight:700;margin:0}
+.vsx :where(p,ul,ol,figure){margin:0;padding:0}
+.vsx :where(li){list-style:none}
+.vsx :where(a){color:inherit;text-decoration:none}
+.vsx :where(img){display:block;max-width:100%;height:auto}
+.vsx svg{display:block}
+.vsx-wrap{max-width:var(--max);margin:0 auto}
+.vsx-sec{padding:96px 24px;position:relative}
+.vsx-sec--soft{background:var(--s-soft)}
+.vsx-head{max-width:740px;margin:0 auto 56px;text-align:center}
+.vsx-head h2{font-size:clamp(29px,3.8vw,42px);margin:0 0 16px;text-wrap:balance}
+.vsx-head p{font-size:18px;color:var(--muted)}
+.vsx-eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;
+  font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--s-dark)}
+.vsx-eyebrow::before{content:'';width:22px;height:2px;border-radius:2px;background:var(--s)}
 
-  #verantia-servicios-v2 .sv-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  /* El titulo pasa de h2 a h1: esta pagina no tenia ningun h1. */
-  #verantia-servicios-v2 .sv-header h1 {
-    font-size: 46px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0 0 14px;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  #verantia-servicios-v2 .sv-header p {
-    font-size: 18px;
-    color: #444d5a;
-    max-width: 620px;
-    margin: 0 auto;
-  }
-  @media (max-width: 1000px) {
-    #verantia-servicios-v2 { padding: 70px 32px; }
-    #verantia-servicios-v2 .sv-header h1 { font-size: 36px; }
-  }
-  @media (max-width: 640px) {
-    #verantia-servicios-v2 { padding: 56px 20px; }
-    /* Aqui habia un white-space:nowrap. Con el titulo nuevo, mas largo,
-       provocaba scroll horizontal en movil. Se elimina. */
-    #verantia-servicios-v2 .sv-header h1 { font-size: 27px; }
-    #verantia-servicios-v2 .sv-header p { font-size: 14.5px; }
-    #verantia-servicios-v2 .sv-header { margin-bottom: 38px; }
-  }
+/* ---------- botones ---------- */
+.vsx-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Manrope',sans-serif;font-size:15.5px;font-weight:700;padding:15px 28px;
+  border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s,border-color .2s}
+.vsx-btn svg{width:17px;height:17px;transition:transform .25s var(--ease)}
+.vsx-btn:hover svg{transform:translateX(3px)}
+.vsx-btn--p{background:linear-gradient(135deg,var(--s),var(--s-dark));color:#fff;
+  box-shadow:0 12px 26px -12px rgba(var(--s-rgb),.8)}
+.vsx-btn--p:hover{transform:translateY(-3px);box-shadow:0 20px 36px -14px rgba(var(--s-rgb),.85)}
+.vsx-btn--g{background:#fff;color:var(--ink);border-color:var(--border);box-shadow:var(--sh-s)}
+.vsx-btn--g:hover{transform:translateY(-3px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsx-btn--w{background:#fff;color:var(--ink)}
+.vsx-btn--w:hover{transform:translateY(-3px);box-shadow:0 20px 36px -16px rgba(0,0,0,.5)}
+.vsx-btn--o{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.vsx-btn--o:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.vsx a:focus-visible,.vsx summary:focus-visible{outline:3px solid var(--s);outline-offset:3px;border-radius:12px}
+.vsx-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
 
-  /* --- GRID DE TARJETAS --- */
-  #verantia-servicios-v2 .sv-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-  @media (max-width: 1000px) {
-    #verantia-servicios-v2 .sv-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-  }
-  @media (max-width: 640px) {
-    #verantia-servicios-v2 .sv-grid { grid-template-columns: 1fr; gap: 16px; }
-  }
+/* ---------- hero ---------- */
+.vsx-hero{padding:34px 24px 96px;position:relative;isolation:isolate;overflow:hidden}
+.vsx-hero::before{content:'';position:absolute;inset:-12% -6%;z-index:-1;pointer-events:none;
+  background:radial-gradient(560px 340px at 6% 18%,rgba(var(--s-rgb),.13),transparent 70%),
+             radial-gradient(520px 360px at 94% 82%,rgba(var(--s-rgb),.10),transparent 70%);
+  animation:vsxAur 18s ease-in-out infinite alternate}
+@keyframes vsxAur{to{transform:translate3d(-2.5%,1.5%,0) scale(1.06)}}
+.vsx-crumb{max-width:var(--max);margin:0 auto 34px;font-size:13.5px;color:var(--muted)}
+.vsx-crumb ol{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.vsx-crumb li{display:flex;align-items:center;gap:8px}
+.vsx-crumb li+li::before{content:'›';color:#b9b0b6}
+.vsx-crumb a:hover{color:var(--s-dark);text-decoration:underline}
+.vsx-crumb [aria-current]{color:var(--ink);font-weight:600}
+.vsx-hero-grid{max-width:var(--max);margin:0 auto;display:grid;
+  grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.vsx-tag{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;margin:0 0 20px;
+  border-radius:999px;background:#fff;border:1px solid var(--s-light);box-shadow:var(--sh-s);
+  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--s-dark)}
+.vsx-tag i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--s),var(--s-dark));color:#fff}
+.vsx-tag svg{width:16px;height:16px}
+.vsx-hero h1{font-size:clamp(33px,4.7vw,54px);margin:0 0 22px;text-wrap:balance}
+.vsx-hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--s),var(--s-dark));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vsx-lead{font-size:19px;max-width:580px}
+.vsx-lead strong{color:var(--ink)}
+.vsx-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.vsx-chips li{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
+  background:var(--s-soft);font-size:13.5px;font-weight:600;color:var(--s-dark)}
+.vsx-chips svg{width:15px;height:15px}
+.vsx-media{position:relative}
+.vsx-media>img{border-radius:var(--r-lg);box-shadow:var(--sh-l);aspect-ratio:3/2;object-fit:cover;width:100%}
+.vsx-media::before{content:'';position:absolute;z-index:-1;inset:auto -22px -22px auto;width:62%;height:62%;
+  border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(var(--s-rgb),.22),rgba(var(--s-rgb),.06))}
+.vsx-hero-copy{animation:vsxUp .8s var(--ease) both}
+.vsx-media{animation:vsxUp .9s .12s var(--ease) both}
+@keyframes vsxUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
-  #verantia-servicios-v2 .sv-card {
-    position: relative;
-    background: #fff;
-    border-radius: 20px;
-    padding: 34px 30px;
-    border: 2px solid var(--sv-color, #3b82f6);
-    border-color: color-mix(in srgb, var(--sv-color, #3b82f6) 35%, transparent);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    transform: translate3d(0,0,0);
-    will-change: transform;
-    backface-visibility: hidden;
-  }
-  #verantia-servicios-v2 .sv-card:hover {
-    transform: translate3d(0,-6px,0);
-    border-color: color-mix(in srgb, var(--sv-color, #3b82f6) 90%, transparent);
-    box-shadow: 0 16px 34px -12px color-mix(in srgb, var(--sv-color, #3b82f6) 45%, transparent);
-  }
+/* ---------- tarjetas de problema ---------- */
+.vsx-g4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.vsx-pain{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;
+  box-shadow:var(--sh-s);transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s}
+.vsx-pain:hover{transform:translateY(-5px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsx-pain i{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+  background:var(--s-soft);color:var(--s-dark)}
+.vsx-pain svg{width:22px;height:22px}
+.vsx-pain h3{font-size:17.5px;margin:0 0 8px}
+.vsx-pain p{font-size:15px;color:var(--muted)}
+.vsx-summary{max-width:860px;margin:44px auto 0;padding:24px 30px;border-radius:var(--r);
+  background:#fff;border:1px solid var(--s-light);border-left:4px solid var(--s);
+  font-size:16.5px;box-shadow:var(--sh-s)}
+.vsx-summary strong{color:var(--ink)}
 
-  #verantia-servicios-v2 .sv-icon-box {
-    width: 68px;
-    height: 68px;
-    border-radius: 16px;
-    background: color-mix(in srgb, var(--sv-color, #3b82f6) 14%, white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
-    flex: 0 0 auto;
-    transition: transform 0.25s ease;
-  }
-  #verantia-servicios-v2 .sv-card:hover .sv-icon-box { transform: scale(1.08); }
-  #verantia-servicios-v2 .sv-icon-box svg {
-    width: 32px;
-    height: 32px;
-    stroke: var(--sv-color, #3b82f6);
-    fill: none;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
+/* ---------- los 4 servicios ---------- */
+.vsx-svcs{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.vsx-svc{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:36px 34px 32px;box-shadow:var(--sh-s);display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.vsx-svc::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,var(--s),var(--s-light));opacity:.9}
+.vsx-svc:hover{transform:translateY(-6px);box-shadow:var(--sh-l);border-color:var(--s-light)}
+.vsx-svc-top{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.vsx-svc-ico{width:58px;height:58px;flex:0 0 auto;border-radius:16px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--s),var(--s-dark));box-shadow:0 10px 22px -10px rgba(var(--s-rgb),.8);
+  transition:transform .3s var(--ease)}
+.vsx-svc:hover .vsx-svc-ico{transform:scale(1.07) rotate(-5deg)}
+.vsx-svc-ico svg{width:28px;height:28px}
+.vsx-svc-n{font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--s-dark)}
+.vsx-svc h3{font-size:22px;margin:4px 0 0;line-height:1.25}
+.vsx-svc>p{font-size:16px;margin-bottom:18px}
+.vsx-svc ul{display:grid;gap:10px;margin-bottom:22px}
+.vsx-svc li{display:flex;gap:10px;font-size:15px;line-height:1.5}
+.vsx-svc li svg{width:18px;height:18px;flex:0 0 auto;margin-top:2px;color:var(--s)}
+.vsx-svc-res{margin-top:auto;padding:14px 16px;border-radius:12px;background:var(--s-soft);
+  font-size:14.5px;color:var(--ink)}
+.vsx-svc-res b{color:var(--s-dark)}
+.vsx-svc-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;align-self:flex-start;
+  font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:700;color:var(--s-dark)}
+.vsx-svc-link svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.vsx-svc:hover .vsx-svc-link svg{transform:translateX(4px)}
+.vsx-also{margin:46px auto 0;max-width:900px;text-align:center}
+.vsx-also p{font-size:15px;color:var(--muted);margin-bottom:14px}
+.vsx-also ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.vsx-also a{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+  background:#fff;border:1px solid var(--border);font-size:14px;font-weight:600;color:var(--ink);
+  transition:border-color .2s,transform .2s var(--ease),box-shadow .2s}
+.vsx-also a:hover{border-color:var(--s);transform:translateY(-2px);box-shadow:var(--sh-m)}
+.vsx-also a::after{content:'→';color:var(--s-dark)}
 
-  /* Los titulos de tarjeta pasan de h3 a h2: cuelgan directamente del h1. */
-  #verantia-servicios-v2 .sv-card h2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0 0 12px;
-    line-height: 1.3;
-  }
-  #verantia-servicios-v2 .sv-card p {
-    font-size: 16.5px;
-    color: #333333;
-    line-height: 1.6;
-    margin: 0;
-  }
+/* ---------- cifras ---------- */
+.vsx-dark{background:var(--ink);color:#fff;padding:92px 24px;position:relative;isolation:isolate;overflow:hidden}
+.vsx-dark::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(640px 360px at 15% 0%,rgba(var(--s-rgb),.30),transparent 68%),
+             radial-gradient(520px 320px at 90% 100%,rgba(var(--s-rgb),.20),transparent 68%)}
+.vsx-dark .vsx-head h2{color:#fff}
+.vsx-dark .vsx-head p{color:rgba(255,255,255,.66)}
+.vsx-dark .vsx-eyebrow{color:var(--s-light)}
+.vsx-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);border-radius:var(--r);
+  padding:30px 22px;text-align:center;transition:transform .28s var(--ease),background .28s,border-color .28s}
+.vsx-stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.08);border-color:rgba(var(--s-rgb),.55)}
+.vsx-stat-t{display:inline-block;margin:0 0 16px;padding:5px 11px;border-radius:999px;font-family:'Manrope',sans-serif;
+  font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;background:rgba(var(--s-rgb),.24);color:#fff}
+.vsx-stat-n{font-family:'Manrope',sans-serif;font-size:clamp(36px,4.3vw,48px);font-weight:800;line-height:1;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,#fff,var(--s-light));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.vsx-stat-u{font-size:.55em;margin-left:3px}
+.vsx-stat-x{font-size:.72em;white-space:nowrap}
+.vsx-stat-l{font-size:14.5px;color:rgba(255,255,255,.82);margin-top:14px}
+.vsx-stat-s{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.45);margin-top:12px}
+.vsx-dark .vsx-src{max-width:900px;margin:44px auto 0;text-align:center;font-size:13px;color:rgba(255,255,255,.55)}
+.vsx-dark .vsx-src a{color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:3px}
 
-  #verantia-servicios-v2 .sv-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: auto;
-    padding-top: 16px;
-    font-size: 14.5px;
-    font-weight: 700;
-    color: var(--sv-color, #3b82f6);
-    text-decoration: none;
-    align-self: flex-start;
-  }
-  #verantia-servicios-v2 .sv-more:hover { text-decoration: underline; }
-  #verantia-servicios-v2 .sv-more span { transition: transform 0.22s ease; }
-  #verantia-servicios-v2 .sv-card:hover .sv-more span { transform: translateX(4px); }
-  #verantia-servicios-v2 .sv-more:focus-visible {
-    outline: 3px solid var(--sv-color, #3b82f6);
-    outline-offset: 3px;
-    border-radius: 6px;
-  }
+/* ---------- un dia cualquiera ---------- */
+.vsx-day{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.vsx-day-media{position:relative}
+.vsx-day-media img{border-radius:var(--r-lg);box-shadow:var(--sh-l);aspect-ratio:4/5;object-fit:cover;width:100%}
+.vsx-day-media figcaption{position:absolute;left:18px;bottom:18px;right:18px;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-size:13.5px;color:var(--ink);box-shadow:var(--sh-m)}
+.vsx-tl{position:relative;display:grid;gap:18px}
+.vsx-tl::before{content:'';position:absolute;left:23px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(var(--s),var(--s-light))}
+.vsx-tl li{position:relative;display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start}
+.vsx-tl-i{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:#fff;border:2px solid var(--s);color:var(--s-dark);box-shadow:0 6px 16px -8px rgba(var(--s-rgb),.7)}
+.vsx-tl-i svg{width:21px;height:21px}
+.vsx-tl div{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 18px;
+  box-shadow:var(--sh-s);font-size:15px;transition:transform .25s var(--ease),box-shadow .25s}
+.vsx-tl li:hover div{transform:translateX(4px);box-shadow:var(--sh-m)}
+.vsx-tl b{color:var(--ink);font-family:'Manrope',sans-serif}
+.vsx-note{margin-top:18px;font-size:13px;color:var(--muted);font-style:italic}
 
-  @media (max-width: 640px) {
-    #verantia-servicios-v2 .sv-card { padding: 24px 22px; }
-    #verantia-servicios-v2 .sv-icon-box { width: 52px; height: 52px; margin-bottom: 16px; }
-    #verantia-servicios-v2 .sv-icon-box svg { width: 24px; height: 24px; }
-    #verantia-servicios-v2 .sv-card h2 { font-size: 18px; }
-    #verantia-servicios-v2 .sv-card p { font-size: 14.5px; }
-  }
+/* ---------- pasos ---------- */
+.vsx-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:st}
+.vsx-step{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:34px 28px 30px;box-shadow:var(--sh-s);transition:transform .28s var(--ease),box-shadow .28s}
+.vsx-step:hover{transform:translateY(-5px);box-shadow:var(--sh-m)}
+.vsx-step::before{counter-increment:st;content:'0' counter(st);display:block;margin-bottom:16px;
+  font-family:'Manrope',sans-serif;font-size:40px;font-weight:800;line-height:1;letter-spacing:-.04em;
+  background:linear-gradient(120deg,var(--s),var(--s-light));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.vsx-step h3{font-size:19px;margin:0 0 10px}
+.vsx-step p{font-size:15.5px;color:var(--muted)}
+.vsx-step strong{color:var(--ink)}
+
+/* ---------- faq ---------- */
+.vsx-faq{max-width:880px;margin:0 auto}
+.vsx-faq details{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:14px;
+  box-shadow:var(--sh-s);transition:box-shadow .25s,border-color .25s}
+.vsx-faq details:hover,.vsx-faq details[open]{border-color:var(--s-light);box-shadow:var(--sh-m)}
+.vsx-faq summary{display:flex;align-items:center;gap:16px;padding:21px 26px;cursor:pointer;list-style:none}
+.vsx-faq summary::-webkit-details-marker{display:none}
+.vsx-faq summary h3{flex:1;font-size:17px;line-height:1.4}
+.vsx-faq summary i{flex:0 0 auto;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:var(--s-soft);color:var(--s-dark);transition:transform .3s var(--ease),background .25s,color .25s}
+.vsx-faq summary svg{width:14px;height:14px}
+.vsx-faq details[open] summary i{transform:rotate(45deg);background:var(--s);color:#fff}
+.vsx-faq .a{padding:0 26px 24px;font-size:15.5px}
+.vsx-faq .a p+p{margin-top:12px}
+.vsx-faq .a strong{color:var(--ink)}
+.vsx-faq .a a{color:var(--s-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- cierre ---------- */
+.vsx-cta{max-width:var(--max);margin:0 auto;border-radius:var(--r-lg);padding:66px 48px;text-align:center;color:#fff;
+  position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,var(--s-dark),#2a0f1e 120%)}
+.vsx-cta::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(520px 300px at 85% -10%,rgba(255,255,255,.18),transparent 70%)}
+.vsx-cta h2{color:#fff;font-size:clamp(27px,3.6vw,40px);margin:0 0 14px;text-wrap:balance}
+.vsx-cta p{max-width:620px;margin:0 auto;color:rgba(255,255,255,.82);font-size:17.5px}
+.vsx-cta .vsx-ctas{justify-content:center}
+.vsx-cta small{display:block;margin-top:26px;font-size:14px;color:rgba(255,255,255,.66)}
+.vsx-cta small a{color:#fff;font-weight:600}
+.vsx-rel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.vsx-rel a{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:16px;background:#fff;
+  border:1px solid var(--border);box-shadow:var(--sh-s);font-family:'Manrope',sans-serif;font-weight:700;
+  font-size:15px;color:var(--ink);transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
+.vsx-rel a:hover{transform:translateY(-4px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsx-rel i{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;
+  background:var(--s-soft);color:var(--s-dark)}
+.vsx-rel svg{width:20px;height:20px}
+.vsx-rel span{flex:1}
+.vsx-rel a::after{content:'→';color:var(--s-dark)}
+
+/* ---------- aparicion al hacer scroll ---------- */
+.vsx.vsx-js .vsx-rv{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.vsx.vsx-js .vsx-rv.vsx-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .vsx-hero-grid,.vsx-day{grid-template-columns:1fr;gap:46px}
+  .vsx-media{max-width:620px;width:100%;margin:0 auto}
+  .vsx-day-media{max-width:460px;width:100%;margin:0 auto}
+  .vsx-g4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:860px){
+  .vsx-svcs,.vsx-steps,.vsx-rel{grid-template-columns:1fr}
+  .vsx-sec,.vsx-dark{padding-top:70px;padding-bottom:70px}
+  .vsx-cta{padding:52px 24px}
+}
+@media (max-width:560px){
+  .vsx{font-size:16px}
+  .vsx-sec,.vsx-hero,.vsx-dark{padding-left:18px;padding-right:18px}
+  .vsx-g4{grid-template-columns:1fr}
+  .vsx-ctas .vsx-btn{width:100%}
+  .vsx-svc{padding:28px 22px 24px}
+  .vsx-tl li{gap:12px}
+  .vsx-faq summary{padding:18px}
+  .vsx-faq .a{padding:0 18px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .vsx *,.vsx *::before,.vsx *::after{animation:none!important;transition-duration:.001ms!important}
+  .vsx .vsx-rv{opacity:1!important;transform:none!important}
+}
+</style>
+<style>
+/* ---------- indice de sectores (complementa el CSS comun) ---------- */
+.vsx-hub-intro{max-width:800px;margin:0 auto;text-align:center}
+.vsx-hub-intro .vsx-lead{max-width:none}
+.vsx-hub-intro .vsx-ctas{justify-content:center}
+.vsx-hub-intro .vsx-count{justify-content:center}
+.vsx-count{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:36px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
+.vsx-count div{font-size:14px;color:var(--muted);line-height:1.35}
+.vsx-count b{display:block;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+/* tarjetas de sector */
+.vsx-secs{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.vsx-sc{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-s);
+  transition:transform .32s var(--ease),box-shadow .32s var(--ease),border-color .32s}
+.vsx-sc:hover{transform:translateY(-7px);box-shadow:var(--sh-l);border-color:var(--s-light)}
+.vsx-sc-img{position:relative}
+.vsx-sc-ph{position:relative;overflow:hidden}
+.vsx-sc-ph img{aspect-ratio:3/2;object-fit:cover;width:100%;transition:transform .6s var(--ease)}
+.vsx-sc:hover .vsx-sc-ph img{transform:scale(1.06)}
+.vsx-sc-ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(var(--s-rgb),.55))}
+.vsx-sc-ico{position:absolute;z-index:1;left:18px;bottom:-22px;width:48px;height:48px;border-radius:14px;display:grid;
+  place-items:center;color:#fff;background:linear-gradient(135deg,var(--s),var(--s-dark));
+  box-shadow:0 10px 22px -10px rgba(var(--s-rgb),.9);border:3px solid #fff;transition:transform .3s var(--ease)}
+.vsx-sc:hover .vsx-sc-ico{transform:rotate(-6deg) scale(1.06)}
+.vsx-sc-ico svg{width:22px;height:22px}
+.vsx-sc-body{display:flex;flex-direction:column;flex:1;padding:36px 22px 22px}
+.vsx-sc h3{font-size:19px;margin:0 0 8px}
+.vsx-sc h3 a::after{content:'';position:absolute;inset:0;z-index:2}
+.vsx-sc p{font-size:14.5px;color:var(--muted);margin-bottom:16px}
+.vsx-sc ul{display:grid;gap:7px;margin-bottom:18px}
+.vsx-sc li{display:flex;gap:8px;font-size:13.5px;line-height:1.4;color:var(--ink)}
+.vsx-sc li svg{width:16px;height:16px;flex:0 0 auto;color:var(--s);margin-top:1px}
+.vsx-sc-more{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-family:'Manrope',sans-serif;
+  font-size:14px;font-weight:700;color:var(--s-dark)}
+.vsx-sc-more svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.vsx-sc:hover .vsx-sc-more svg{transform:translateX(4px)}
+/* azul Verantia en degradado (solo elementos generales, no las tarjetas de sector) */
+.vsx-hub{--g:linear-gradient(120deg,#0b2a6f 0%,#1d4ed8 50%,#60a5fa 100%);
+  --g-soft:linear-gradient(135deg,#e6efff,#f5f9ff)}
+.vsx-hub .vsx-hero .vsx-hub-h1{max-width:var(--max);margin:0 auto 64px;text-align:center;font-size:clamp(44px,7.4vw,86px)!important;
+  line-height:1.02!important;letter-spacing:-.035em!important;font-weight:800!important;padding-bottom:.06em;
+  background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:vsxUp .8s var(--ease) both}
+.vsx-hub .vsx-hub-h2{font-size:clamp(28px,3.4vw,40px);margin:0 0 20px;text-wrap:balance}
+.vsx-hub .vsx-hub-h2 em{font-style:normal;background:var(--g);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.vsx-hub .vsx-btn--p{background:var(--g);background-size:140% 100%;background-position:0 0;
+  box-shadow:0 12px 26px -12px rgba(29,78,216,.75);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background-position .4s var(--ease)}
+.vsx-hub .vsx-btn--p:hover{background-position:100% 0}
+.vsx-hub .vsx-eyebrow{color:#1d4ed8}
+.vsx-hub .vsx-eyebrow::before{background:var(--g)}
+.vsx-count b{background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vsx-hub .vsx-sec--soft{background:var(--g-soft)}
+.vsx-hub .vsx-step::before{background:var(--g);-webkit-background-clip:text;background-clip:text}
+.vsx-hub .vsx-faq summary i{background:var(--g-soft);color:#1d4ed8}
+.vsx-hub .vsx-faq details[open] summary i{background:var(--g);color:#fff}
+.vsx-hub .vsx-faq details:hover,.vsx-hub .vsx-faq details[open]{border-color:#bfdbfe}
+.vsx-hub .vsx-rel i{background:var(--g);color:#fff}
+.vsx-hub .vsx-rel a::after{color:#1d4ed8}
+.vsx-hub .vsx-crumb a:hover{color:#1d4ed8}
+.vsx-hub .vsx-cta{background:linear-gradient(125deg,#0b2a6f 0%,#1d4ed8 55%,#3b82f6 100%)!important}
+/* otros sectores */
+.vsx-other{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;background:#fff;
+  border:1px solid var(--border);border-radius:var(--r-lg);padding:48px;box-shadow:var(--sh-m)}
+.vsx-other h2{font-size:clamp(26px,3.2vw,34px);margin:0 0 14px}
+.vsx-other p{color:var(--muted)}
+.vsx-other ul{display:flex;flex-wrap:wrap;gap:10px}
+.vsx-other li{padding:9px 15px;border-radius:999px;background:var(--g-soft);border:1px solid #bfdbfe;
+  font-size:14px;font-weight:600;color:#1d4ed8}
+.vsx-nw{white-space:nowrap}
+.vsx-other li:last-child{background:#fff;border-style:dashed}
+@media (max-width:1080px){
+  .vsx-secs{grid-template-columns:repeat(2,1fr)}
+  .vsx-other{grid-template-columns:1fr;gap:30px;padding:38px 30px}
+  .vsx-hub .vsx-hero .vsx-hub-h1{margin-bottom:44px}
+}
+@media (max-width:560px){
+  .vsx-secs{grid-template-columns:1fr}
+  .vsx-count{grid-template-columns:repeat(3,1fr);gap:12px}
+  .vsx-count div{font-size:12.5px}
+  .vsx-count b{font-size:23px}
+  .vsx-other{padding:30px 20px}
+}
+</style>
+<style>
+/* ---------- pagina de servicios (complementa el CSS comun y el del indice) ---------- */
+.vsx-svp .vsx-hero .vsx-hub-h1{font-size:clamp(36px,5.6vw,66px)!important;max-width:1000px;text-wrap:balance}
+.vsp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vsp-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:32px 28px 28px;box-shadow:var(--sh-s);overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.vsp-card::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--s-dark),var(--s),var(--s-light))}
+.vsp-card::after{content:'';position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--s-rgb),.12),transparent 70%);transition:transform .5s var(--ease)}
+.vsp-card:hover{transform:translateY(-7px);box-shadow:var(--sh-l);border-color:var(--s-light)}
+.vsp-card:hover::after{transform:scale(1.4)}
+.vsp-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.vsp-ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--s),var(--s-dark));box-shadow:0 12px 24px -12px rgba(var(--s-rgb),.9);
+  transition:transform .3s var(--ease)}
+.vsp-card:hover .vsp-ico{transform:rotate(-6deg) scale(1.06)}
+.vsp-ico svg{width:27px;height:27px}
+.vsp-cat{font-family:'Manrope',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 11px;border-radius:999px;background:var(--s-soft);color:var(--s-dark)}
+.vsp-card h3{font-size:21px;margin:0 0 10px;line-height:1.25}
+.vsp-card h3 a::after{content:'';position:absolute;inset:0;z-index:1}
+.vsp-card>p{font-size:15.5px;color:var(--muted);margin-bottom:18px}
+.vsp-card ul{display:grid;gap:9px;margin-bottom:22px}
+.vsp-card li{display:flex;gap:9px;font-size:14.5px;line-height:1.45;color:var(--ink)}
+.vsp-card li svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;color:var(--s)}
+.vsp-more{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-family:'Manrope',sans-serif;
+  font-size:14.5px;font-weight:700;color:var(--s-dark)}
+.vsp-more svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.vsp-card:hover .vsp-more svg{transform:translateX(4px)}
+/* auditoria destacada */
+.vsp-audit{position:relative;isolation:isolate;overflow:hidden;margin-top:28px;border-radius:var(--r-lg);padding:46px 48px;color:#fff;
+  display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;
+  background:linear-gradient(125deg,#0b2a6f 0%,#1d4ed8 60%,#3b82f6 100%);box-shadow:0 30px 60px -30px rgba(29,78,216,.7)}
+.vsp-audit::before{content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(420px 260px at 90% 0%,rgba(255,255,255,.2),transparent 70%),
+             radial-gradient(360px 240px at 0% 100%,rgba(96,165,250,.35),transparent 70%)}
+.vsp-audit .vsp-ico{width:72px;height:72px;border-radius:20px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);box-shadow:none}
+.vsp-audit .vsp-ico svg{width:34px;height:34px}
+.vsp-badge{display:inline-block;margin-bottom:10px;padding:5px 12px;border-radius:999px;background:#fff;color:#1d4ed8;
+  font-family:'Manrope',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.vsp-audit h3{color:#fff;font-size:clamp(23px,2.6vw,30px);margin:0 0 10px}
+.vsp-audit p{color:rgba(255,255,255,.85);font-size:16px;max-width:620px}
+.vsp-audit ul{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px}
+.vsp-audit li{display:flex;align-items:center;gap:7px;font-size:14.5px;font-weight:600}
+.vsp-audit li svg{width:16px;height:16px;color:#93c5fd}
+.vsp-audit-ctas{display:grid;gap:12px}
+.vsp-audit-ctas a{white-space:nowrap}
+.vsp-link-w{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-family:'Manrope',sans-serif;font-size:14.5px;
+  font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:4px}
+/* buscador por necesidad */
+.vsp-needs{max-width:900px;margin:0 auto;display:grid;gap:12px}
+.vsp-need{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:18px 22px;border-radius:16px;background:#fff;
+  border:1px solid var(--border);box-shadow:var(--sh-s);transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
+.vsp-need:hover{transform:translateX(6px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsp-need q{quotes:'«' '»';font-size:16px;color:var(--ink);font-weight:500}
+.vsp-need span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--s-soft);
+  font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:700;color:var(--s-dark);white-space:nowrap}
+.vsp-need span i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--s),var(--s-dark))}
+.vsp-need span svg{width:12px;height:12px}
+/* sectores */
+.vsp-secs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vsp-sec{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:16px;background:#fff;border:1px solid var(--border);
+  box-shadow:var(--sh-s);font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--ink);
+  transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
+.vsp-sec:hover{transform:translateY(-4px);box-shadow:var(--sh-m);border-color:var(--s-light)}
+.vsp-sec i{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--s),var(--s-dark))}
+.vsp-sec i svg{width:20px;height:20px}
+.vsp-sec b{flex:1;font-weight:700}
+.vsp-sec::after{content:'→';color:var(--s-dark)}
+.vsp-secs-more{text-align:center;margin-top:30px}
+/* por que Verantia */
+.vsp-vals{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.vsp-val{padding:28px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--border);box-shadow:var(--sh-s);
+  transition:transform .28s var(--ease),box-shadow .28s}
+.vsp-val:hover{transform:translateY(-5px);box-shadow:var(--sh-m)}
+.vsp-val i{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;color:#fff;background:var(--g)}
+.vsp-val i svg{width:24px;height:24px}
+.vsp-val h3{font-size:18px;margin:0 0 8px}
+.vsp-val p{font-size:15px;color:var(--muted)}
+@media (max-width:1080px){
+  .vsp-grid{grid-template-columns:repeat(2,1fr)}
+  .vsp-audit{grid-template-columns:1fr;gap:24px;padding:40px 32px}
+  .vsp-audit-ctas{grid-auto-flow:column;justify-content:start}
+  .vsp-secs,.vsp-vals{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .vsp-grid,.vsp-secs,.vsp-vals{grid-template-columns:1fr}
+  .vsp-need{grid-template-columns:1fr;gap:12px}
+  .vsp-need span{justify-self:start}
+  .vsp-audit{padding:32px 22px}
+  .vsp-audit .vsp-ico{display:none}
+  .vsp-audit-ctas{grid-auto-flow:row}
+  .vsp-audit-ctas a{white-space:normal}
+}
 </style>
 
-<div id="verantia-servicios-v2">
+<div class="vsx vsx-hub vsx-svp" style="--s:#2563eb;--s-dark:#1d4ed8;--s-light:#bfdbfe;--s-soft:#eff6ff;--s-rgb:37,99,235">
 
-  <div class="sv-header">
-    <h1>Servicios de inteligencia artificial y automatización para pymes</h1>
-    <p>Soluciones de IA y automatización adaptadas a lo que tu negocio necesita de verdad. Trabajamos con pymes y negocios locales de Valladolid y de toda España.</p>
-  </div>
-
-  <div class="sv-grid">
-
-    <div class="sv-card" style="--sv-color:#3b82f6;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <section class="vsx-hero" aria-labelledby="vsx-h1">
+    <nav class="vsx-crumb" aria-label="Ruta de navegación"><ol><li><a href="https://verantiapro.es/">Inicio</a></li><li><span aria-current="page">Servicios</span></li></ol></nav>
+    <h1 id="vsx-h1" class="vsx-hub-h1">Servicios de IA y automatización para pymes</h1>
+    <div class="vsx-hub-intro">
+      <div class="vsx-hero-copy">
+        <p class="vsx-lead">Nuestros <strong>servicios de IA y automatización</strong> ayudan a pymes y negocios locales de Valladolid y de toda España a ahorrar tiempo, reducir costes y atender mejor a sus clientes. Soluciones a medida, sin tecnicismos y con una persona de verdad al otro lado.</p>
+        <div class="vsx-ctas">
+          <a class="vsx-btn vsx-btn--p" href="#vsx-lista">Ver servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="vsx-btn vsx-btn--g" href="https://verantiapro.es/contacto/">Solicitar auditoría gratuita</a>
+        </div>
+        <div class="vsx-count"><div><b>7</b>servicios a medida</div><div><b>0 €</b>la auditoría de procesos</div><div><b>24 h</b>máximo para responderte (días laborables)</div></div>
       </div>
-      <h2>Chatbots y Asistentes Virtuales 24/7</h2>
-      <p>Agendan citas, responden preguntas y atienden a tus clientes a cualquier hora, en tu web y WhatsApp, sin descansos ni festivos.</p>
-      <a href="/servicios/chatbots-asistentes-virtuales/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
     </div>
+  </section>
 
-    <div class="sv-card" style="--sv-color:#f59e0b;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  <section class="vsx-sec vsx-sec--soft" id="vsx-lista" aria-labelledby="vsx-list-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Qué hacemos</p>
+      <h2 id="vsx-list-t">Soluciones para trabajar menos y vender más</h2>
       </div>
-      <h2>Automatización de Procesos Repetitivos</h2>
-      <p>Facturas, pedidos y tareas administrativas que hoy haces a mano, funcionando solas. Ahorras tiempo, dinero, y ganas eficacia desde el primer día.</p>
-      <a href="/servicios/automatizacion-de-procesos/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <div class="sv-card" style="--sv-color:#8b5cf6;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      <div class="vsp-grid">
+        <article class="vsp-card vsx-rv" style="--s:#3b82f6;--s-dark:#1d4ed8;--s-light:#bfdbfe;--s-soft:#eff6ff;--s-rgb:59,130,246">
+          <div class="vsp-top"><span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></span><span class="vsp-cat">Atención al cliente</span></div>
+          <h3><a href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/">Chatbots y asistentes virtuales 24/7</a></h3>
+          <p>Atienden a tus clientes en tu web y en WhatsApp a cualquier hora: responden preguntas, dan cita y recogen los datos de contacto, sin descansos ni festivos.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Respuestas al momento, con tus precios y horarios</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Citas y reservas directamente en tu agenda</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Asistente telefónico con IA, desarrollado a medida</li>
+          </ul>
+          <span class="vsp-more" aria-hidden="true">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </article>
+        <article class="vsp-card vsx-rv" style="--s:#f59e0b;--s-dark:#b45309;--s-light:#fde68a;--s-soft:#fffbeb;--s-rgb:245,158,11">
+          <div class="vsp-top"><span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><span class="vsp-cat">Procesos</span></div>
+          <h3><a href="https://verantiapro.es/servicios/automatizacion-de-procesos/">Automatización de procesos</a></h3>
+          <p>Facturas, pedidos, recordatorios y tareas administrativas que hoy haces a mano, funcionando solas. Ahorras tiempo y dinero, y ganas eficacia.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Conectamos las herramientas que ya usas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Recordatorios y avisos automáticos a clientes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Menos errores al pasar datos de un sitio a otro</li>
+          </ul>
+          <span class="vsp-more" aria-hidden="true">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </article>
+        <article class="vsp-card vsx-rv" style="--s:#8b5cf6;--s-dark:#6d28d9;--s-light:#ddd6fe;--s-soft:#f5f3ff;--s-rgb:139,92,246">
+          <div class="vsp-top"><span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="16" x="3" y="4" rx="2"/><path d="M3 9h18"/></svg></span><span class="vsp-cat">Software a medida</span></div>
+          <h3><a href="https://verantiapro.es/servicios/aplicaciones-personalizadas/">Aplicaciones personalizadas</a></h3>
+          <p>¿Necesitas controlar tu inventario u otra gestión concreta sin pagar un software genérico? Creamos una aplicación a medida, solo con lo que tu negocio necesita.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Sin pagar por funciones que no usas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Pensada para tu forma de trabajar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Fácil de usar para todo tu equipo</li>
+          </ul>
+          <span class="vsp-more" aria-hidden="true">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </article>
+        <article class="vsp-card vsx-rv" style="--s:#06b6d4;--s-dark:#0e7490;--s-light:#a5f3fc;--s-soft:#ecfeff;--s-rgb:6,182,212">
+          <div class="vsp-top"><span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M5 12H3M21 12h-2M7 7l1.4 1.4M15.6 15.6 17 17M17 7l-1.4 1.4M8.4 15.6 7 17"/><circle cx="12" cy="12" r="3.2"/></svg></span><span class="vsp-cat">Marketing y contenido</span></div>
+          <h3><a href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/">IA generativa para contenido visual</a></h3>
+          <p>Mejoramos y creamos imágenes y vídeos con IA para que tu negocio destaque, con el tono y el estilo de tu marca.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Fotos de producto más atractivas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Contenido para redes listo para publicar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Vídeos cortos que dan vida a tu web</li>
+          </ul>
+          <span class="vsp-more" aria-hidden="true">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </article>
+        <article class="vsp-card vsx-rv" style="--s:#10b981;--s-dark:#047857;--s-light:#a7f3d0;--s-soft:#ecfdf5;--s-rgb:16,185,129">
+          <div class="vsp-top"><span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg></span><span class="vsp-cat">Ventas</span></div>
+          <h3><a href="https://verantiapro.es/servicios/clasificador-de-leads/">Clasificador inteligente de leads</a></h3>
+          <p>¿Te llegan contactos pero no sabes a cuáles dedicar tiempo primero? Clasificamos automáticamente cada consulta según su interés real y su urgencia.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Todos los contactos en un solo sitio</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Ordenados por interés y urgencia</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Aviso inmediato de los más importantes</li>
+          </ul>
+          <span class="vsp-more" aria-hidden="true">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </article>
+        <article class="vsp-card vsx-rv" style="--s:#14b8a6;--s-dark:#0f766e;--s-light:#99f6e4;--s-soft:#f0fdfa;--s-rgb:20,184,166">
+          <div class="vsp-top"><span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.9z"/></svg></span><span class="vsp-cat">Reputación</span></div>
+          <h3><a href="https://verantiapro.es/servicios/resenas-automaticas-google/">Reseñas automáticas en Google</a></h3>
+          <p>Cuando terminas una cita, entregas un pedido o completas un servicio, tu cliente recibe el enlace para dejarte una reseña en Google, sin que tengas que acordarte.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Se envía en el mejor momento</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>A todos tus clientes por igual, como exige Google</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Sin incentivos que pongan en riesgo tu ficha</li>
+          </ul>
+          <span class="vsp-more" aria-hidden="true">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </article>
       </div>
-      <h2>Aplicaciones Personalizadas</h2>
-      <p>¿Necesitas llevar el control de tu inventario u otra gestión concreta sin pagar un software genérico? Creamos una app a medida, solo con lo que tu negocio necesita.</p>
-      <a href="/servicios/aplicaciones-personalizadas/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <div class="sv-card" style="--sv-color:#06b6d4;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <div class="vsp-audit vsx-rv">
+        <span class="vsp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1"/><path d="m9 13 2 2 4-4"/></svg></span>
+        <div>
+          <span class="vsp-badge">Empieza aquí · Gratis</span>
+          <h3>Auditoría de procesos gratuita</h3>
+          <p>Analizamos tu negocio de arriba a abajo y te decimos, sin compromiso y sin coste, dónde estás perdiendo tiempo o dinero y qué tareas se pueden automatizar.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sin coste y sin compromiso</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Te decimos qué merece la pena y qué no</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sales con una horquilla de precio realista</li>
+          </ul>
+        </div>
+        <div class="vsp-audit-ctas">
+          <a class="vsx-btn vsx-btn--w" href="https://verantiapro.es/contacto/">Solicitar auditoría <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="vsp-link-w" href="https://verantiapro.es/servicios/auditoria-de-procesos/">Cómo funciona la auditoría</a>
+        </div>
       </div>
-      <h2>IA Generativa para Contenido Visual</h2>
-      <p>Mejoramos y creamos imágenes y vídeos con IA para que tu negocio destaque: fotos de producto más atractivas, contenido para redes sociales listo para publicar, o vídeos cortos que dan vida a tu web.</p>
-      <a href="/servicios/ia-generativa-contenido-visual/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
     </div>
+  </section>
 
-    <div class="sv-card" style="--sv-color:#10b981;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg>
+  <section class="vsx-sec" aria-labelledby="vsx-need-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">¿Qué necesitas?</p>
+      <h2 id="vsx-need-t">Encuentra tu servicio según lo que te pasa</h2>
       </div>
-      <h2>Clasificador Inteligente de Leads</h2>
-      <p>¿Te llegan contactos pero no sabes a cuáles dedicar tiempo primero? Clasificamos automáticamente cada consulta según su interés real y urgencia.</p>
-      <a href="/servicios/clasificador-de-leads/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <div class="sv-card" style="--sv-color:#14b8a6;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <div class="vsp-needs">
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/chatbots-asistentes-virtuales/" style="--s:#3b82f6;--s-dark:#1d4ed8;--s-light:#bfdbfe;--s-soft:#eff6ff;--s-rgb:59,130,246"><q>Pierdo clientes porque no llego a contestar mensajes y llamadas</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></i>Chatbots y asistentes virtuales 24/7</span></a>
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/automatizacion-de-procesos/" style="--s:#f59e0b;--s-dark:#b45309;--s-light:#fde68a;--s-soft:#fffbeb;--s-rgb:245,158,11"><q>Paso horas haciendo facturas, pasando datos o enviando avisos a mano</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></i>Automatización de procesos</span></a>
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/aplicaciones-personalizadas/" style="--s:#8b5cf6;--s-dark:#6d28d9;--s-light:#ddd6fe;--s-soft:#f5f3ff;--s-rgb:139,92,246"><q>Ningún programa del mercado se adapta a cómo trabajo</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="16" x="3" y="4" rx="2"/><path d="M3 9h18"/></svg></i>Aplicaciones personalizadas</span></a>
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/ia-generativa-contenido-visual/" style="--s:#06b6d4;--s-dark:#0e7490;--s-light:#a5f3fc;--s-soft:#ecfeff;--s-rgb:6,182,212"><q>No tengo tiempo para crear fotos y contenido para redes</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M5 12H3M21 12h-2M7 7l1.4 1.4M15.6 15.6 17 17M17 7l-1.4 1.4M8.4 15.6 7 17"/><circle cx="12" cy="12" r="3.2"/></svg></i>IA generativa para contenido visual</span></a>
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/clasificador-de-leads/" style="--s:#10b981;--s-dark:#047857;--s-light:#a7f3d0;--s-soft:#ecfdf5;--s-rgb:16,185,129"><q>Me llegan muchos contactos y no sé a cuáles atender primero</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg></i>Clasificador inteligente de leads</span></a>
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/resenas-automaticas-google/" style="--s:#14b8a6;--s-dark:#0f766e;--s-light:#99f6e4;--s-soft:#f0fdfa;--s-rgb:20,184,166"><q>Mis clientes salen contentos, pero casi nadie me deja reseñas</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.9z"/></svg></i>Reseñas automáticas en Google</span></a>
+        <a class="vsp-need vsx-rv" href="https://verantiapro.es/servicios/auditoria-de-procesos/" style="--s:#2563eb;--s-dark:#1d4ed8;--s-light:#bfdbfe;--s-soft:#eff6ff;--s-rgb:37,99,235"><q>No sé por dónde empezar</q><span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1"/><path d="m9 13 2 2 4-4"/></svg></i>Auditoría gratuita</span></a>
       </div>
-      <h2>Reseñas Automáticas en Google</h2>
-      <p>En cuanto termines una cita, entregues un pedido o completes un servicio, tu cliente recibe automáticamente el enlace para dejarte una reseña en Google, sin que tengas que acordarte cada vez.</p>
-      <a href="/servicios/resenas-automaticas-google/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
     </div>
+  </section>
 
-    <div class="sv-card" style="--sv-color:#ec4899;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-sec-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Por sectores</p>
+      <h2 id="vsx-sec-t">Soluciones adaptadas a tu tipo de negocio</h2>
       </div>
-      <h2>Auditoría Completa de Procesos</h2>
-      <p>Analizamos tu negocio de arriba a abajo y te decimos, sin compromiso y sin coste, dónde estás perdiendo tiempo o dinero y qué tareas se pueden automatizar.</p>
-      <a href="/servicios/auditoria-de-procesos/" class="sv-more">Saber más <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <div class="sv-card" style="--sv-color:#6366f1;">
-      <div class="sv-icon-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      <div class="vsp-secs">
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/centros-de-estetica/" style="--s:#c7336f;--s-dark:#a3245a;--s-light:#f5c2d6;--s-soft:#fdf1f6;--s-rgb:199,51,111"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M16.5 12H15M12 16.5V15"/></svg></i><b>Centros de estética</b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/peluquerias/" style="--s:#7c3aed;--s-dark:#5b21b6;--s-light:#d9c7fb;--s-soft:#f6f1ff;--s-rgb:124,58,237"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></i><b>Peluquerías</b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/academias/" style="--s:#4f46e5;--s-dark:#3730a3;--s-light:#c7d2fe;--s-soft:#eef2ff;--s-rgb:79,70,229"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></i><b>Academias</b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/inmobiliarias/" style="--s:#0e7490;--s-dark:#155e75;--s-light:#a5f3fc;--s-soft:#ecfeff;--s-rgb:14,116,144"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M15 8l2 2"/></svg></i><b>Inmobiliarias</b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/tiendas-ecommerce/" style="--s:#c2410c;--s-dark:#9a3412;--s-light:#fed7aa;--s-soft:#fff7ed;--s-rgb:194,65,12"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.5L22 7H6"/></svg></i><b>Tiendas <span class="vsx-nw">e-commerce</span></b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/restaurantes/" style="--s:#dc2626;--s-dark:#b91c1c;--s-light:#fecaca;--s-soft:#fef2f2;--s-rgb:220,38,38"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a3 3 0 0 0 6 0V2M6 2v20M21 15V2a5 5 0 0 0-5 5v6h5zM21 15v7"/></svg></i><b>Restaurantes</b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/gimnasios/" style="--s:#15803d;--s-dark:#166534;--s-light:#bbf7d0;--s-soft:#f0fdf4;--s-rgb:21,128,61"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></i><b>Gimnasios</b></a>
+        <a class="vsp-sec vsx-rv" href="https://verantiapro.es/sectores/talleres-mecanicos/" style="--s:#475569;--s-dark:#334155;--s-light:#cbd5e1;--s-soft:#f1f5f9;--s-rgb:71,85,105"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></i><b>Talleres mecánicos</b></a>
       </div>
-      <h2>Soporte Personal</h2>
-      <p>Respondemos tus dudas por email, WhatsApp o llamada en menos de 24 horas laborables. Hablas con una persona real, nunca con un contestador automático.</p>
-      <a href="/contacto/" class="sv-more">Hablar con nosotros <span aria-hidden="true">&rarr;</span></a>
+      <p class="vsp-secs-more vsx-rv"><a class="vsx-btn vsx-btn--g" href="https://verantiapro.es/sectores/">Ver todos los sectores <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
     </div>
+  </section>
 
-  </div>
+  <section class="vsx-sec" aria-labelledby="vsx-val-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Por qué Verantia</p>
+      <h2 id="vsx-val-t">Tecnología a medida, trato de tú a tú</h2>
+      </div>
+      <div class="vsp-vals">
+        <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></i><h3>Hablas con una persona</h3><p>Respondemos tus dudas por email, WhatsApp o llamada en menos de 24 horas laborables. Nunca con un contestador automático.</p></div>
+        <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></i><h3>Hecho a tu medida</h3><p>Nada de plantillas genéricas: cada solución se configura con tus servicios, tus precios y tu forma de hablar.</p></div>
+        <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></i><h3>Tus datos, protegidos</h3><p>Trabajamos sobre tus propias herramientas y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD.</p></div>
+        <div class="vsp-val vsx-rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></i><h3>Cerca de ti</h3><p>Somos una agencia de Valladolid. Nos gusta conocer los negocios en persona, y trabajamos en remoto con toda España.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-sec vsx-sec--soft" aria-labelledby="vsx-faq-t">
+    <div class="vsx-wrap">
+      <div class="vsx-head vsx-rv">
+      <p class="vsx-eyebrow">Preguntas frecuentes</p>
+      <h2 id="vsx-faq-t">Preguntas frecuentes sobre nuestros servicios de IA y automatización</h2>
+      <p>Respuestas claras, sin tecnicismos. Si te falta alguna, escríbenos.</p>
+      </div>
+      <div class="vsx-faq">
+        <details class="vsx-rv"><summary><h3>¿Qué servicios de IA y automatización ofrece Verantia?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Chatbots y asistentes virtuales para la web, WhatsApp y el teléfono, automatización de procesos, aplicaciones personalizadas, IA generativa para contenido visual, clasificación inteligente de leads y reseñas automáticas en Google.</p><p>Además, hacemos una auditoría de procesos gratuita para decidir contigo por dónde empezar.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Necesito conocimientos técnicos?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>No. Nosotros nos encargamos de toda la parte técnica: configurar, conectar y mantener. Tú solo nos cuentas cómo trabajas.</p><p>Cuando está listo, te enseñamos a usarlo con tu propio día a día, y seguimos disponibles para cualquier duda.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Puedo contratar un solo servicio?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Sí. Puedes empezar por una sola solución, la que más te vaya a ahorrar, y ampliar después si ves que funciona. No tienes que contratarlo todo.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Funciona con las herramientas que ya uso?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>En la mayoría de los casos, sí: agendas, tiendas online, programas de facturación, CRM o WhatsApp. Si una herramienta permite conectarse con otras, lo integramos directamente. Si no, te proponemos la alternativa más sencilla.</p><p>Lo comprobamos en la <a href="https://verantiapro.es/servicios/auditoria-de-procesos/">auditoría gratuita</a>, antes de que decidas nada.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Cuánto cuestan los servicios?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Depende de lo que necesites: un sistema de avisos automáticos no tiene nada que ver con una aplicación a medida.</p><p>Por eso empezamos con una <strong>auditoría gratuita y sin compromiso</strong>: sales de ella con una horquilla de precio realista y ajustada al tamaño de tu negocio.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Qué incluye la auditoría gratuita?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Revisamos cómo trabajas hoy, qué tareas se repiten y dónde se te va el tiempo. Después te explicamos qué merece la pena automatizar, qué no, y cuánto costaría.</p><p>No tiene coste ni compromiso: si no te compensa, te lo diremos igual.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Cómo se protegen los datos de mis clientes?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Trabajamos sobre tus propias cuentas y herramientas, y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD. Los datos son tuyos y puedes retirarnos el acceso cuando quieras.</p><p>Si en algún paso hace falta enviar información a un proveedor de inteligencia artificial, te lo explicamos antes y decides tú.</p></div></details>
+        <details class="vsx-rv"><summary><h3>¿Trabajáis solo con negocios de Valladolid?</h3><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></summary><div class="a"><p>Somos una agencia de Valladolid y nos gusta conocer los negocios en persona, pero todo lo que hacemos funciona igual en remoto.</p><p>Trabajamos con negocios de toda Castilla y León y del resto de España.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsx-sec" aria-labelledby="vsx-cta-t">
+    <div class="vsx-cta vsx-rv">
+      <h2 id="vsx-cta-t">¿Hablamos de tu negocio?</h2>
+      <p>Empezamos con una auditoría gratuita: vemos cómo trabajas hoy y te decimos qué merece la pena automatizar. Si no te compensa, te lo diremos igual.</p>
+      <div class="vsx-ctas">
+        <a class="vsx-btn vsx-btn--w" href="https://verantiapro.es/contacto/">Solicitar auditoría gratuita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="vsx-btn vsx-btn--o" href="https://wa.me/34601855347" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.6.6 0 0 0 0-.5l-.9-2.3c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.5.9 3.3.8a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.2-.3-.3-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.7 17.8L0 24l6.3-1.7A11.8 11.8 0 0 0 24 12a11.7 11.7 0 0 0-3.5-8.5z"/></svg> WhatsApp 601 85 53 47</a>
+      </div>
+      <small>O llámanos al <a href="tel:+34983618315">983 61 83 15</a> · <a href="mailto:info@verantiapro.es">info@verantiapro.es</a></small>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "@id": "https://verantiapro.es/servicios/#servicios",
+      "name": "Servicios de IA y automatización de Verantia",
+      "numberOfItems": 7,
+      "itemListOrder": "https://schema.org/ItemListUnordered",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "name": "Chatbots y asistentes virtuales 24/7",
+            "url": "https://verantiapro.es/servicios/chatbots-asistentes-virtuales/",
+            "description": "Atienden a tus clientes en tu web y en WhatsApp a cualquier hora: responden preguntas, dan cita y recogen los datos de contacto, sin descansos ni festivos.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "name": "Automatización de procesos",
+            "url": "https://verantiapro.es/servicios/automatizacion-de-procesos/",
+            "description": "Facturas, pedidos, recordatorios y tareas administrativas que hoy haces a mano, funcionando solas. Ahorras tiempo y dinero, y ganas eficacia.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "name": "Aplicaciones personalizadas",
+            "url": "https://verantiapro.es/servicios/aplicaciones-personalizadas/",
+            "description": "¿Necesitas controlar tu inventario u otra gestión concreta sin pagar un software genérico? Creamos una aplicación a medida, solo con lo que tu negocio necesita.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Service",
+            "name": "IA generativa para contenido visual",
+            "url": "https://verantiapro.es/servicios/ia-generativa-contenido-visual/",
+            "description": "Mejoramos y creamos imágenes y vídeos con IA para que tu negocio destaque, con el tono y el estilo de tu marca.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Service",
+            "name": "Clasificador inteligente de leads",
+            "url": "https://verantiapro.es/servicios/clasificador-de-leads/",
+            "description": "¿Te llegan contactos pero no sabes a cuáles dedicar tiempo primero? Clasificamos automáticamente cada consulta según su interés real y su urgencia.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Service",
+            "name": "Reseñas automáticas en Google",
+            "url": "https://verantiapro.es/servicios/resenas-automaticas-google/",
+            "description": "Cuando terminas una cita, entregas un pedido o completas un servicio, tu cliente recibe el enlace para dejarte una reseña en Google, sin que tengas que acordarte.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "Service",
+            "name": "Auditoría de procesos gratuita",
+            "url": "https://verantiapro.es/servicios/auditoria-de-procesos/",
+            "description": "Analizamos tu negocio de arriba a abajo y te decimos, sin compromiso y sin coste, dónde estás perdiendo tiempo o dinero y qué tareas se pueden automatizar.",
+            "provider": {
+              "@id": "https://verantiapro.es/#organization"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Valladolid"
+              },
+              {
+                "@type": "Country",
+                "name": "España"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://verantiapro.es/servicios/#faq",
+      "inLanguage": "es",
+      "isPartOf": {
+        "@id": "https://verantiapro.es/servicios/"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué servicios de IA y automatización ofrece Verantia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chatbots y asistentes virtuales para la web, WhatsApp y el teléfono, automatización de procesos, aplicaciones personalizadas, IA generativa para contenido visual, clasificación inteligente de leads y reseñas automáticas en Google.Además, hacemos una auditoría de procesos gratuita para decidir contigo por dónde empezar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito conocimientos técnicos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Nosotros nos encargamos de toda la parte técnica: configurar, conectar y mantener. Tú solo nos cuentas cómo trabajas.Cuando está listo, te enseñamos a usarlo con tu propio día a día, y seguimos disponibles para cualquier duda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo contratar un solo servicio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes empezar por una sola solución, la que más te vaya a ahorrar, y ampliar después si ves que funciona. No tienes que contratarlo todo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Funciona con las herramientas que ya uso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En la mayoría de los casos, sí: agendas, tiendas online, programas de facturación, CRM o WhatsApp. Si una herramienta permite conectarse con otras, lo integramos directamente. Si no, te proponemos la alternativa más sencilla.Lo comprobamos en la auditoría gratuita, antes de que decidas nada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuestan los servicios?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de lo que necesites: un sistema de avisos automáticos no tiene nada que ver con una aplicación a medida.Por eso empezamos con una auditoría gratuita y sin compromiso: sales de ella con una horquilla de precio realista y ajustada al tamaño de tu negocio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye la auditoría gratuita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Revisamos cómo trabajas hoy, qué tareas se repiten y dónde se te va el tiempo. Después te explicamos qué merece la pena automatizar, qué no, y cuánto costaría.No tiene coste ni compromiso: si no te compensa, te lo diremos igual."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se protegen los datos de mis clientes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabajamos sobre tus propias cuentas y herramientas, y firmamos contigo el contrato de encargado de tratamiento que exige el RGPD. Los datos son tuyos y puedes retirarnos el acceso cuando quieras.Si en algún paso hace falta enviar información a un proveedor de inteligencia artificial, te lo explicamos antes y decides tú."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Trabajáis solo con negocios de Valladolid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Somos una agencia de Valladolid y nos gusta conocer los negocios en persona, pero todo lo que hacemos funciona igual en remoto.Trabajamos con negocios de toda Castilla y León y del resto de España."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
 </div>
+
+<script>
+/* Verantia - pagina de sector: aparicion al hacer scroll y contadores.
+   El contenido parte VISIBLE; solo se oculta si este script corre, y lo
+   que ya esta en pantalla se marca visible en el mismo ciclo (sin parpadeo
+   aunque la cache aplace el script). */
+(function () {
+  var root = document.querySelector('.vsx'); if (!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canIO = 'IntersectionObserver' in window;
+  if (canIO && !reduce) {
+    root.classList.add('vsx-js');
+    var io = new IntersectionObserver(function (es) {
+      for (var i = 0; i < es.length; i++) if (es[i].isIntersecting) { es[i].target.classList.add('vsx-in'); io.unobserve(es[i].target); }
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    var els = root.querySelectorAll('.vsx-rv'), vh = window.innerHeight || 800;
+    for (var n = 0; n < els.length; n++) {
+      if (els[n].getBoundingClientRect().top < vh * 0.95) els[n].classList.add('vsx-in');
+      else { els[n].style.transitionDelay = (Math.min(n % 4, 3) * 80) + 'ms'; io.observe(els[n]); }
+    }
+  }
+  var nums = root.querySelectorAll('[data-vsx-count]'); if (!nums.length) return;
+  function fmt(v, d) { return v.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function run(el) {
+    var t = parseFloat(el.getAttribute('data-vsx-count')), d = parseInt(el.getAttribute('data-vsx-dec') || '0', 10);
+    if (isNaN(t)) return;
+    if (reduce || !window.requestAnimationFrame) { el.textContent = fmt(t, d); return; }
+    var start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / 1300, 1);
+      el.textContent = fmt(t * (1 - Math.pow(1 - p, 3)), d);
+      if (p < 1) requestAnimationFrame(frame); else el.textContent = fmt(t, d);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!canIO || reduce) { for (var k = 0; k < nums.length; k++) run(nums[k]); return; }
+  var io2 = new IntersectionObserver(function (es) {
+    for (var j = 0; j < es.length; j++) if (es[j].isIntersecting) { run(es[j].target); io2.unobserve(es[j].target); }
+  }, { threshold: 0.45 });
+  for (var m = 0; m < nums.length; m++) io2.observe(nums[m]);
+})();
+</script>
